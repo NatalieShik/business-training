@@ -102,6 +102,9 @@
             this.dataGridViewForQandA.AllowUserToDeleteRows = false;
             this.dataGridViewForQandA.AllowUserToResizeColumns = false;
             this.dataGridViewForQandA.AllowUserToResizeRows = false;
+            this.dataGridViewForQandA.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewForQandA.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewForQandA.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(215)))), ((int)(((byte)(248)))));
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -144,7 +147,7 @@
             this.dataGridViewForQandA.RowHeadersWidth = 51;
             this.dataGridViewForQandA.RowTemplate.Height = 24;
             this.dataGridViewForQandA.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewForQandA.Size = new System.Drawing.Size(510, 670);
+            this.dataGridViewForQandA.Size = new System.Drawing.Size(790, 670);
             this.dataGridViewForQandA.TabIndex = 22;
             this.dataGridViewForQandA.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewForQandA_CellClick);
             // 
@@ -218,12 +221,14 @@
             // 
             // panelUp
             // 
+            this.panelUp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelUp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(98)))), ((int)(((byte)(157)))));
             this.panelUp.Controls.Add(this.buttonBack);
             this.panelUp.Controls.Add(this.buttonFile);
             this.panelUp.Location = new System.Drawing.Point(0, 0);
             this.panelUp.Name = "panelUp";
-            this.panelUp.Size = new System.Drawing.Size(844, 44);
+            this.panelUp.Size = new System.Drawing.Size(1122, 44);
             this.panelUp.TabIndex = 27;
             // 
             // buttonBack
@@ -257,10 +262,12 @@
             // 
             // panelDown
             // 
+            this.panelDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(98)))), ((int)(((byte)(157)))));
             this.panelDown.Location = new System.Drawing.Point(0, 742);
             this.panelDown.Name = "panelDown";
-            this.panelDown.Size = new System.Drawing.Size(844, 44);
+            this.panelDown.Size = new System.Drawing.Size(1122, 44);
             this.panelDown.TabIndex = 28;
             // 
             // buttonAdd
@@ -308,12 +315,12 @@
             this.buttonDelete.UseVisualStyleBackColor = false;
             this.buttonDelete.Click += new System.EventHandler(this.ButtonDelete_Click);
             // 
-            // Table
+            // TableForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(841, 785);
+            this.ClientSize = new System.Drawing.Size(1121, 785);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonChange);
             this.Controls.Add(this.buttonAdd);
@@ -328,10 +335,9 @@
             this.Controls.Add(this.textBoxDirection);
             this.Controls.Add(this.textBoxAnswer);
             this.Controls.Add(this.textBoxQuestion);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.Name = "Table";
+            this.MinimumSize = new System.Drawing.Size(800, 832);
+            this.Name = "TableForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Таблица вопросов и ответов";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewForQandA)).EndInit();
