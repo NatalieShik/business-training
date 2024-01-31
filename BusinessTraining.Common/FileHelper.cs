@@ -109,7 +109,7 @@ namespace BusinessTraining
             using (FileStream fileStream = new FileStream(filePath, FileMode.Open))
             {
                 if (fileStream.Length > 0)
-                    result = JsonSerializer.Deserialize<List<QuestionsAndAnswers>>(fileStream);
+                    result = SerializationHelper.Deserialize<List<QuestionsAndAnswers>>(fileStream);
             }
             return result;
         }
@@ -135,7 +135,7 @@ namespace BusinessTraining
                     if (line.StartsWith("Вопрос: "))
                         question = line.Replace("Вопрос: ", String.Empty).Trim();
                     else if (line.StartsWith("Ответ: "))
-                            answer = line.Replace("Ответ: ", String.Empty).Trim();
+                        answer = line.Replace("Ответ: ", String.Empty).Trim();
                     else if (line.StartsWith("Неправильный ответ: "))
                         wrongAnswers.Add(line.Replace("Неправильный ответ: ", String.Empty).Trim());
                     else if (line.StartsWith("Направление: "))

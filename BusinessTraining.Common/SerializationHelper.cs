@@ -1,4 +1,6 @@
-﻿using System.Text.Encodings.Web;
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Unicode;
 
@@ -15,6 +17,15 @@ namespace BusinessTraining
                 Encoder = JavaScriptEncoder.Create(UnicodeRanges.All)
             };
             return JsonSerializer.Serialize(value, options);
+        }
+
+        public static TValue Deserialize<TValue>(Stream utf8Json)
+        {
+            var options = new JsonSerializerOptions
+            {
+                DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
+            };
+            return JsonSerializer.Deserialize<TValue>(utf8Json, options);
         }
     }
 }

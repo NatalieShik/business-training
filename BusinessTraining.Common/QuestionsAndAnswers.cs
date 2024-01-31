@@ -10,7 +10,7 @@ namespace BusinessTraining
 
         public string Answer { get; set; }
 
-        public List<string> WrongAnswers { get; } = new List<string>(); //действительно ли это нужно?
+        public List<string> WrongAnswers { get; set; } = new List<string>();
 
         public string Direction { get; set; }
 

@@ -75,8 +75,10 @@ namespace BusinessTraining.Tests
             Assert.AreEqual(expected.Count, result.Count);
             Assert.AreEqual(expected[0].Question, result[0].Question);
             Assert.AreEqual(expected[0].Answer, result[0].Answer);
+
             Assert.AreEqual(expected[0].WrongAnswers.Count, result[0].WrongAnswers.Count);
-            // TODO: сделать проверку на слова как таковые
+            Assert.AreEqual(expected[0].WrongAnswers[0].ToString(), result[0].WrongAnswers[0].ToString());
+
             Assert.AreEqual(expected[0].Direction, result[0].Direction);
             Assert.AreEqual(expected[0].Section, result[0].Section);
         }
