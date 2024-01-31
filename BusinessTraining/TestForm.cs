@@ -134,6 +134,7 @@ namespace BusinessTraining
             if (RightQuestion == null)
                 return;
 
+            // TODO: избавиться от этого конструктора
             QuestionsAndAnswers temp = new QuestionsAndAnswers(textBoxForQuestions.Text, comboBoxAnswer.Text, RightQuestion.Direction, RightQuestion.Section);
             LocaleTestAnswers.Add(temp);
             if (temp.Answer == RightQuestion.Answer)

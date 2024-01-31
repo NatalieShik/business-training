@@ -9,9 +9,19 @@ namespace BusinessTraining.Tests
         private List<QuestionsAndAnswers> CreateTestData()
         {
             List<QuestionsAndAnswers> questions = new List<QuestionsAndAnswers>();
-            QuestionsAndAnswers question = new QuestionsAndAnswers("Привет?", "привет!", "1", "2");
+            List<string> wrongAnswers = new List<string>
+            {
+                "привет",
+                "привет-привет"
+            };
+            QuestionsAndAnswers question = new QuestionsAndAnswers("Привет?", "привет!", wrongAnswers, "1", "2");
             questions.Add(question);
-            question = new QuestionsAndAnswers("Hello?", "hello!", "3", "4");
+            List<string> wrongAnswersEng = new List<string>
+            {
+                "hello",
+                "hello-hello"
+            };
+            question = new QuestionsAndAnswers("Hello?", "hello!", wrongAnswersEng, "3", "4");
             questions.Add(question);
             return questions;
         }
@@ -64,9 +74,11 @@ namespace BusinessTraining.Tests
         {
             Assert.AreEqual(expected.Count, result.Count);
             Assert.AreEqual(expected[0].Question, result[0].Question);
-            Assert.AreEqual(expected[0].Section, result[0].Section);
-            Assert.AreEqual(expected[0].Direction, result[0].Direction);
             Assert.AreEqual(expected[0].Answer, result[0].Answer);
+            Assert.AreEqual(expected[0].WrongAnswers.Count, result[0].WrongAnswers.Count);
+            // TODO: сделать проверку на слова как таковые
+            Assert.AreEqual(expected[0].Direction, result[0].Direction);
+            Assert.AreEqual(expected[0].Section, result[0].Section);
         }
     }
 }

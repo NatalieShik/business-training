@@ -16,7 +16,7 @@ namespace BusinessTraining
 
         public string Section { get; set; }
 
-        public QuestionsAndAnswers(string question, string answer, string direction, string section) //удалить потом
+        public QuestionsAndAnswers(string question, string answer, string direction, string section) // TODO: удалить потом
         {
             Question = question;
             Answer = answer;

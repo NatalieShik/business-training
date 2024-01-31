@@ -22,8 +22,9 @@ namespace BusinessTraining
             {
                 dataGridViewForQandA.Rows[i].Cells[0].Value = question.Question;
                 dataGridViewForQandA.Rows[i].Cells[1].Value = question.Answer;
-                dataGridViewForQandA.Rows[i].Cells[2].Value = question.Direction;
-                dataGridViewForQandA.Rows[i].Cells[3].Value = question.Section;
+                dataGridViewForQandA.Rows[i].Cells[2].Value = string.Join(Environment.NewLine, question.WrongAnswers);
+                dataGridViewForQandA.Rows[i].Cells[3].Value = question.Direction;
+                dataGridViewForQandA.Rows[i].Cells[4].Value = question.Section;
                 i++;
             }
         }
@@ -41,8 +42,9 @@ namespace BusinessTraining
             DataGridViewRow row = dataGridViewForQandA.Rows[e.RowIndex];
             textBoxQuestion.Text = row.Cells[0].Value.ToString();
             textBoxAnswer.Text = row.Cells[1].Value.ToString();
-            textBoxDirection.Text = row.Cells[2].Value.ToString();
-            textBoxSection.Text = row.Cells[3].Value.ToString();
+            textBoxWrongAnswers.Text = row.Cells[2].Value.ToString();
+            textBoxDirection.Text = row.Cells[3].Value.ToString();
+            textBoxSection.Text = row.Cells[4].Value.ToString();
         }
 
         private void ButtonAdd_Click(object sender, EventArgs e)

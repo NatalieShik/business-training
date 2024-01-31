@@ -37,10 +37,6 @@
             this.textBoxDirection = new System.Windows.Forms.TextBox();
             this.textBoxSection = new System.Windows.Forms.TextBox();
             this.dataGridViewForQandA = new System.Windows.Forms.DataGridView();
-            this.Question = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Answer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Direction = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Section = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelQuestion = new System.Windows.Forms.Label();
             this.labelAnswer = new System.Windows.Forms.Label();
             this.labelDirection = new System.Windows.Forms.Label();
@@ -54,6 +50,11 @@
             this.buttonDelete = new System.Windows.Forms.Button();
             this.labelWrongAnswers = new System.Windows.Forms.Label();
             this.textBoxWrongAnswers = new System.Windows.Forms.TextBox();
+            this.Question = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Answer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WrongAnswers = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Direction = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Section = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewForQandA)).BeginInit();
             this.panelUp.SuspendLayout();
             this.SuspendLayout();
@@ -99,8 +100,6 @@
             // 
             this.dataGridViewForQandA.AllowUserToAddRows = false;
             this.dataGridViewForQandA.AllowUserToDeleteRows = false;
-            this.dataGridViewForQandA.AllowUserToResizeColumns = false;
-            this.dataGridViewForQandA.AllowUserToResizeRows = false;
             this.dataGridViewForQandA.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -118,6 +117,7 @@
             this.dataGridViewForQandA.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Question,
             this.Answer,
+            this.WrongAnswers,
             this.Direction,
             this.Section});
             this.dataGridViewForQandA.Cursor = System.Windows.Forms.Cursors.Default;
@@ -149,30 +149,6 @@
             this.dataGridViewForQandA.Size = new System.Drawing.Size(812, 748);
             this.dataGridViewForQandA.TabIndex = 22;
             this.dataGridViewForQandA.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewForQandA_CellClick);
-            // 
-            // Question
-            // 
-            this.Question.HeaderText = "Вопрос";
-            this.Question.MinimumWidth = 6;
-            this.Question.Name = "Question";
-            // 
-            // Answer
-            // 
-            this.Answer.HeaderText = "Ответ";
-            this.Answer.MinimumWidth = 6;
-            this.Answer.Name = "Answer";
-            // 
-            // Direction
-            // 
-            this.Direction.HeaderText = "Направление";
-            this.Direction.MinimumWidth = 6;
-            this.Direction.Name = "Direction";
-            // 
-            // Section
-            // 
-            this.Section.HeaderText = "Раздел";
-            this.Section.MinimumWidth = 6;
-            this.Section.Name = "Section";
             // 
             // labelQuestion
             // 
@@ -335,6 +311,36 @@
             this.textBoxWrongAnswers.TabIndex = 33;
             this.textBoxWrongAnswers.TabStop = false;
             // 
+            // Question
+            // 
+            this.Question.HeaderText = "Вопрос";
+            this.Question.MinimumWidth = 6;
+            this.Question.Name = "Question";
+            // 
+            // Answer
+            // 
+            this.Answer.HeaderText = "Ответ";
+            this.Answer.MinimumWidth = 6;
+            this.Answer.Name = "Answer";
+            // 
+            // WrongAnswers
+            // 
+            this.WrongAnswers.HeaderText = "Неправильные ответы";
+            this.WrongAnswers.MinimumWidth = 6;
+            this.WrongAnswers.Name = "WrongAnswers";
+            // 
+            // Direction
+            // 
+            this.Direction.HeaderText = "Направление";
+            this.Direction.MinimumWidth = 6;
+            this.Direction.Name = "Direction";
+            // 
+            // Section
+            // 
+            this.Section.HeaderText = "Раздел";
+            this.Section.MinimumWidth = 6;
+            this.Section.Name = "Section";
+            // 
             // TableForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -380,10 +386,6 @@
         private System.Windows.Forms.Label labelAnswer;
         private System.Windows.Forms.Label labelDirection;
         private System.Windows.Forms.Label labelSection;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Question;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Answer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Direction;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Section;
         private System.Windows.Forms.Panel panelUp;
         private System.Windows.Forms.Button buttonBack;
         private System.Windows.Forms.Panel panelDown;
@@ -393,5 +395,10 @@
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Label labelWrongAnswers;
         private System.Windows.Forms.TextBox textBoxWrongAnswers;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Question;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Answer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn WrongAnswers;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Direction;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Section;
     }
 }
