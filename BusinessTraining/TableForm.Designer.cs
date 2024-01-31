@@ -52,6 +52,8 @@
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonChange = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
+            this.labelWrongAnswers = new System.Windows.Forms.Label();
+            this.textBoxWrongAnswers = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewForQandA)).BeginInit();
             this.panelUp.SuspendLayout();
             this.SuspendLayout();
@@ -62,7 +64,6 @@
             this.textBoxQuestion.Location = new System.Drawing.Point(55, 93);
             this.textBoxQuestion.Multiline = true;
             this.textBoxQuestion.Name = "textBoxQuestion";
-            this.textBoxQuestion.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBoxQuestion.Size = new System.Drawing.Size(234, 122);
             this.textBoxQuestion.TabIndex = 0;
             this.textBoxQuestion.TabStop = false;
@@ -71,17 +72,15 @@
             // 
             this.textBoxAnswer.Font = new System.Drawing.Font("Candara Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxAnswer.Location = new System.Drawing.Point(54, 251);
-            this.textBoxAnswer.Multiline = true;
             this.textBoxAnswer.Name = "textBoxAnswer";
-            this.textBoxAnswer.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxAnswer.Size = new System.Drawing.Size(234, 122);
+            this.textBoxAnswer.Size = new System.Drawing.Size(234, 28);
             this.textBoxAnswer.TabIndex = 1;
             this.textBoxAnswer.TabStop = false;
             // 
             // textBoxDirection
             // 
             this.textBoxDirection.Font = new System.Drawing.Font("Candara Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxDirection.Location = new System.Drawing.Point(54, 406);
+            this.textBoxDirection.Location = new System.Drawing.Point(53, 479);
             this.textBoxDirection.Name = "textBoxDirection";
             this.textBoxDirection.Size = new System.Drawing.Size(234, 28);
             this.textBoxDirection.TabIndex = 2;
@@ -90,7 +89,7 @@
             // textBoxSection
             // 
             this.textBoxSection.Font = new System.Drawing.Font("Candara Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxSection.Location = new System.Drawing.Point(55, 470);
+            this.textBoxSection.Location = new System.Drawing.Point(54, 543);
             this.textBoxSection.Name = "textBoxSection";
             this.textBoxSection.Size = new System.Drawing.Size(234, 28);
             this.textBoxSection.TabIndex = 3;
@@ -147,7 +146,7 @@
             this.dataGridViewForQandA.RowHeadersWidth = 51;
             this.dataGridViewForQandA.RowTemplate.Height = 24;
             this.dataGridViewForQandA.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewForQandA.Size = new System.Drawing.Size(790, 670);
+            this.dataGridViewForQandA.Size = new System.Drawing.Size(812, 748);
             this.dataGridViewForQandA.TabIndex = 22;
             this.dataGridViewForQandA.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewForQandA_CellClick);
             // 
@@ -202,7 +201,7 @@
             this.labelDirection.AutoSize = true;
             this.labelDirection.BackColor = System.Drawing.Color.Transparent;
             this.labelDirection.Font = new System.Drawing.Font("Candara", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelDirection.Location = new System.Drawing.Point(50, 382);
+            this.labelDirection.Location = new System.Drawing.Point(49, 455);
             this.labelDirection.Name = "labelDirection";
             this.labelDirection.Size = new System.Drawing.Size(107, 21);
             this.labelDirection.TabIndex = 25;
@@ -213,7 +212,7 @@
             this.labelSection.AutoSize = true;
             this.labelSection.BackColor = System.Drawing.Color.Transparent;
             this.labelSection.Font = new System.Drawing.Font("Candara", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelSection.Location = new System.Drawing.Point(51, 446);
+            this.labelSection.Location = new System.Drawing.Point(50, 519);
             this.labelSection.Name = "labelSection";
             this.labelSection.Size = new System.Drawing.Size(61, 21);
             this.labelSection.TabIndex = 26;
@@ -228,7 +227,7 @@
             this.panelUp.Controls.Add(this.buttonFile);
             this.panelUp.Location = new System.Drawing.Point(0, 0);
             this.panelUp.Name = "panelUp";
-            this.panelUp.Size = new System.Drawing.Size(1122, 44);
+            this.panelUp.Size = new System.Drawing.Size(1144, 44);
             this.panelUp.TabIndex = 27;
             // 
             // buttonBack
@@ -265,9 +264,9 @@
             this.panelDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(98)))), ((int)(((byte)(157)))));
-            this.panelDown.Location = new System.Drawing.Point(0, 742);
+            this.panelDown.Location = new System.Drawing.Point(0, 820);
             this.panelDown.Name = "panelDown";
-            this.panelDown.Size = new System.Drawing.Size(1122, 44);
+            this.panelDown.Size = new System.Drawing.Size(1144, 44);
             this.panelDown.TabIndex = 28;
             // 
             // buttonAdd
@@ -277,7 +276,7 @@
             this.buttonAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAdd.Font = new System.Drawing.Font("Candara", 10F, System.Drawing.FontStyle.Bold);
             this.buttonAdd.ForeColor = System.Drawing.Color.White;
-            this.buttonAdd.Location = new System.Drawing.Point(91, 531);
+            this.buttonAdd.Location = new System.Drawing.Point(91, 597);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(149, 50);
             this.buttonAdd.TabIndex = 30;
@@ -292,7 +291,7 @@
             this.buttonChange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonChange.Font = new System.Drawing.Font("Candara", 10F, System.Drawing.FontStyle.Bold);
             this.buttonChange.ForeColor = System.Drawing.Color.White;
-            this.buttonChange.Location = new System.Drawing.Point(91, 596);
+            this.buttonChange.Location = new System.Drawing.Point(91, 662);
             this.buttonChange.Name = "buttonChange";
             this.buttonChange.Size = new System.Drawing.Size(149, 50);
             this.buttonChange.TabIndex = 31;
@@ -307,7 +306,7 @@
             this.buttonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDelete.Font = new System.Drawing.Font("Candara", 10F, System.Drawing.FontStyle.Bold);
             this.buttonDelete.ForeColor = System.Drawing.Color.White;
-            this.buttonDelete.Location = new System.Drawing.Point(91, 661);
+            this.buttonDelete.Location = new System.Drawing.Point(91, 727);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(149, 50);
             this.buttonDelete.TabIndex = 32;
@@ -315,12 +314,35 @@
             this.buttonDelete.UseVisualStyleBackColor = false;
             this.buttonDelete.Click += new System.EventHandler(this.ButtonDelete_Click);
             // 
+            // labelWrongAnswers
+            // 
+            this.labelWrongAnswers.AutoSize = true;
+            this.labelWrongAnswers.BackColor = System.Drawing.Color.Transparent;
+            this.labelWrongAnswers.Font = new System.Drawing.Font("Candara", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelWrongAnswers.Location = new System.Drawing.Point(51, 297);
+            this.labelWrongAnswers.Name = "labelWrongAnswers";
+            this.labelWrongAnswers.Size = new System.Drawing.Size(174, 21);
+            this.labelWrongAnswers.TabIndex = 34;
+            this.labelWrongAnswers.Text = "Неправильные ответы";
+            // 
+            // textBoxWrongAnswers
+            // 
+            this.textBoxWrongAnswers.Font = new System.Drawing.Font("Candara Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxWrongAnswers.Location = new System.Drawing.Point(53, 321);
+            this.textBoxWrongAnswers.Multiline = true;
+            this.textBoxWrongAnswers.Name = "textBoxWrongAnswers";
+            this.textBoxWrongAnswers.Size = new System.Drawing.Size(234, 122);
+            this.textBoxWrongAnswers.TabIndex = 33;
+            this.textBoxWrongAnswers.TabStop = false;
+            // 
             // TableForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1121, 785);
+            this.ClientSize = new System.Drawing.Size(1143, 863);
+            this.Controls.Add(this.labelWrongAnswers);
+            this.Controls.Add(this.textBoxWrongAnswers);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonChange);
             this.Controls.Add(this.buttonAdd);
@@ -369,5 +391,7 @@
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Button buttonChange;
         private System.Windows.Forms.Button buttonDelete;
+        private System.Windows.Forms.Label labelWrongAnswers;
+        private System.Windows.Forms.TextBox textBoxWrongAnswers;
     }
 }

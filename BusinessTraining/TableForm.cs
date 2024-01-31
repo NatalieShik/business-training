@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace BusinessTraining
@@ -15,19 +17,15 @@ namespace BusinessTraining
         private void UpdateData()
         {
             int i = 0;
-            try
+            dataGridViewForQandA.RowCount = AppState.Questions.Count;
+            foreach (var question in AppState.Questions)
             {
-                dataGridViewForQandA.RowCount = AppState.Questions.Count;
-                foreach (var question in AppState.Questions)
-                {
-                    dataGridViewForQandA.Rows[i].Cells[0].Value = question.Question;
-                    dataGridViewForQandA.Rows[i].Cells[1].Value = question.Answer;
-                    dataGridViewForQandA.Rows[i].Cells[2].Value = question.Direction;
-                    dataGridViewForQandA.Rows[i].Cells[3].Value = question.Section;
-                    i++;
-                }
+                dataGridViewForQandA.Rows[i].Cells[0].Value = question.Question;
+                dataGridViewForQandA.Rows[i].Cells[1].Value = question.Answer;
+                dataGridViewForQandA.Rows[i].Cells[2].Value = question.Direction;
+                dataGridViewForQandA.Rows[i].Cells[3].Value = question.Section;
+                i++;
             }
-            catch { }
         }
 
         private void ButtonBack_Click(object sender, EventArgs e)
@@ -51,15 +49,17 @@ namespace BusinessTraining
         {
             string question = textBoxQuestion.Text.Trim();
             string answer = textBoxAnswer.Text.Trim();
+            List<string> wrongAnswers = textBoxWrongAnswers.Text
+                .Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
             string direction = textBoxDirection.Text.Trim();
             string section = textBoxSection.Text.Trim();
-            if (String.IsNullOrEmpty(question) || String.IsNullOrEmpty(answer) || String.IsNullOrEmpty(direction) || String.IsNullOrEmpty(section))
+            if (String.IsNullOrEmpty(question) || String.IsNullOrEmpty(answer) || String.IsNullOrEmpty(direction) || String.IsNullOrEmpty(section) || wrongAnswers.Count == 0)
             {
                 MessageBox.Show(this, "Все поля должны быть заполнены.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            QuestionsAndAnswers questionAndAnswer = new QuestionsAndAnswers(question, answer, direction, section);
+            QuestionsAndAnswers questionAndAnswer = new QuestionsAndAnswers(question, answer, wrongAnswers, direction, section);
             AppState.Questions.Add(questionAndAnswer);
             UpdateData();
             rowIndex = -1;
