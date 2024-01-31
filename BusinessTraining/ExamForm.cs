@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace BusinessTraining
 {
-    public partial class TestForm : Form
+    public partial class ExamForm : Form
     {
         private List<QuestionsAndAnswers> LocaleTestQuestions = new List<QuestionsAndAnswers>(AppState.Questions);
         private int index; //индекс текущего вопроса
@@ -17,7 +17,7 @@ namespace BusinessTraining
         private List<QuestionsAndAnswers> LocaleTestAnswers = new List<QuestionsAndAnswers>();
         private short right;
 
-        public TestForm()
+        public ExamForm()
         {
             InitializeComponent();
         }
@@ -89,39 +89,6 @@ namespace BusinessTraining
             answers.OrderBy(x => Guid.NewGuid());
             return answers;
         }
-
-        //private void RandomAnswers(QuestionsAndAnswers temp)
-        //{
-        //    int[] previousIndexesOfAnswers = new int[5];
-        //    for (int ind = 0; ind < 5; ind++)
-        //        previousIndexesOfAnswers[ind] = -1;
-
-        //    for (int ind = 0; ind < 5; ind++)
-        //    {
-        //        int randomNumber;
-        //        do
-        //            randomNumber = random.Next(LocaleTestQuestions.Count);
-        //        while (previousIndexesOfAnswers.Any(prevIndex => prevIndex == randomNumber));
-
-        //        comboBoxAnswer.Items.Add(LocaleTestQuestions[randomNumber].Answer);
-        //        previousIndexesOfAnswers[ind] = randomNumber;
-        //    }
-        //    if (!comboBoxAnswer.Items.Contains(temp.Answer))
-        //    {
-        //        comboBoxAnswer.Items.RemoveAt(4);
-        //        comboBoxAnswer.Items.Add(temp.Answer);
-        //    }
-
-        //    int n = comboBoxAnswer.Items.Count;
-        //    while (n > 1)
-        //    {
-        //        n--;
-        //        int k = random.Next(n + 1);
-        //        object value = comboBoxAnswer.Items[k];
-        //        comboBoxAnswer.Items[k] = comboBoxAnswer.Items[n];
-        //        comboBoxAnswer.Items[n] = value;
-        //    }
-        //}
 
         private void ButtonBack_Click(object sender, EventArgs e)
         {

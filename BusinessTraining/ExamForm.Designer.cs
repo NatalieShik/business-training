@@ -1,6 +1,6 @@
 ﻿namespace BusinessTraining
 {
-    partial class TestForm
+    partial class ExamForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TestForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExamForm));
             this.textBoxForQuestions = new System.Windows.Forms.TextBox();
             this.comboBoxAnswer = new System.Windows.Forms.ComboBox();
             this.labelInfo = new System.Windows.Forms.Label();

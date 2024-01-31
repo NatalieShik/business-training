@@ -55,12 +55,12 @@ namespace BusinessTraining
         {
             if (!Properties.Settings.Default.Attempt)
             {
-                TestForm.ShowTestResults(this);
+                ExamForm.ShowTestResults(this);
                 return;
             }
 
             this.Hide();
-            using (TestForm test = new TestForm())
+            using (ExamForm test = new ExamForm())
             {
                 test.ShowDialog();
             }
