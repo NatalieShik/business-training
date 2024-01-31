@@ -127,30 +127,26 @@ namespace BusinessTraining
             using (StreamReader sr = new StreamReader(filePath, Encoding.UTF8))
             {
                 string line, question = "", answer = "", direction = "", section;
-                int i = 1;
+                List<string> wrongAnswers = new List<string>();
                 while ((line = sr.ReadLine()) != null)
                 {
                     if (line == String.Empty)
                         continue;
-                    switch (i)
-                    {
-                        case 1:
-                            question = line.Replace("Вопрос: ", String.Empty).Trim();
-                            break;
-                        case 2:
+                    if (line.StartsWith("Вопрос: "))
+                        question = line.Replace("Вопрос: ", String.Empty).Trim();
+                    else if (line.StartsWith("Ответ: "))
                             answer = line.Replace("Ответ: ", String.Empty).Trim();
-                            break;
-                        case 3:
-                            direction = line.Replace("Направление: ", String.Empty).Trim();
-                            break;
-                        case 4:
-                            section = line.Replace("Раздел: ", String.Empty).Trim();
-                            QuestionsAndAnswers QandA = new QuestionsAndAnswers(question, answer, direction, section);
-                            result.Add(QandA);
-                            i = 0;
-                            break;
-                    }
-                    i++;
+                    else if (line.StartsWith("Неправильный ответ: "))
+                        wrongAnswers.Add(line.Replace("Неправильный ответ: ", String.Empty).Trim());
+                    else if (line.StartsWith("Направление: "))
+                        direction = line.Replace("Направление: ", String.Empty).Trim();
+                    else if (line.StartsWith("Раздел: "))
+                    {
+                        section = line.Replace("Раздел: ", String.Empty).Trim();
+                        QuestionsAndAnswers QandA = new QuestionsAndAnswers(question, answer, wrongAnswers, direction, section);
+                        result.Add(QandA);
+                        wrongAnswers = new List<string>();
+                    }       
                 }
             }
             return result;
@@ -164,7 +160,10 @@ namespace BusinessTraining
                 {
                     writer.WriteLine("Вопрос: " + question.Question);
                     writer.WriteLine("Ответ: " + question.Answer);
-                    //foreach
+
+                    foreach(var wrongAnswer in question.WrongAnswers)
+                        writer.WriteLine("Неправильный ответ: " + wrongAnswer);
+
                     writer.WriteLine("Направление: " + question.Direction);
                     writer.WriteLine("Раздел: " + question.Section);
                     writer.WriteLine();
