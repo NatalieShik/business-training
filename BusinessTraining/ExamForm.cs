@@ -62,7 +62,7 @@ namespace BusinessTraining
 
         private void RandomAnswers(QuestionsAndAnswers question)
         {
-            List<string> answers = SelectRandomAnswers(question);
+            List<string> answers = ExamHelper.SelectRandomAnswers(question);
             PopulateComboBoxAnswers(answers);
         }
 
@@ -73,21 +73,6 @@ namespace BusinessTraining
             {
                 comboBoxAnswer.Items.Add(answer);
             }
-        }
-
-        private List<string> SelectRandomAnswers(QuestionsAndAnswers question)
-        {
-            var answers = new List<string>
-            {
-                question.Answer
-            };
-
-            foreach (var answer in question.WrongAnswers)
-            {
-                answers.Add(answer);
-            }
-            answers.OrderBy(x => Guid.NewGuid());
-            return answers;
         }
 
         private void ButtonBack_Click(object sender, EventArgs e)

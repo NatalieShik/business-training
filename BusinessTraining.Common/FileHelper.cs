@@ -71,7 +71,12 @@ namespace BusinessTraining
             using (FileStream fileStream = new FileStream(filePath, FileMode.Open))
             {
                 if (fileStream.Length > 0)
-                    result = (List<QuestionsAndAnswers>)binaryFormatter.Deserialize(fileStream);
+                {
+                    using (StreamReader streamReader = new StreamReader(fileStream, Encoding.UTF8))
+                    {
+                        result = (List<QuestionsAndAnswers>)binaryFormatter.Deserialize(streamReader.BaseStream);
+                    }
+                }
             }
             return result;
         }
@@ -80,7 +85,10 @@ namespace BusinessTraining
         {
             using (FileStream fileStream = new FileStream(filePath, FileMode.Create))
             {
-                binaryFormatter.Serialize(fileStream, questions);
+                using (StreamWriter streamWriter = new StreamWriter(fileStream, Encoding.UTF8))
+                {
+                    binaryFormatter.Serialize(streamWriter.BaseStream, questions);
+                }
             }
         }
 
@@ -90,7 +98,12 @@ namespace BusinessTraining
             using (FileStream fileStream = new FileStream(filePath, FileMode.Open))
             {
                 if (fileStream.Length > 0)
-                    result = (List<QuestionsAndAnswers>)xmlSerializer.Deserialize(fileStream);
+                {
+                    using (StreamReader streamReader = new StreamReader(fileStream, Encoding.UTF8))
+                    {
+                        result = (List<QuestionsAndAnswers>)xmlSerializer.Deserialize(streamReader);
+                    }
+                }
             }
             return result;
         }
@@ -99,7 +112,10 @@ namespace BusinessTraining
         {
             using (FileStream fileStream = new FileStream(filePath, FileMode.Create))
             {
-                xmlSerializer.Serialize(fileStream, questions);
+                using (StreamWriter streamWriter = new StreamWriter(fileStream, Encoding.UTF8))
+                {
+                    xmlSerializer.Serialize(streamWriter, questions);
+                }
             }
         }
 
