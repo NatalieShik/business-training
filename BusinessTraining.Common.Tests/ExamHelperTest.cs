@@ -1,9 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessTraining.Tests
 {
@@ -32,13 +29,12 @@ namespace BusinessTraining.Tests
             Assert.IsNotNull(answers);
             Assert.AreEqual(question.WrongAnswers.Count + 1, answers.Count);
 
-            // сделать так, чтобы проверялось, что встречается один ответ один раз
-            List<string> uniqueAnswers = new List<string>();
-            foreach (var answer in answers)
-            {
-                Assert.IsFalse(uniqueAnswers.Contains(answer));
-                uniqueAnswers.Add(answer);
-            }
+            var expectedAnswers = question.WrongAnswers.ToList();
+            expectedAnswers.Add(question.Answer);
+
+            //string[] expectedAnswers = [.. question.WrongAnswers, question.Answer];
+
+            CollectionAssert.AreEquivalent(expectedAnswers, answers);
         }
     }
 }

@@ -12,13 +12,11 @@ namespace BusinessTraining
             {
                 question.Answer
             };
+            answers.AddRange(question.WrongAnswers);
 
-            foreach (var answer in question.WrongAnswers)
-            {
-                answers.Add(answer);
-            }
-            answers.OrderBy(x => Guid.NewGuid());
-            return answers;
+            //answers.Select(x => (Item:x, OrderNum: Guid.NewGuid())).OrderBy(x => x.OrderNum).Select(x => x.Item).ToList();
+
+            return answers.OrderBy(x => Guid.NewGuid()).ToList();
         }
     }
 }
