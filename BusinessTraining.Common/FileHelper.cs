@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
-using System.Text.Json;
 using System.Xml.Serialization;
 
 namespace BusinessTraining
@@ -139,7 +138,7 @@ namespace BusinessTraining
         private static List<QuestionsAndAnswers> LoadFromFileAsTxt(string filePath)
         {
             List<QuestionsAndAnswers> result = new List<QuestionsAndAnswers>();
-            
+
             using (StreamReader sr = new StreamReader(filePath, Encoding.UTF8))
             {
                 string line, question = "", answer = "", direction = "", section;
@@ -165,6 +164,8 @@ namespace BusinessTraining
                     }       
                 }
             }
+            if (result.Count == 0)
+                throw new Exception("Неверный формат файла.");
             return result;
         }
 

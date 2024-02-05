@@ -37,24 +37,25 @@
             this.textBoxDirection = new System.Windows.Forms.TextBox();
             this.textBoxSection = new System.Windows.Forms.TextBox();
             this.dataGridViewForQandA = new System.Windows.Forms.DataGridView();
+            this.Question = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Answer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WrongAnswers = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Direction = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Section = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelQuestion = new System.Windows.Forms.Label();
             this.labelAnswer = new System.Windows.Forms.Label();
             this.labelDirection = new System.Windows.Forms.Label();
             this.labelSection = new System.Windows.Forms.Label();
             this.panelUp = new System.Windows.Forms.Panel();
             this.buttonBack = new System.Windows.Forms.Button();
-            this.buttonFile = new System.Windows.Forms.Button();
+            this.buttonImport = new System.Windows.Forms.Button();
             this.panelDown = new System.Windows.Forms.Panel();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonChange = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.labelWrongAnswers = new System.Windows.Forms.Label();
             this.textBoxWrongAnswers = new System.Windows.Forms.TextBox();
-            this.Question = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Answer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.WrongAnswers = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Direction = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Section = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonExport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewForQandA)).BeginInit();
             this.panelUp.SuspendLayout();
             this.SuspendLayout();
@@ -150,6 +151,36 @@
             this.dataGridViewForQandA.TabIndex = 22;
             this.dataGridViewForQandA.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewForQandA_CellClick);
             // 
+            // Question
+            // 
+            this.Question.HeaderText = "Вопрос";
+            this.Question.MinimumWidth = 6;
+            this.Question.Name = "Question";
+            // 
+            // Answer
+            // 
+            this.Answer.HeaderText = "Ответ";
+            this.Answer.MinimumWidth = 6;
+            this.Answer.Name = "Answer";
+            // 
+            // WrongAnswers
+            // 
+            this.WrongAnswers.HeaderText = "Неправильные ответы";
+            this.WrongAnswers.MinimumWidth = 6;
+            this.WrongAnswers.Name = "WrongAnswers";
+            // 
+            // Direction
+            // 
+            this.Direction.HeaderText = "Направление";
+            this.Direction.MinimumWidth = 6;
+            this.Direction.Name = "Direction";
+            // 
+            // Section
+            // 
+            this.Section.HeaderText = "Раздел";
+            this.Section.MinimumWidth = 6;
+            this.Section.Name = "Section";
+            // 
             // labelQuestion
             // 
             this.labelQuestion.AutoSize = true;
@@ -199,8 +230,9 @@
             this.panelUp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelUp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(98)))), ((int)(((byte)(157)))));
+            this.panelUp.Controls.Add(this.buttonExport);
             this.panelUp.Controls.Add(this.buttonBack);
-            this.panelUp.Controls.Add(this.buttonFile);
+            this.panelUp.Controls.Add(this.buttonImport);
             this.panelUp.Location = new System.Drawing.Point(0, 0);
             this.panelUp.Name = "panelUp";
             this.panelUp.Size = new System.Drawing.Size(1144, 44);
@@ -220,20 +252,20 @@
             this.buttonBack.UseVisualStyleBackColor = true;
             this.buttonBack.Click += new System.EventHandler(this.ButtonBack_Click);
             // 
-            // buttonFile
+            // buttonImport
             // 
-            this.buttonFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(98)))), ((int)(((byte)(157)))));
-            this.buttonFile.FlatAppearance.BorderSize = 0;
-            this.buttonFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFile.Font = new System.Drawing.Font("Candara", 10F, System.Drawing.FontStyle.Bold);
-            this.buttonFile.ForeColor = System.Drawing.Color.White;
-            this.buttonFile.Location = new System.Drawing.Point(102, 0);
-            this.buttonFile.Name = "buttonFile";
-            this.buttonFile.Size = new System.Drawing.Size(186, 44);
-            this.buttonFile.TabIndex = 29;
-            this.buttonFile.Text = "Загрузить файл";
-            this.buttonFile.UseVisualStyleBackColor = false;
-            this.buttonFile.Click += new System.EventHandler(this.ButtonFile_Click);
+            this.buttonImport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(98)))), ((int)(((byte)(157)))));
+            this.buttonImport.FlatAppearance.BorderSize = 0;
+            this.buttonImport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonImport.Font = new System.Drawing.Font("Candara", 10F, System.Drawing.FontStyle.Bold);
+            this.buttonImport.ForeColor = System.Drawing.Color.White;
+            this.buttonImport.Location = new System.Drawing.Point(108, 0);
+            this.buttonImport.Name = "buttonImport";
+            this.buttonImport.Size = new System.Drawing.Size(102, 44);
+            this.buttonImport.TabIndex = 29;
+            this.buttonImport.Text = "Импорт";
+            this.buttonImport.UseVisualStyleBackColor = false;
+            this.buttonImport.Click += new System.EventHandler(this.ButtonImport_Click);
             // 
             // panelDown
             // 
@@ -311,35 +343,20 @@
             this.textBoxWrongAnswers.TabIndex = 33;
             this.textBoxWrongAnswers.TabStop = false;
             // 
-            // Question
+            // buttonExport
             // 
-            this.Question.HeaderText = "Вопрос";
-            this.Question.MinimumWidth = 6;
-            this.Question.Name = "Question";
-            // 
-            // Answer
-            // 
-            this.Answer.HeaderText = "Ответ";
-            this.Answer.MinimumWidth = 6;
-            this.Answer.Name = "Answer";
-            // 
-            // WrongAnswers
-            // 
-            this.WrongAnswers.HeaderText = "Неправильные ответы";
-            this.WrongAnswers.MinimumWidth = 6;
-            this.WrongAnswers.Name = "WrongAnswers";
-            // 
-            // Direction
-            // 
-            this.Direction.HeaderText = "Направление";
-            this.Direction.MinimumWidth = 6;
-            this.Direction.Name = "Direction";
-            // 
-            // Section
-            // 
-            this.Section.HeaderText = "Раздел";
-            this.Section.MinimumWidth = 6;
-            this.Section.Name = "Section";
+            this.buttonExport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(98)))), ((int)(((byte)(157)))));
+            this.buttonExport.FlatAppearance.BorderSize = 0;
+            this.buttonExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonExport.Font = new System.Drawing.Font("Candara", 10F, System.Drawing.FontStyle.Bold);
+            this.buttonExport.ForeColor = System.Drawing.Color.White;
+            this.buttonExport.Location = new System.Drawing.Point(216, 0);
+            this.buttonExport.Name = "buttonExport";
+            this.buttonExport.Size = new System.Drawing.Size(102, 44);
+            this.buttonExport.TabIndex = 30;
+            this.buttonExport.Text = "Экспорт";
+            this.buttonExport.UseVisualStyleBackColor = false;
+            this.buttonExport.Click += new System.EventHandler(this.ButtonExport_Click);
             // 
             // TableForm
             // 
@@ -389,7 +406,7 @@
         private System.Windows.Forms.Panel panelUp;
         private System.Windows.Forms.Button buttonBack;
         private System.Windows.Forms.Panel panelDown;
-        private System.Windows.Forms.Button buttonFile;
+        private System.Windows.Forms.Button buttonImport;
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Button buttonChange;
         private System.Windows.Forms.Button buttonDelete;
@@ -400,5 +417,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn WrongAnswers;
         private System.Windows.Forms.DataGridViewTextBoxColumn Direction;
         private System.Windows.Forms.DataGridViewTextBoxColumn Section;
+        private System.Windows.Forms.Button buttonExport;
     }
 }

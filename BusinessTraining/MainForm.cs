@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace BusinessTraining
@@ -16,8 +15,8 @@ namespace BusinessTraining
         {
             try
             {
-                var filePath = Properties.Settings.Default.FilePath;
-                AppState.Questions = FileHelper.LoadFromFileOrCreateNew(filePath);
+                var filePathforQuestions = Properties.Settings.Default.QuestionsFile;
+                AppState.Questions = FileHelper.LoadFromFileOrCreateNew(filePathforQuestions);
                 CheckIfNoQuestions();
             }
             catch
@@ -82,7 +81,7 @@ namespace BusinessTraining
             SettingsHelper.SaveSettingAtempt(true);
             try
             {
-                FileHelper.SaveToFile(Properties.Settings.Default.FilePath, AppState.Questions);
+                FileHelper.SaveToFile(Properties.Settings.Default.QuestionsFile, AppState.Questions);
             }
             catch
             {

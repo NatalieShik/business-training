@@ -7,11 +7,5 @@
             Properties.Settings.Default.Attempt = atempt;
             Properties.Settings.Default.Save();
         }
-
-        public static void SaveSettingFile(string fileName)
-        {
-            Properties.Settings.Default.FilePath = fileName;
-            Properties.Settings.Default.Save();
-        }
     }
 }

@@ -2,11 +2,11 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="BusinessTraining.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="FilePath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">InformationBank.txt</Value>
-    </Setting>
     <Setting Name="Attempt" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="QuestionsFile" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">QuestionsFile.json</Value>
     </Setting>
   </Settings>
 </SettingsFile>

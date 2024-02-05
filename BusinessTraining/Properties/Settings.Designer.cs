@@ -25,18 +25,6 @@ namespace BusinessTraining.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("InformationBank.txt")]
-        public string FilePath {
-            get {
-                return ((string)(this["FilePath"]));
-            }
-            set {
-                this["FilePath"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool Attempt {
             get {
@@ -44,6 +32,15 @@ namespace BusinessTraining.Properties {
             }
             set {
                 this["Attempt"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("QuestionsFile.json")]
+        public string QuestionsFile {
+            get {
+                return ((string)(this["QuestionsFile"]));
             }
         }
     }

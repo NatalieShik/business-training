@@ -17,6 +17,11 @@ namespace BusinessTraining
         private void UpdateData()
         {
             int i = 0;
+            if (AppState.Questions.Count == 0)
+                buttonExport.Enabled = false;
+            else
+                buttonExport.Enabled = true;
+
             dataGridViewForQandA.RowCount = AppState.Questions.Count;
             foreach (var question in AppState.Questions)
             {
@@ -87,18 +92,21 @@ namespace BusinessTraining
             UpdateData();
         }
 
-        private void ButtonFile_Click(object sender, EventArgs e)
+        private void ButtonImport_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.DefaultExt = "txt";
-            openFileDialog.Filter = "All files|*.txt;*.bin;*.json;*.xml|Текстовые файлы|*.txt|Бинарные файлы|*.bin|JSON файлы|*.json|XML файлы|*.xml";
-            openFileDialog.Multiselect = false;
-            if (openFileDialog.ShowDialog() != DialogResult.OK)
-                return;
-            SettingsHelper.SaveSettingFile(openFileDialog.FileName);
+            string fileName;
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.DefaultExt = "txt";
+                openFileDialog.Filter = "Все файлы|*.txt;*.json|Текстовые файлы|*.txt|JSON файлы|*.json";
+                openFileDialog.Multiselect = false;
+                if (openFileDialog.ShowDialog() != DialogResult.OK)
+                    return;
+                fileName = openFileDialog.FileName;
+            }
             try
             {
-                LoadFromFile();
+                LoadFromFile(fileName);
                 dataGridViewForQandA.Rows.Clear();
                 UpdateData();
             }
@@ -108,9 +116,24 @@ namespace BusinessTraining
             }
         }
 
-        private void LoadFromFile()
+        private void LoadFromFile(string filePath)
         {
-            AppState.Questions = FileHelper.LoadFromFile(Properties.Settings.Default.FilePath);
+            AppState.Questions = FileHelper.LoadFromFile(filePath);
+        }
+
+        private void ButtonExport_Click(object sender, EventArgs e)
+        {
+            if (AppState.Questions.Count == 0)
+                return;
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.DefaultExt = "txt";
+                saveFileDialog.Filter = "Все файлы|*.txt;*.json|Текстовые файлы|*.txt|JSON файлы|*.json";
+                if (saveFileDialog.ShowDialog() != DialogResult.OK)
+                    return;
+                FileHelper.SaveToFile(saveFileDialog.FileName, AppState.Questions); //может ли тут возникнуть ошибка?
+                MessageBox.Show(this, "Файл успешно сохранен.", "Уведомление", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            } 
         }
     }
 }
