@@ -79,14 +79,8 @@ namespace BusinessTraining
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             SettingsHelper.SaveSettingAtempt(true);
-            try
-            {
-                FileHelper.SaveToFile(Properties.Settings.Default.QuestionsFile, AppState.Questions);
-            }
-            catch
-            {
-                MessageBox.Show(this, "Файл не был сохранен. Вероятно, вы переименовали его или удалили.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            FileHelper.SaveToFile(Properties.Settings.Default.QuestionsFile, AppState.Questions);
+            //Application.LocalUserAppDataPath
         }
     }
 }

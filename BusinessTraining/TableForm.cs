@@ -131,7 +131,7 @@ namespace BusinessTraining
                 saveFileDialog.Filter = "Все файлы|*.txt;*.json|Текстовые файлы|*.txt|JSON файлы|*.json";
                 if (saveFileDialog.ShowDialog() != DialogResult.OK)
                     return;
-                FileHelper.SaveToFile(saveFileDialog.FileName, AppState.Questions); //может ли тут возникнуть ошибка?
+                FileHelper.SaveToFile(saveFileDialog.FileName, AppState.Questions);
                 MessageBox.Show(this, "Файл успешно сохранен.", "Уведомление", MessageBoxButtons.OK, MessageBoxIcon.Information);
             } 
         }
