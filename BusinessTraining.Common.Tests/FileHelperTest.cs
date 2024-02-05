@@ -70,6 +70,17 @@ namespace BusinessTraining.Tests
             CheckResults(questions, result);
         }
 
+        [TestMethod]
+        public void LoadFromFile_And_SaveToFile_Docx_Test()
+        {
+            List<QuestionsAndAnswers> questions = CreateTestData();
+
+            FileHelper.SaveToFile("example.docx", questions);
+            List<QuestionsAndAnswers> result = FileHelper.LoadFromFile("example.docx");
+
+            CheckResults(questions, result);
+        }
+
         private void CheckResults(List<QuestionsAndAnswers> expected, List<QuestionsAndAnswers> result)
         {
             Assert.AreEqual(expected.Count, result.Count);

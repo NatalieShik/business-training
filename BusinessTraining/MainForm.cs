@@ -80,7 +80,7 @@ namespace BusinessTraining
         {
             SettingsHelper.SaveSettingAtempt(true);
             FileHelper.SaveToFile(Properties.Settings.Default.QuestionsFile, AppState.Questions);
-            //Application.LocalUserAppDataPath
+            // TODO: Application.LocalUserAppDataPath
         }
     }
 }

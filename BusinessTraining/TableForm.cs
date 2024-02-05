@@ -97,8 +97,8 @@ namespace BusinessTraining
             string fileName;
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                openFileDialog.DefaultExt = "txt";
-                openFileDialog.Filter = "Все файлы|*.txt;*.json|Текстовые файлы|*.txt|JSON файлы|*.json";
+                openFileDialog.DefaultExt = "docx";
+                openFileDialog.Filter = "Все файлы|*.txt;*.json;*.docx|Текстовые файлы|*.txt|JSON файлы|*.json|Microsoft Word файлы|*.docx";
                 openFileDialog.Multiselect = false;
                 if (openFileDialog.ShowDialog() != DialogResult.OK)
                     return;
@@ -127,8 +127,8 @@ namespace BusinessTraining
                 return;
             using (SaveFileDialog saveFileDialog = new SaveFileDialog())
             {
-                saveFileDialog.DefaultExt = "txt";
-                saveFileDialog.Filter = "Все файлы|*.txt;*.json|Текстовые файлы|*.txt|JSON файлы|*.json";
+                saveFileDialog.DefaultExt = "docx";
+                saveFileDialog.Filter = "Все файлы|*.txt;*.json;*.docx|Текстовые файлы|*.txt|JSON файлы|*.json|Microsoft Word файлы|*.docx";
                 if (saveFileDialog.ShowDialog() != DialogResult.OK)
                     return;
                 FileHelper.SaveToFile(saveFileDialog.FileName, AppState.Questions);

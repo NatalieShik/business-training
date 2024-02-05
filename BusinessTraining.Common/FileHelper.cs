@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Spire.Doc;
+using Spire.Doc.Documents;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
@@ -38,6 +41,9 @@ namespace BusinessTraining
                 case ".txt":
                     result = LoadFromFileAsTxt(filePath);
                     break;
+                case ".docx":
+                    result = LoadFromFileAsDocx(filePath);
+                    break;
                 default: 
                     result = new List<QuestionsAndAnswers>(); 
                     break;
@@ -60,6 +66,9 @@ namespace BusinessTraining
                     break;
                 case ".txt":
                     SaveToFileAsTxt(filePath, questions);
+                    break;
+                case ".docx":
+                    SaveToFileAsDocx(filePath, questions);
                     break;
             }
         }
@@ -165,7 +174,7 @@ namespace BusinessTraining
                 }
             }
             if (result.Count == 0)
-                throw new Exception("Неверный формат файла.");
+                throw new InvalidOperationException("Неверный формат файла.");
             return result;
         }
 
@@ -186,6 +195,39 @@ namespace BusinessTraining
                     writer.WriteLine();
                 }
             }
+        }
+
+        private static List<QuestionsAndAnswers> LoadFromFileAsDocx(string filePath)
+        {
+            string tempFileName = Path.GetTempFileName();
+            Debug.WriteLine(tempFileName);
+            Document doc = new Document();
+            doc.LoadFromFile(filePath);
+            doc.SaveToTxt(tempFileName, Encoding.UTF8);
+
+            var result = LoadFromFileAsTxt(tempFileName);
+
+            return result;
+        }
+
+        private static void SaveToFileAsDocx(string filePath, List<QuestionsAndAnswers> questions)
+        {
+            string lineBreak = "\v";
+            Document doc = new Document();
+            Paragraph paragraph = doc.AddSection().AddParagraph();
+            foreach (var question in questions)
+            {
+                paragraph.AppendText("Вопрос: " + question.Question + lineBreak);
+                paragraph.AppendText("Ответ: " + question.Answer + lineBreak);
+
+                foreach (var wrongAnswer in question.WrongAnswers)
+                    paragraph.AppendText("Неправильный ответ: " + wrongAnswer + lineBreak);
+
+                paragraph.AppendText("Направление: " + question.Direction + lineBreak);
+                paragraph.AppendText("Раздел: " + question.Section + lineBreak);
+                paragraph.AppendText(lineBreak);
+            }
+            doc.SaveToFile(filePath);
         }
     }
 }
