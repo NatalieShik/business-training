@@ -79,8 +79,18 @@ namespace BusinessTraining
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            var filePath = Path.Combine(Application.LocalUserAppDataPath, Properties.Settings.Default.QuestionsFile);
             SettingsHelper.SaveSettingAtempt(true);
-            FileHelper.SaveToFile(Path.Combine(Application.LocalUserAppDataPath, Properties.Settings.Default.QuestionsFile), AppState.Questions);
+
+            FileAttributes attributes = File.GetAttributes(filePath);
+            if (attributes.HasFlag(FileAttributes.Hidden))
+            {
+                attributes = FileAttributes.Normal;
+                File.SetAttributes(filePath, attributes);
+            }
+
+            FileHelper.SaveToFile(filePath, AppState.Questions);
+            File.SetAttributes(filePath, FileAttributes.Hidden);
         }
     }
 }
