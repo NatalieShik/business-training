@@ -47,6 +47,7 @@
             this.labelDirection = new System.Windows.Forms.Label();
             this.labelSection = new System.Windows.Forms.Label();
             this.panelUp = new System.Windows.Forms.Panel();
+            this.buttonExport = new System.Windows.Forms.Button();
             this.buttonBack = new System.Windows.Forms.Button();
             this.buttonImport = new System.Windows.Forms.Button();
             this.panelDown = new System.Windows.Forms.Panel();
@@ -55,7 +56,6 @@
             this.buttonDelete = new System.Windows.Forms.Button();
             this.labelWrongAnswers = new System.Windows.Forms.Label();
             this.textBoxWrongAnswers = new System.Windows.Forms.TextBox();
-            this.buttonExport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewForQandA)).BeginInit();
             this.panelUp.SuspendLayout();
             this.SuspendLayout();
@@ -63,37 +63,41 @@
             // textBoxQuestion
             // 
             this.textBoxQuestion.Font = new System.Drawing.Font("Candara Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxQuestion.Location = new System.Drawing.Point(55, 93);
+            this.textBoxQuestion.Location = new System.Drawing.Point(34, 76);
+            this.textBoxQuestion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxQuestion.Multiline = true;
             this.textBoxQuestion.Name = "textBoxQuestion";
-            this.textBoxQuestion.Size = new System.Drawing.Size(234, 122);
+            this.textBoxQuestion.Size = new System.Drawing.Size(176, 100);
             this.textBoxQuestion.TabIndex = 0;
             this.textBoxQuestion.TabStop = false;
             // 
             // textBoxAnswer
             // 
             this.textBoxAnswer.Font = new System.Drawing.Font("Candara Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxAnswer.Location = new System.Drawing.Point(54, 251);
+            this.textBoxAnswer.Location = new System.Drawing.Point(34, 204);
+            this.textBoxAnswer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxAnswer.Name = "textBoxAnswer";
-            this.textBoxAnswer.Size = new System.Drawing.Size(234, 28);
+            this.textBoxAnswer.Size = new System.Drawing.Size(176, 24);
             this.textBoxAnswer.TabIndex = 1;
             this.textBoxAnswer.TabStop = false;
             // 
             // textBoxDirection
             // 
             this.textBoxDirection.Font = new System.Drawing.Font("Candara Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxDirection.Location = new System.Drawing.Point(53, 479);
+            this.textBoxDirection.Location = new System.Drawing.Point(33, 389);
+            this.textBoxDirection.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxDirection.Name = "textBoxDirection";
-            this.textBoxDirection.Size = new System.Drawing.Size(234, 28);
+            this.textBoxDirection.Size = new System.Drawing.Size(176, 24);
             this.textBoxDirection.TabIndex = 2;
             this.textBoxDirection.TabStop = false;
             // 
             // textBoxSection
             // 
             this.textBoxSection.Font = new System.Drawing.Font("Candara Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxSection.Location = new System.Drawing.Point(54, 543);
+            this.textBoxSection.Location = new System.Drawing.Point(34, 441);
+            this.textBoxSection.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxSection.Name = "textBoxSection";
-            this.textBoxSection.Size = new System.Drawing.Size(234, 28);
+            this.textBoxSection.Size = new System.Drawing.Size(176, 24);
             this.textBoxSection.TabIndex = 3;
             this.textBoxSection.TabStop = false;
             // 
@@ -132,7 +136,8 @@
             this.dataGridViewForQandA.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewForQandA.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridViewForQandA.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(215)))), ((int)(((byte)(248)))));
-            this.dataGridViewForQandA.Location = new System.Drawing.Point(319, 59);
+            this.dataGridViewForQandA.Location = new System.Drawing.Point(239, 48);
+            this.dataGridViewForQandA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridViewForQandA.MultiSelect = false;
             this.dataGridViewForQandA.Name = "dataGridViewForQandA";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -147,7 +152,7 @@
             this.dataGridViewForQandA.RowHeadersWidth = 51;
             this.dataGridViewForQandA.RowTemplate.Height = 24;
             this.dataGridViewForQandA.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewForQandA.Size = new System.Drawing.Size(812, 748);
+            this.dataGridViewForQandA.Size = new System.Drawing.Size(609, 613);
             this.dataGridViewForQandA.TabIndex = 22;
             this.dataGridViewForQandA.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewForQandA_CellClick);
             // 
@@ -186,9 +191,10 @@
             this.labelQuestion.AutoSize = true;
             this.labelQuestion.BackColor = System.Drawing.Color.Transparent;
             this.labelQuestion.Font = new System.Drawing.Font("Candara", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelQuestion.Location = new System.Drawing.Point(51, 69);
+            this.labelQuestion.Location = new System.Drawing.Point(32, 56);
+            this.labelQuestion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelQuestion.Name = "labelQuestion";
-            this.labelQuestion.Size = new System.Drawing.Size(66, 21);
+            this.labelQuestion.Size = new System.Drawing.Size(53, 17);
             this.labelQuestion.TabIndex = 23;
             this.labelQuestion.Text = "Вопрос";
             // 
@@ -197,9 +203,10 @@
             this.labelAnswer.AutoSize = true;
             this.labelAnswer.BackColor = System.Drawing.Color.Transparent;
             this.labelAnswer.Font = new System.Drawing.Font("Candara", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelAnswer.Location = new System.Drawing.Point(51, 227);
+            this.labelAnswer.Location = new System.Drawing.Point(32, 184);
+            this.labelAnswer.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelAnswer.Name = "labelAnswer";
-            this.labelAnswer.Size = new System.Drawing.Size(53, 21);
+            this.labelAnswer.Size = new System.Drawing.Size(44, 17);
             this.labelAnswer.TabIndex = 24;
             this.labelAnswer.Text = "Ответ";
             // 
@@ -208,9 +215,10 @@
             this.labelDirection.AutoSize = true;
             this.labelDirection.BackColor = System.Drawing.Color.Transparent;
             this.labelDirection.Font = new System.Drawing.Font("Candara", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelDirection.Location = new System.Drawing.Point(49, 455);
+            this.labelDirection.Location = new System.Drawing.Point(30, 370);
+            this.labelDirection.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelDirection.Name = "labelDirection";
-            this.labelDirection.Size = new System.Drawing.Size(107, 21);
+            this.labelDirection.Size = new System.Drawing.Size(88, 17);
             this.labelDirection.TabIndex = 25;
             this.labelDirection.Text = "Направление";
             // 
@@ -219,9 +227,10 @@
             this.labelSection.AutoSize = true;
             this.labelSection.BackColor = System.Drawing.Color.Transparent;
             this.labelSection.Font = new System.Drawing.Font("Candara", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelSection.Location = new System.Drawing.Point(50, 519);
+            this.labelSection.Location = new System.Drawing.Point(31, 422);
+            this.labelSection.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelSection.Name = "labelSection";
-            this.labelSection.Size = new System.Drawing.Size(61, 21);
+            this.labelSection.Size = new System.Drawing.Size(51, 17);
             this.labelSection.TabIndex = 26;
             this.labelSection.Text = "Раздел";
             // 
@@ -234,9 +243,26 @@
             this.panelUp.Controls.Add(this.buttonBack);
             this.panelUp.Controls.Add(this.buttonImport);
             this.panelUp.Location = new System.Drawing.Point(0, 0);
+            this.panelUp.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelUp.Name = "panelUp";
-            this.panelUp.Size = new System.Drawing.Size(1144, 44);
+            this.panelUp.Size = new System.Drawing.Size(858, 36);
             this.panelUp.TabIndex = 27;
+            // 
+            // buttonExport
+            // 
+            this.buttonExport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(98)))), ((int)(((byte)(157)))));
+            this.buttonExport.FlatAppearance.BorderSize = 0;
+            this.buttonExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonExport.Font = new System.Drawing.Font("Candara", 10F, System.Drawing.FontStyle.Bold);
+            this.buttonExport.ForeColor = System.Drawing.Color.White;
+            this.buttonExport.Location = new System.Drawing.Point(162, 0);
+            this.buttonExport.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonExport.Name = "buttonExport";
+            this.buttonExport.Size = new System.Drawing.Size(76, 36);
+            this.buttonExport.TabIndex = 30;
+            this.buttonExport.Text = "Экспорт";
+            this.buttonExport.UseVisualStyleBackColor = false;
+            this.buttonExport.Click += new System.EventHandler(this.ButtonExport_Click);
             // 
             // buttonBack
             // 
@@ -245,8 +271,9 @@
             this.buttonBack.Font = new System.Drawing.Font("Candara", 10F, System.Drawing.FontStyle.Bold);
             this.buttonBack.ForeColor = System.Drawing.Color.White;
             this.buttonBack.Location = new System.Drawing.Point(0, 0);
+            this.buttonBack.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonBack.Name = "buttonBack";
-            this.buttonBack.Size = new System.Drawing.Size(102, 44);
+            this.buttonBack.Size = new System.Drawing.Size(76, 36);
             this.buttonBack.TabIndex = 0;
             this.buttonBack.Text = "Назад";
             this.buttonBack.UseVisualStyleBackColor = true;
@@ -259,9 +286,10 @@
             this.buttonImport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonImport.Font = new System.Drawing.Font("Candara", 10F, System.Drawing.FontStyle.Bold);
             this.buttonImport.ForeColor = System.Drawing.Color.White;
-            this.buttonImport.Location = new System.Drawing.Point(108, 0);
+            this.buttonImport.Location = new System.Drawing.Point(81, 0);
+            this.buttonImport.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonImport.Name = "buttonImport";
-            this.buttonImport.Size = new System.Drawing.Size(102, 44);
+            this.buttonImport.Size = new System.Drawing.Size(76, 36);
             this.buttonImport.TabIndex = 29;
             this.buttonImport.Text = "Импорт";
             this.buttonImport.UseVisualStyleBackColor = false;
@@ -272,9 +300,10 @@
             this.panelDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(98)))), ((int)(((byte)(157)))));
-            this.panelDown.Location = new System.Drawing.Point(0, 820);
+            this.panelDown.Location = new System.Drawing.Point(0, 665);
+            this.panelDown.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelDown.Name = "panelDown";
-            this.panelDown.Size = new System.Drawing.Size(1144, 44);
+            this.panelDown.Size = new System.Drawing.Size(858, 36);
             this.panelDown.TabIndex = 28;
             // 
             // buttonAdd
@@ -284,9 +313,10 @@
             this.buttonAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAdd.Font = new System.Drawing.Font("Candara", 10F, System.Drawing.FontStyle.Bold);
             this.buttonAdd.ForeColor = System.Drawing.Color.White;
-            this.buttonAdd.Location = new System.Drawing.Point(91, 597);
+            this.buttonAdd.Location = new System.Drawing.Point(64, 484);
+            this.buttonAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(149, 50);
+            this.buttonAdd.Size = new System.Drawing.Size(112, 41);
             this.buttonAdd.TabIndex = 30;
             this.buttonAdd.Text = "Добавить";
             this.buttonAdd.UseVisualStyleBackColor = false;
@@ -299,9 +329,10 @@
             this.buttonChange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonChange.Font = new System.Drawing.Font("Candara", 10F, System.Drawing.FontStyle.Bold);
             this.buttonChange.ForeColor = System.Drawing.Color.White;
-            this.buttonChange.Location = new System.Drawing.Point(91, 662);
+            this.buttonChange.Location = new System.Drawing.Point(64, 537);
+            this.buttonChange.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonChange.Name = "buttonChange";
-            this.buttonChange.Size = new System.Drawing.Size(149, 50);
+            this.buttonChange.Size = new System.Drawing.Size(112, 41);
             this.buttonChange.TabIndex = 31;
             this.buttonChange.Text = "Изменить";
             this.buttonChange.UseVisualStyleBackColor = false;
@@ -314,9 +345,10 @@
             this.buttonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDelete.Font = new System.Drawing.Font("Candara", 10F, System.Drawing.FontStyle.Bold);
             this.buttonDelete.ForeColor = System.Drawing.Color.White;
-            this.buttonDelete.Location = new System.Drawing.Point(91, 727);
+            this.buttonDelete.Location = new System.Drawing.Point(64, 590);
+            this.buttonDelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(149, 50);
+            this.buttonDelete.Size = new System.Drawing.Size(112, 41);
             this.buttonDelete.TabIndex = 32;
             this.buttonDelete.Text = "Удалить";
             this.buttonDelete.UseVisualStyleBackColor = false;
@@ -327,43 +359,30 @@
             this.labelWrongAnswers.AutoSize = true;
             this.labelWrongAnswers.BackColor = System.Drawing.Color.Transparent;
             this.labelWrongAnswers.Font = new System.Drawing.Font("Candara", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelWrongAnswers.Location = new System.Drawing.Point(51, 297);
+            this.labelWrongAnswers.Location = new System.Drawing.Point(32, 241);
+            this.labelWrongAnswers.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelWrongAnswers.Name = "labelWrongAnswers";
-            this.labelWrongAnswers.Size = new System.Drawing.Size(174, 21);
+            this.labelWrongAnswers.Size = new System.Drawing.Size(143, 17);
             this.labelWrongAnswers.TabIndex = 34;
             this.labelWrongAnswers.Text = "Неправильные ответы";
             // 
             // textBoxWrongAnswers
             // 
             this.textBoxWrongAnswers.Font = new System.Drawing.Font("Candara Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxWrongAnswers.Location = new System.Drawing.Point(53, 321);
+            this.textBoxWrongAnswers.Location = new System.Drawing.Point(33, 261);
+            this.textBoxWrongAnswers.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxWrongAnswers.Multiline = true;
             this.textBoxWrongAnswers.Name = "textBoxWrongAnswers";
-            this.textBoxWrongAnswers.Size = new System.Drawing.Size(234, 122);
+            this.textBoxWrongAnswers.Size = new System.Drawing.Size(176, 100);
             this.textBoxWrongAnswers.TabIndex = 33;
             this.textBoxWrongAnswers.TabStop = false;
             // 
-            // buttonExport
-            // 
-            this.buttonExport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(98)))), ((int)(((byte)(157)))));
-            this.buttonExport.FlatAppearance.BorderSize = 0;
-            this.buttonExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonExport.Font = new System.Drawing.Font("Candara", 10F, System.Drawing.FontStyle.Bold);
-            this.buttonExport.ForeColor = System.Drawing.Color.White;
-            this.buttonExport.Location = new System.Drawing.Point(216, 0);
-            this.buttonExport.Name = "buttonExport";
-            this.buttonExport.Size = new System.Drawing.Size(102, 44);
-            this.buttonExport.TabIndex = 30;
-            this.buttonExport.Text = "Экспорт";
-            this.buttonExport.UseVisualStyleBackColor = false;
-            this.buttonExport.Click += new System.EventHandler(this.ButtonExport_Click);
-            // 
             // TableForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1143, 863);
+            this.ClientSize = new System.Drawing.Size(857, 687);
             this.Controls.Add(this.labelWrongAnswers);
             this.Controls.Add(this.textBoxWrongAnswers);
             this.Controls.Add(this.buttonDelete);
@@ -381,7 +400,8 @@
             this.Controls.Add(this.textBoxAnswer);
             this.Controls.Add(this.textBoxQuestion);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(800, 832);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MinimumSize = new System.Drawing.Size(604, 700);
             this.Name = "TableForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Таблица вопросов и ответов";
