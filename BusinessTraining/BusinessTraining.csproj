@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>sletat.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -125,6 +128,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\picture_smaller_but_no_yellow_no_blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="sletat.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
