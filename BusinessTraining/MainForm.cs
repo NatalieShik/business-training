@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace BusinessTraining
@@ -15,7 +16,7 @@ namespace BusinessTraining
         {
             try
             {
-                var filePathforQuestions = Properties.Settings.Default.QuestionsFile;
+                var filePathforQuestions = Path.Combine(Application.LocalUserAppDataPath, Properties.Settings.Default.QuestionsFile);
                 AppState.Questions = FileHelper.LoadFromFileOrCreateNew(filePathforQuestions);
                 CheckIfNoQuestions();
             }
@@ -79,8 +80,7 @@ namespace BusinessTraining
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             SettingsHelper.SaveSettingAtempt(true);
-            FileHelper.SaveToFile(Properties.Settings.Default.QuestionsFile, AppState.Questions);
-            // TODO: Application.LocalUserAppDataPath
+            FileHelper.SaveToFile(Path.Combine(Application.LocalUserAppDataPath, Properties.Settings.Default.QuestionsFile), AppState.Questions);
         }
     }
 }
