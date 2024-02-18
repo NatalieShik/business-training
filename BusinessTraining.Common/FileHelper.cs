@@ -141,7 +141,7 @@ namespace BusinessTraining
         private static void SaveToFileAsJson(string filePath, List<QuestionsAndAnswers> questions)
         {
             string jsonString = SerializationHelper.Serialize(questions);
-            File.WriteAllText(filePath, jsonString);
+            File.WriteAllText(filePath, jsonString, Encoding.UTF8);
         }
 
         private static List<QuestionsAndAnswers> LoadFromFileAsTxt(string filePath)
