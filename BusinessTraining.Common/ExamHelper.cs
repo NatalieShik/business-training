@@ -14,8 +14,6 @@ namespace BusinessTraining
             };
             answers.AddRange(question.WrongAnswers);
 
-            //answers.Select(x => (Item:x, OrderNum: Guid.NewGuid())).OrderBy(x => x.OrderNum).Select(x => x.Item).ToList();
-
             return answers.OrderBy(x => Guid.NewGuid()).ToList();
         }
     }

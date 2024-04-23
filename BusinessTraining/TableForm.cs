@@ -10,7 +10,7 @@ namespace BusinessTraining
         int rowIndex = -1;
         public TableForm()
         {
-            InitializeComponent();          
+            InitializeComponent();
             UpdateData();
         }
 
