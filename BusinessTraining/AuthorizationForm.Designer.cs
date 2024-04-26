@@ -91,7 +91,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(440, 303);
+            this.ClientSize = new System.Drawing.Size(381, 331);
             this.Controls.Add(this.labelCompanyBranch);
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.checkBoxIsUserManager);

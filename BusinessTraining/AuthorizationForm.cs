@@ -13,12 +13,12 @@ namespace BusinessTraining
 
         private void AuthorizationForm_Load(object sender, EventArgs e)
         {
-            labelCompanyBranch.Visible = true;
-            //if (SettingsHelper.GetFirstLaunchSetting())
-            //{
-            //    checkBoxIsUserManager.Checked = true;
-            //    checkBoxIsUserManager.Visible = false;
-            //}
+            labelCompanyBranch.Text = "Адрес!!"; // TODO: прописать текст какой филиал
+            if (String.IsNullOrEmpty(SettingsHelper.GetSettingCompanyBranch()))
+            {
+                MessageBox.Show("Отсутвуют настройки конфигурации.", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Close();
+            }
         }
 
         private void buttonEnter_Click(object sender, EventArgs e)
@@ -29,46 +29,35 @@ namespace BusinessTraining
                 return;
             }
 
-            if (checkBoxIsUserManager.Checked) //если пользователь админ
+            if (checkBoxIsUserManager.Checked) //если пользователь хочет сказать, что он админ
             {
                 if (String.IsNullOrEmpty(textBoxPassword.Text))
                 {
                     MessageBox.Show("Введите пароль.", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-
-                //if (SettingsHelper.GetFirstLaunchSetting())
+                SettingsHelper.SaveSettingIsManager(true);
+                // TODO: адрес файла или иная концепция
+                //using (StreamReader reader = new StreamReader("")) 
                 //{
-                    int passwordHashCode = textBoxPassword.Text.GetHashCode(); // Получаем хэш-код пароля
-                    //using (StreamWriter writer = new StreamWriter(Path.Combine(Application.LocalUserAppDataPath, Properties.Settings.Default.LaunchFile)))
-                    //{
-                    //    writer.WriteLine(passwordHashCode); // Записываем хэш-код пароля в файл
-                    //}
-                    //SettingsHelper.SaveFirstLaunchSetting();
+                //    string line = reader.ReadLine(); // Читаем хеш-код из файла
+                //    if (line != null)
+                //    {
+                //        int savedHashCode;
+                //        if (int.TryParse(line, out savedHashCode)) // Пытаемся преобразовать считанный хеш-код из строки в целое число
+                //        {
+                //            if (savedHashCode == textBoxPassword.Text.GetHashCode()) // Сравниваем считанный хеш-код с введенным
+                //            {
+                //                MessageBox.Show("Вы вошли как менеджер филиала.", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //            }
+                //            else
+                //            {
+                //                MessageBox.Show("Пароли не совпадают.", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //                return;
+                //            }
+                //        }
+                //    }
                 //}
-                //else
-                //{
-            //        using (StreamReader reader = new StreamReader(Path.Combine(Application.LocalUserAppDataPath, Properties.Settings.Default.LaunchFile)))
-            //        {
-            //            string line = reader.ReadLine(); // Читаем хеш-код из файла
-            //            if (line != null)
-            //            {
-            //                int savedHashCode;
-            //                if (int.TryParse(line, out savedHashCode)) // Пытаемся преобразовать считанный хеш-код из строки в целое число
-            //                {
-            //                    if (savedHashCode == textBoxPassword.Text.GetHashCode()) // Сравниваем считанный хеш-код с введенным
-            //                    {
-            //                        MessageBox.Show("Вы вошли как менеджер филиала.", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //                    }
-            //                    else
-            //                    {
-            //                        MessageBox.Show("Пароли не совпадают.", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //                        return;
-            //                    }
-            //                }
-            //            }
-            //        }
-            //    }
             }
             MainForm main = new MainForm();
             Hide();
@@ -78,6 +67,7 @@ namespace BusinessTraining
 
         private void Main_FormClosed(object sender, FormClosedEventArgs e)
         {
+            SettingsHelper.SaveSettingIsManager(false);
             Close();
         }
     }

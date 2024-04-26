@@ -7,5 +7,16 @@
             Properties.Settings.Default.Attempt = atempt;
             Properties.Settings.Default.Save();
         }
+
+        public static void SaveSettingIsManager(bool isManager)
+        {
+            Properties.Settings.Default.IsManager = isManager;
+            Properties.Settings.Default.Save();
+        }
+
+        public static string GetSettingCompanyBranch()
+        {
+            return Properties.Settings.Default.CompanyBranch;
+        }
     }
 }

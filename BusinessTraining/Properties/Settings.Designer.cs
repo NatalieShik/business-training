@@ -55,5 +55,23 @@ namespace BusinessTraining.Properties {
                 this["IsManager"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string CompanyBranch {
+            get {
+                return ((string)(this["CompanyBranch"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PasswordHash {
+            get {
+                return ((string)(this["PasswordHash"]));
+            }
+        }
     }
 }
