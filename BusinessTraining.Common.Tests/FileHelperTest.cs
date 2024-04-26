@@ -27,28 +27,6 @@ namespace BusinessTraining.Tests
         }
 
         [TestMethod]
-        public void LoadFromFile_And_SaveToFile_Binary_Test()
-        {
-            List<QuestionsAndAnswers> questions = CreateTestData();
-
-            FileHelper.SaveToFile("example.bin", questions);
-            List<QuestionsAndAnswers> result = FileHelper.LoadFromFile("example.bin");
-
-            CheckResults(questions, result);
-        }
-
-        [TestMethod]
-        public void LoadFromFile_And_SaveToFile_Xml_Test()
-        {
-            List<QuestionsAndAnswers> questions = CreateTestData();
-
-            FileHelper.SaveToFile("example.xml", questions);
-            List<QuestionsAndAnswers> result = FileHelper.LoadFromFile("example.xml");
-
-            CheckResults(questions, result);
-        }
-
-        [TestMethod]
         public void LoadFromFile_And_SaveToFile_Json_Test()
         {
             List<QuestionsAndAnswers> questions = CreateTestData();

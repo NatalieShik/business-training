@@ -32,8 +32,6 @@ namespace BusinessTraining.Tests
             var expectedAnswers = question.WrongAnswers.ToList();
             expectedAnswers.Add(question.Answer);
 
-            //string[] expectedAnswers = [.. question.WrongAnswers, question.Answer];
-
             CollectionAssert.AreEquivalent(expectedAnswers, answers);
         }
     }

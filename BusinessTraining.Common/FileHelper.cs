@@ -12,9 +12,6 @@ namespace BusinessTraining
 {
     public static class FileHelper
     {
-        static BinaryFormatter binaryFormatter = new BinaryFormatter();
-        static XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<QuestionsAndAnswers>));
-
         public static List<QuestionsAndAnswers> LoadFromFileOrCreateNew(string filePath)
         {
             if (!File.Exists(filePath))
@@ -29,12 +26,6 @@ namespace BusinessTraining
             List <QuestionsAndAnswers> result;
             switch (Path.GetExtension(filePath).ToLower())
             {
-                case ".bin":
-                    result = LoadFromFileAsBinary(filePath);
-                    break;
-                case ".xml":
-                    result = LoadFromFileAsXml(filePath);
-                    break;
                 case ".json":
                     result = LoadFromFileAsJson(filePath);
                     break;
@@ -55,12 +46,6 @@ namespace BusinessTraining
         {
             switch (Path.GetExtension(filePath).ToLower())
             {
-                case ".bin":
-                    SaveToFileAsBinary(filePath, questions);
-                    break;
-                case ".xml":
-                    SaveToFileAsXml(filePath, questions);
-                    break;
                 case ".json":
                     SaveToFileAsJson(filePath, questions);
                     break;
@@ -70,60 +55,6 @@ namespace BusinessTraining
                 case ".docx":
                     SaveToFileAsDocx(filePath, questions);
                     break;
-            }
-        }
-
-        private static List<QuestionsAndAnswers> LoadFromFileAsBinary(string filePath)
-        {
-            List<QuestionsAndAnswers> result = new List<QuestionsAndAnswers>();
-            using (FileStream fileStream = new FileStream(filePath, FileMode.Open))
-            {
-                if (fileStream.Length > 0)
-                {
-                    using (StreamReader streamReader = new StreamReader(fileStream, Encoding.UTF8))
-                    {
-                        result = (List<QuestionsAndAnswers>)binaryFormatter.Deserialize(streamReader.BaseStream);
-                    }
-                }
-            }
-            return result;
-        }
-
-        private static void SaveToFileAsBinary(string filePath, List<QuestionsAndAnswers> questions)
-        {
-            using (FileStream fileStream = new FileStream(filePath, FileMode.Create))
-            {
-                using (StreamWriter streamWriter = new StreamWriter(fileStream, Encoding.UTF8))
-                {
-                    binaryFormatter.Serialize(streamWriter.BaseStream, questions);
-                }
-            }
-        }
-
-        private static List<QuestionsAndAnswers> LoadFromFileAsXml(string filePath)
-        {
-            List<QuestionsAndAnswers> result = new List<QuestionsAndAnswers>();
-            using (FileStream fileStream = new FileStream(filePath, FileMode.Open))
-            {
-                if (fileStream.Length > 0)
-                {
-                    using (StreamReader streamReader = new StreamReader(fileStream, Encoding.UTF8))
-                    {
-                        result = (List<QuestionsAndAnswers>)xmlSerializer.Deserialize(streamReader);
-                    }
-                }
-            }
-            return result;
-        }
-
-        private static void SaveToFileAsXml(string filePath, List<QuestionsAndAnswers> questions)
-        {
-            using (FileStream fileStream = new FileStream(filePath, FileMode.Create))
-            {
-                using (StreamWriter streamWriter = new StreamWriter(fileStream, Encoding.UTF8))
-                {
-                    xmlSerializer.Serialize(streamWriter, questions);
-                }
             }
         }
 
