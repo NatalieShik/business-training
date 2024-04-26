@@ -1,6 +1,6 @@
 ﻿namespace BusinessTraining
 {
-    internal static class SettingsHelper
+    public static class SettingsHelper
     {
         public static void SaveSettingAtempt(bool atempt)
         {
@@ -19,9 +19,9 @@
             Properties.Settings.Default.Save();
         }
 
-        public static string GetLaunchFileSetting()
+        public static string GetCompanyBranchesSetting()
         {
-            return Properties.Settings.Default.LaunchFile;
+            return Properties.Settings.Default.CompanyBranches;
         }
     }
 }

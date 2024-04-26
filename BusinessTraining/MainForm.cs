@@ -81,16 +81,7 @@ namespace BusinessTraining
         {
             var filePath = Path.Combine(Application.LocalUserAppDataPath, Properties.Settings.Default.QuestionsFile);
             SettingsHelper.SaveSettingAtempt(true);
-
-            FileAttributes attributes = File.GetAttributes(filePath);
-            if (attributes.HasFlag(FileAttributes.Hidden))
-            {
-                attributes = FileAttributes.Normal;
-                File.SetAttributes(filePath, attributes);
-            }
-
             FileHelper.SaveToFile(filePath, AppState.Questions);
-            File.SetAttributes(filePath, FileAttributes.Hidden);
         }
     }
 }

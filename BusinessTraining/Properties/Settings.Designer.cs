@@ -56,15 +56,12 @@ namespace BusinessTraining.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Config.json")]
-        public string LaunchFile {
+        [global::System.Configuration.DefaultSettingValueAttribute("CompanyBranches.txt")]
+        public string CompanyBranches {
             get {
-                return ((string)(this["LaunchFile"]));
-            }
-            set {
-                this["LaunchFile"] = value;
+                return ((string)(this["CompanyBranches"]));
             }
         }
     }

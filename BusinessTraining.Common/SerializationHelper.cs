@@ -5,7 +5,7 @@ using System.Text.Unicode;
 
 namespace BusinessTraining
 {
-    internal static class SerializationHelper
+    public static class SerializationHelper
     {
         public static string Serialize<TValue>(TValue value)
         {

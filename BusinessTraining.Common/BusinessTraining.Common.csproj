@@ -70,7 +70,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppState.cs" />
-    <Compile Include="Configuration.cs" />
     <Compile Include="ExamHelper.cs" />
     <Compile Include="FileHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

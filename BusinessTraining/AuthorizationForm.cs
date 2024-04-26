@@ -13,7 +13,6 @@ namespace BusinessTraining
 
         private void AuthorizationForm_Load(object sender, EventArgs e)
         {
-            //CompanyBranch
             if (SettingsHelper.GetFirstLaunchSetting())
             {
                 checkBoxIsUserManager.Checked = true;
@@ -44,44 +43,45 @@ namespace BusinessTraining
                 if (SettingsHelper.GetFirstLaunchSetting())
                 {
                     int passwordHashCode = textBoxPassword.Text.GetHashCode(); // Получаем хэш-код пароля
-                    using (StreamWriter writer = new StreamWriter(Path.Combine(Application.LocalUserAppDataPath, Properties.Settings.Default.LaunchFile)))
-                    {
-                        writer.WriteLine(passwordHashCode); // Записываем хэш-код пароля в файл
-                    }
+                    //using (StreamWriter writer = new StreamWriter(Path.Combine(Application.LocalUserAppDataPath, Properties.Settings.Default.LaunchFile)))
+                    //{
+                    //    writer.WriteLine(passwordHashCode); // Записываем хэш-код пароля в файл
+                    //}
                     SettingsHelper.SaveFirstLaunchSetting();
                 }
                 else
                 {
-                    using (StreamReader reader = new StreamReader(Path.Combine(Application.LocalUserAppDataPath, Properties.Settings.Default.LaunchFile)))
-                    {
-                        string line = reader.ReadLine(); // Читаем хеш-код из файла
-                        if (line != null)
-                        {
-                            int savedHashCode;
-                            if (int.TryParse(line, out savedHashCode)) // Пытаемся преобразовать считанный хеш-код из строки в целое число
-                            {
-                                if (savedHashCode == textBoxPassword.Text.GetHashCode()) // Сравниваем считанный хеш-код с введенным
-                                {
-                                    MessageBox.Show("Вы вошли как менеджер филиала.", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Пароли не совпадают.", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    return;
-                                }
-                            }
-                        }
-                    }
+            //        using (StreamReader reader = new StreamReader(Path.Combine(Application.LocalUserAppDataPath, Properties.Settings.Default.LaunchFile)))
+            //        {
+            //            string line = reader.ReadLine(); // Читаем хеш-код из файла
+            //            if (line != null)
+            //            {
+            //                int savedHashCode;
+            //                if (int.TryParse(line, out savedHashCode)) // Пытаемся преобразовать считанный хеш-код из строки в целое число
+            //                {
+            //                    if (savedHashCode == textBoxPassword.Text.GetHashCode()) // Сравниваем считанный хеш-код с введенным
+            //                    {
+            //                        MessageBox.Show("Вы вошли как менеджер филиала.", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //                    }
+            //                    else
+            //                    {
+            //                        MessageBox.Show("Пароли не совпадают.", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //                        return;
+            //                    }
+            //                }
+            //            }
+            //        }
                 }
             }
-            
-            // TODO: сделать так, чтобы потом сюда не возвращаться!
             MainForm main = new MainForm();
             Hide();
+            main.FormClosed += Main_FormClosed;
             main.Show();
-            //Close();
         }
 
-       
+        private void Main_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Close();
+        }
     }
 }

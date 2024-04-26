@@ -11,8 +11,8 @@
     <Setting Name="FirstLaunch" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="LaunchFile" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Config.json</Value>
+    <Setting Name="CompanyBranches" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">CompanyBranches.txt</Value>
     </Setting>
   </Settings>
 </SettingsFile>
