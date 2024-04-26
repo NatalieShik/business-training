@@ -28,7 +28,7 @@ namespace BusinessTraining
             }
         }
 
-        private void ButtonOpenTable_Click(object sender, EventArgs e)
+        private void ButtonChooseFile_Click(object sender, EventArgs e)
         {
             string fileName;
             using (OpenFileDialog openFileDialog = new OpenFileDialog())

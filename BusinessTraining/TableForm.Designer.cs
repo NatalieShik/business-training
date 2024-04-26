@@ -48,7 +48,6 @@
             this.labelSection = new System.Windows.Forms.Label();
             this.panelUp = new System.Windows.Forms.Panel();
             this.buttonExport = new System.Windows.Forms.Button();
-            this.buttonBack = new System.Windows.Forms.Button();
             this.buttonImport = new System.Windows.Forms.Button();
             this.panelDown = new System.Windows.Forms.Panel();
             this.buttonAdd = new System.Windows.Forms.Button();
@@ -56,6 +55,7 @@
             this.buttonDelete = new System.Windows.Forms.Button();
             this.labelWrongAnswers = new System.Windows.Forms.Label();
             this.textBoxWrongAnswers = new System.Windows.Forms.TextBox();
+            this.buttonBack = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewForQandA)).BeginInit();
             this.panelUp.SuspendLayout();
             this.SuspendLayout();
@@ -260,21 +260,6 @@
             this.buttonExport.UseVisualStyleBackColor = false;
             this.buttonExport.Click += new System.EventHandler(this.ButtonExport_Click);
             // 
-            // buttonBack
-            // 
-            this.buttonBack.FlatAppearance.BorderSize = 0;
-            this.buttonBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonBack.Font = new System.Drawing.Font("Candara", 10F, System.Drawing.FontStyle.Bold);
-            this.buttonBack.ForeColor = System.Drawing.Color.White;
-            this.buttonBack.Location = new System.Drawing.Point(0, 0);
-            this.buttonBack.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.buttonBack.Name = "buttonBack";
-            this.buttonBack.Size = new System.Drawing.Size(101, 44);
-            this.buttonBack.TabIndex = 0;
-            this.buttonBack.Text = "Назад";
-            this.buttonBack.UseVisualStyleBackColor = true;
-            this.buttonBack.Click += new System.EventHandler(this.ButtonBack_Click);
-            // 
             // buttonImport
             // 
             this.buttonImport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(98)))), ((int)(((byte)(157)))));
@@ -372,6 +357,21 @@
             this.textBoxWrongAnswers.TabIndex = 33;
             this.textBoxWrongAnswers.TabStop = false;
             // 
+            // buttonBack
+            // 
+            this.buttonBack.FlatAppearance.BorderSize = 0;
+            this.buttonBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBack.Font = new System.Drawing.Font("Candara", 10F, System.Drawing.FontStyle.Bold);
+            this.buttonBack.ForeColor = System.Drawing.Color.White;
+            this.buttonBack.Location = new System.Drawing.Point(0, 0);
+            this.buttonBack.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonBack.Name = "buttonBack";
+            this.buttonBack.Size = new System.Drawing.Size(101, 44);
+            this.buttonBack.TabIndex = 0;
+            this.buttonBack.Text = "Назад";
+            this.buttonBack.UseVisualStyleBackColor = true;
+            this.buttonBack.Click += new System.EventHandler(this.ButtonBack_Click);
+            // 
             // TableForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -419,7 +419,6 @@
         private System.Windows.Forms.Label labelDirection;
         private System.Windows.Forms.Label labelSection;
         private System.Windows.Forms.Panel panelUp;
-        private System.Windows.Forms.Button buttonBack;
         private System.Windows.Forms.Panel panelDown;
         private System.Windows.Forms.Button buttonImport;
         private System.Windows.Forms.Button buttonAdd;
@@ -433,5 +432,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Direction;
         private System.Windows.Forms.DataGridViewTextBoxColumn Section;
         private System.Windows.Forms.Button buttonExport;
+        private System.Windows.Forms.Button buttonBack;
     }
 }

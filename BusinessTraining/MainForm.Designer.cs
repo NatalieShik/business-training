@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.buttonOpenTable = new System.Windows.Forms.Button();
+            this.buttonChooseFile = new System.Windows.Forms.Button();
             this.buttonOpenTest = new System.Windows.Forms.Button();
             this.buttonOpenPrepearing = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -44,20 +44,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).BeginInit();
             this.SuspendLayout();
             // 
-            // buttonOpenTable
+            // buttonChooseFile
             // 
-            this.buttonOpenTable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(114)))), ((int)(((byte)(195)))));
-            this.buttonOpenTable.FlatAppearance.BorderSize = 0;
-            this.buttonOpenTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonOpenTable.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonOpenTable.ForeColor = System.Drawing.Color.White;
-            this.buttonOpenTable.Location = new System.Drawing.Point(86, 479);
-            this.buttonOpenTable.Name = "buttonOpenTable";
-            this.buttonOpenTable.Size = new System.Drawing.Size(213, 50);
-            this.buttonOpenTable.TabIndex = 1;
-            this.buttonOpenTable.Text = "Загрузить курс";
-            this.buttonOpenTable.UseVisualStyleBackColor = false;
-            this.buttonOpenTable.Click += new System.EventHandler(this.ButtonOpenTable_Click);
+            this.buttonChooseFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(114)))), ((int)(((byte)(195)))));
+            this.buttonChooseFile.FlatAppearance.BorderSize = 0;
+            this.buttonChooseFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonChooseFile.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonChooseFile.ForeColor = System.Drawing.Color.White;
+            this.buttonChooseFile.Location = new System.Drawing.Point(86, 479);
+            this.buttonChooseFile.Name = "buttonChooseFile";
+            this.buttonChooseFile.Size = new System.Drawing.Size(213, 50);
+            this.buttonChooseFile.TabIndex = 1;
+            this.buttonChooseFile.Text = "Загрузить курс";
+            this.buttonChooseFile.UseVisualStyleBackColor = false;
+            this.buttonChooseFile.Click += new System.EventHandler(this.ButtonChooseFile_Click);
             // 
             // buttonOpenTest
             // 
@@ -207,7 +207,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.buttonOpenPrepearing);
             this.Controls.Add(this.buttonOpenTest);
-            this.Controls.Add(this.buttonOpenTable);
+            this.Controls.Add(this.buttonChooseFile);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -221,7 +221,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button buttonOpenTable;
+        private System.Windows.Forms.Button buttonChooseFile;
         private System.Windows.Forms.Button buttonOpenTest;
         private System.Windows.Forms.Button buttonOpenPrepearing;
         private System.Windows.Forms.Panel panel1;
