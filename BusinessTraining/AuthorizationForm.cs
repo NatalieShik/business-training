@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace BusinessTraining
 {
@@ -13,22 +14,24 @@ namespace BusinessTraining
 
         private void AuthorizationForm_Load(object sender, EventArgs e)
         {
-            labelCompanyBranch.Text = "Адрес!!"; // TODO: прописать текст какой филиал
-            if (String.IsNullOrEmpty(SettingsHelper.GetSettingCompanyBranch()))
-            {
-                MessageBox.Show("Отсутвуют настройки конфигурации.", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Close();
-            }
+            labelCompanyBranch.Text = "Адрес!!"; // TODO: прописать филиал
+        //    if (String.IsNullOrEmpty(SettingsHelper.GetSettingCompanyBranch()))
+        //    {
+        //        MessageBox.Show("Отсутвуют настройки конфигурации.", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        Close();
+        //    }
         }
 
         private void buttonEnter_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(textBoxName.Text) || String.IsNullOrEmpty(textBoxSurname.Text))
+            string name = textBoxName.Text.Trim();
+            string surname = textBoxSurname.Text.Trim();
+            if (String.IsNullOrEmpty(name) || String.IsNullOrEmpty(surname))
             {
-                MessageBox.Show("Введите имя фамилию.", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Введите имя и фамилию.", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
+            AppState.UserName = $"{textBoxName.Text} {textBoxSurname.Text}";
             if (checkBoxIsUserManager.Checked) //если пользователь хочет сказать, что он админ
             {
                 if (String.IsNullOrEmpty(textBoxPassword.Text))
@@ -59,15 +62,36 @@ namespace BusinessTraining
                 //    }
                 //}
             }
-            MainForm main = new MainForm();
-            Hide();
-            main.FormClosed += Main_FormClosed;
-            main.Show();
+            if (SettingsHelper.GetSettingIsManager())
+            {
+                var filePathforQuestions = Path.Combine(Application.LocalUserAppDataPath, Properties.Settings.Default.QuestionsFile);
+                AppState.Questions = FileHelper.LoadFromFileOrCreateNew(filePathforQuestions);
+
+                TableForm table = new TableForm();
+                Hide();
+                table.FormClosed += Table_FormClosed;
+                table.Show();
+            }
+            else
+            {
+                MainForm main = new MainForm();
+                Hide();
+                main.FormClosed += Main_FormClosed;
+                main.Show();
+            }
+        }
+
+        private void Table_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            var filePath = Path.Combine(Application.LocalUserAppDataPath, Properties.Settings.Default.QuestionsFile);
+            FileHelper.SaveToFile(filePath, AppState.Questions);
+            SettingsHelper.SaveSettingIsManager(false);
+            Close();
         }
 
         private void Main_FormClosed(object sender, FormClosedEventArgs e)
         {
-            SettingsHelper.SaveSettingIsManager(false);
+            SettingsHelper.SaveSettingAtempt(true);
             Close();
         }
     }

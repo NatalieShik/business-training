@@ -98,9 +98,9 @@ namespace BusinessTraining
             else
             {
                 if (questions == 0) 
-                    labelQuestionsLeftNum.Text = questions.ToString(); // TODO: исправить LastTestResult
-                AppState.LastTestResult = $"По итогам теста, вы ответили верно на следующее количество вопросов: {right}, " +
-                    $"что составляет {Math.Round((double)right / LocaleTestAnswers.Count * 100, 2)}% от всех вопросов.";
+                    labelQuestionsLeftNum.Text = questions.ToString();
+                AppState.LastTestResult = $"Пользователь {AppState.UserName} прошел тестирование по \"{AppState.TrainingTitle}\", набрав {right} баллов " +
+                    $"из {AppState.Questions.Count} возможных, что составляет {Math.Round((double)right / LocaleTestAnswers.Count * 100, 2)}% от всех вопросов.";
                 ShowTestResults(this);
 
                 SettingsHelper.SaveSettingAtempt(false);

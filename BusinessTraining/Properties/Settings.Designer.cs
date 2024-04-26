@@ -73,5 +73,23 @@ namespace BusinessTraining.Properties {
                 return ((string)(this["PasswordHash"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string BotToken {
+            get {
+                return ((string)(this["BotToken"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ChatId {
+            get {
+                return ((string)(this["ChatId"]));
+            }
+        }
     }
 }

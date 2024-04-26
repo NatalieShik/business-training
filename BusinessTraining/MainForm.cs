@@ -10,20 +10,8 @@ namespace BusinessTraining
         public MainForm()
         {
             InitializeComponent();
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                var filePathforQuestions = Path.Combine(Application.LocalUserAppDataPath, Properties.Settings.Default.QuestionsFile);
-                AppState.Questions = FileHelper.LoadFromFileOrCreateNew(filePathforQuestions);
-                CheckIfNoQuestions();
-            }
-            catch
-            {
-                MessageBox.Show(this, "Ошибка, файл не был найден. Загрузите другой файл.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            buttonOpenPrepearing.Enabled = false;
+            buttonOpenTest.Enabled = false;
         }
 
         void CheckIfNoQuestions()
@@ -42,13 +30,26 @@ namespace BusinessTraining
 
         private void ButtonOpenTable_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            using (TableForm table = new TableForm())
+            string fileName;
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                table.ShowDialog();
-            } 
-            this.Show();
-            CheckIfNoQuestions();
+                openFileDialog.DefaultExt = "docx";
+                openFileDialog.Filter = "Все файлы|*.txt;*.json;*.docx|Текстовые файлы|*.txt|JSON файлы|*.json|Microsoft Word файлы|*.docx";
+                openFileDialog.Multiselect = false;
+                if (openFileDialog.ShowDialog() != DialogResult.OK)
+                    return;
+                fileName = openFileDialog.FileName;
+                AppState.TrainingTitle = Path.GetFileNameWithoutExtension(openFileDialog.FileName);
+            }
+            try
+            {
+                AppState.Questions = FileHelper.LoadFromFile(fileName);
+                CheckIfNoQuestions();
+            }
+            catch
+            {
+                MessageBox.Show(this, "Данный файл не соответствует параметрам, выберите другой.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void ButtonOpenTest_Click(object sender, EventArgs e)
@@ -75,13 +76,6 @@ namespace BusinessTraining
                 ask.ShowDialog();
             } 
             this.Show();
-        }
-
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            var filePath = Path.Combine(Application.LocalUserAppDataPath, Properties.Settings.Default.QuestionsFile);
-            SettingsHelper.SaveSettingAtempt(true);
-            FileHelper.SaveToFile(filePath, AppState.Questions);
         }
     }
 }

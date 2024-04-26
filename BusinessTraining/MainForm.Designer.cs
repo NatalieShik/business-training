@@ -40,7 +40,7 @@
             this.labelTestInfo = new System.Windows.Forms.Label();
             this.labelWelcome = new System.Windows.Forms.Label();
             this.pictureBoxMain = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labellabelPrepearingInfo2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,7 +55,7 @@
             this.buttonOpenTable.Name = "buttonOpenTable";
             this.buttonOpenTable.Size = new System.Drawing.Size(213, 50);
             this.buttonOpenTable.TabIndex = 1;
-            this.buttonOpenTable.Text = "Таблица вопросов";
+            this.buttonOpenTable.Text = "Загрузить курс";
             this.buttonOpenTable.UseVisualStyleBackColor = false;
             this.buttonOpenTable.Click += new System.EventHandler(this.ButtonOpenTable_Click);
             // 
@@ -178,25 +178,25 @@
             this.pictureBoxMain.TabIndex = 12;
             this.pictureBoxMain.TabStop = false;
             // 
-            // label1
+            // labellabelPrepearingInfo2
             // 
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Candara", 13F);
-            this.label1.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.label1.Location = new System.Drawing.Point(45, 273);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(786, 55);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "\"Верно\", при неправильном или неуверенном \"Неверно\". При желании можно подсмотрет" +
+            this.labellabelPrepearingInfo2.BackColor = System.Drawing.Color.Transparent;
+            this.labellabelPrepearingInfo2.Font = new System.Drawing.Font("Candara", 13F);
+            this.labellabelPrepearingInfo2.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.labellabelPrepearingInfo2.Location = new System.Drawing.Point(45, 273);
+            this.labellabelPrepearingInfo2.Name = "labellabelPrepearingInfo2";
+            this.labellabelPrepearingInfo2.Size = new System.Drawing.Size(786, 55);
+            this.labellabelPrepearingInfo2.TabIndex = 13;
+            this.labellabelPrepearingInfo2.Text = "\"Верно\", при неправильном или неуверенном \"Неверно\". При желании можно подсмотрет" +
     "ь ответ.";
             // 
-            // Main
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(982, 603);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labellabelPrepearingInfo2);
             this.Controls.Add(this.pictureBoxMain);
             this.Controls.Add(this.labelWelcome);
             this.Controls.Add(this.labelTestInfo);
@@ -211,11 +211,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "Main";
+            this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Выбор режима";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
-            this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -233,7 +231,7 @@
         private System.Windows.Forms.Label labelPrepearingInfo;
         private System.Windows.Forms.Label labelTestInfo;
         private System.Windows.Forms.Label labelWelcome;
+        private System.Windows.Forms.Label labellabelPrepearingInfo2;
         private System.Windows.Forms.PictureBox pictureBoxMain;
-        private System.Windows.Forms.Label label1;
     }
 }

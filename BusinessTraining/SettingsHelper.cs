@@ -18,5 +18,10 @@
         {
             return Properties.Settings.Default.CompanyBranch;
         }
+
+        public static bool GetSettingIsManager()
+        {
+            return Properties.Settings.Default.IsManager;
+        }
     }
 }
