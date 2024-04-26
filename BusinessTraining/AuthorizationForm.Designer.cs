@@ -34,20 +34,19 @@
             this.buttonEnter = new System.Windows.Forms.Button();
             this.checkBoxIsUserManager = new System.Windows.Forms.CheckBox();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
-            this.labelFirstLaunch = new System.Windows.Forms.Label();
-            this.comboBoxCompanyBranch = new System.Windows.Forms.ComboBox();
+            this.labelCompanyBranch = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(99, 48);
+            this.textBoxName.Location = new System.Drawing.Point(99, 74);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(195, 22);
             this.textBoxName.TabIndex = 0;
             // 
             // textBoxSurname
             // 
-            this.textBoxSurname.Location = new System.Drawing.Point(99, 76);
+            this.textBoxSurname.Location = new System.Drawing.Point(99, 112);
             this.textBoxSurname.Name = "textBoxSurname";
             this.textBoxSurname.Size = new System.Drawing.Size(195, 22);
             this.textBoxSurname.TabIndex = 1;
@@ -79,36 +78,21 @@
             this.textBoxPassword.Size = new System.Drawing.Size(195, 22);
             this.textBoxPassword.TabIndex = 4;
             // 
-            // labelFirstLaunch
+            // labelCompanyBranch
             // 
-            this.labelFirstLaunch.AutoSize = true;
-            this.labelFirstLaunch.Location = new System.Drawing.Point(122, 9);
-            this.labelFirstLaunch.Name = "labelFirstLaunch";
-            this.labelFirstLaunch.Size = new System.Drawing.Size(140, 16);
-            this.labelFirstLaunch.TabIndex = 5;
-            this.labelFirstLaunch.Text = "ВХОД МЕНЕДЖЕРА";
-            // 
-            // comboBoxCompanyBranch
-            // 
-            this.comboBoxCompanyBranch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(215)))), ((int)(((byte)(248)))));
-            this.comboBoxCompanyBranch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxCompanyBranch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxCompanyBranch.Font = new System.Drawing.Font("Candara", 10F);
-            this.comboBoxCompanyBranch.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.comboBoxCompanyBranch.FormattingEnabled = true;
-            this.comboBoxCompanyBranch.Location = new System.Drawing.Point(99, 120);
-            this.comboBoxCompanyBranch.Name = "comboBoxCompanyBranch";
-            this.comboBoxCompanyBranch.Size = new System.Drawing.Size(181, 29);
-            this.comboBoxCompanyBranch.TabIndex = 6;
-            this.comboBoxCompanyBranch.TabStop = false;
+            this.labelCompanyBranch.AutoSize = true;
+            this.labelCompanyBranch.Location = new System.Drawing.Point(122, 9);
+            this.labelCompanyBranch.Name = "labelCompanyBranch";
+            this.labelCompanyBranch.Size = new System.Drawing.Size(58, 16);
+            this.labelCompanyBranch.TabIndex = 5;
+            this.labelCompanyBranch.Text = "Филиал";
             // 
             // AuthorizationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(440, 303);
-            this.Controls.Add(this.comboBoxCompanyBranch);
-            this.Controls.Add(this.labelFirstLaunch);
+            this.Controls.Add(this.labelCompanyBranch);
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.checkBoxIsUserManager);
             this.Controls.Add(this.buttonEnter);
@@ -130,7 +114,6 @@
         private System.Windows.Forms.Button buttonEnter;
         private System.Windows.Forms.CheckBox checkBoxIsUserManager;
         private System.Windows.Forms.TextBox textBoxPassword;
-        private System.Windows.Forms.Label labelFirstLaunch;
-        private System.Windows.Forms.ComboBox comboBoxCompanyBranch;
+        private System.Windows.Forms.Label labelCompanyBranch;
     }
 }

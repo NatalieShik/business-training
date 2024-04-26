@@ -98,7 +98,7 @@ namespace BusinessTraining
             else
             {
                 if (questions == 0) 
-                    labelQuestionsLeftNum.Text = questions.ToString();
+                    labelQuestionsLeftNum.Text = questions.ToString(); // TODO: исправить LastTestResult
                 AppState.LastTestResult = $"По итогам теста, вы ответили верно на следующее количество вопросов: {right}, " +
                     $"что составляет {Math.Round((double)right / LocaleTestAnswers.Count * 100, 2)}% от всех вопросов.";
                 ShowTestResults(this);

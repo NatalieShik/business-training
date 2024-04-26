@@ -46,22 +46,13 @@ namespace BusinessTraining.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool FirstLaunch {
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IsManager {
             get {
-                return ((bool)(this["FirstLaunch"]));
+                return ((bool)(this["IsManager"]));
             }
             set {
-                this["FirstLaunch"] = value;
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("CompanyBranches.txt")]
-        public string CompanyBranches {
-            get {
-                return ((string)(this["CompanyBranches"]));
+                this["IsManager"] = value;
             }
         }
     }

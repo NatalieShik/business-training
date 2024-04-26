@@ -13,26 +13,23 @@ namespace BusinessTraining
 
         private void AuthorizationForm_Load(object sender, EventArgs e)
         {
-            if (SettingsHelper.GetFirstLaunchSetting())
-            {
-                checkBoxIsUserManager.Checked = true;
-                checkBoxIsUserManager.Visible = false;
-            }
-            else
-            {
-                labelFirstLaunch.Visible = false;
-            }
+            labelCompanyBranch.Visible = true;
+            //if (SettingsHelper.GetFirstLaunchSetting())
+            //{
+            //    checkBoxIsUserManager.Checked = true;
+            //    checkBoxIsUserManager.Visible = false;
+            //}
         }
 
         private void buttonEnter_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(textBoxName.Text) || String.IsNullOrEmpty(textBoxSurname.Text) || String.IsNullOrEmpty(comboBoxCompanyBranch.Text))
+            if (String.IsNullOrEmpty(textBoxName.Text) || String.IsNullOrEmpty(textBoxSurname.Text))
             {
-                MessageBox.Show("Введите имя, фамилию и выберите филиал.", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Введите имя фамилию.", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (checkBoxIsUserManager.Checked)
+            if (checkBoxIsUserManager.Checked) //если пользователь админ
             {
                 if (String.IsNullOrEmpty(textBoxPassword.Text))
                 {
@@ -40,17 +37,17 @@ namespace BusinessTraining
                     return;
                 }
 
-                if (SettingsHelper.GetFirstLaunchSetting())
-                {
+                //if (SettingsHelper.GetFirstLaunchSetting())
+                //{
                     int passwordHashCode = textBoxPassword.Text.GetHashCode(); // Получаем хэш-код пароля
                     //using (StreamWriter writer = new StreamWriter(Path.Combine(Application.LocalUserAppDataPath, Properties.Settings.Default.LaunchFile)))
                     //{
                     //    writer.WriteLine(passwordHashCode); // Записываем хэш-код пароля в файл
                     //}
-                    SettingsHelper.SaveFirstLaunchSetting();
-                }
-                else
-                {
+                    //SettingsHelper.SaveFirstLaunchSetting();
+                //}
+                //else
+                //{
             //        using (StreamReader reader = new StreamReader(Path.Combine(Application.LocalUserAppDataPath, Properties.Settings.Default.LaunchFile)))
             //        {
             //            string line = reader.ReadLine(); // Читаем хеш-код из файла
@@ -71,7 +68,7 @@ namespace BusinessTraining
             //                }
             //            }
             //        }
-                }
+            //    }
             }
             MainForm main = new MainForm();
             Hide();
