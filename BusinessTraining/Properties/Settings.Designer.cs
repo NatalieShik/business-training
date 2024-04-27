@@ -76,7 +76,7 @@ namespace BusinessTraining.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("6665138934:AAHnO7oNLOGcIOYOoFkj9XYY_1AZKwA5GLM")]
         public string BotToken {
             get {
                 return ((string)(this["BotToken"]));

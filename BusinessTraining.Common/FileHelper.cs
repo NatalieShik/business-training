@@ -1,12 +1,9 @@
 ﻿using Spire.Doc;
 using Spire.Doc.Documents;
 using System;
-using System.Buffers.Text;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.IO.Pipes;
-using System.Linq;
 using System.Text;
 
 namespace BusinessTraining
