@@ -85,7 +85,7 @@ namespace BusinessTraining
         private static List<QuestionsAndAnswers> LoadFromFileAsTraining(string filePath)
         {
             string encodedJsonString = File.ReadAllText(filePath, Encoding.UTF8);
-            string jsonString = SerializationHelper.Base64Decode(encodedJsonString.Substring(5));
+            string jsonString = CryptoHelper.Decrypt(encodedJsonString);
             List<QuestionsAndAnswers> result = SerializationHelper.Deserialize<List<QuestionsAndAnswers>>(jsonString);
             return result;
         }
@@ -93,14 +93,8 @@ namespace BusinessTraining
         private static void SaveToFileAsTraining(string filePath, List<QuestionsAndAnswers> questions)
         {
             string jsonString = SerializationHelper.Serialize(questions);
-            string encodedJsonString = SerializationHelper.Base64Encode(jsonString);
-
-            Random random = new Random();
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-            string randomString = new string(Enumerable.Repeat(chars, 5).Select(s => s[random.Next(s.Length)]).ToArray());
-            string forFile = randomString + encodedJsonString;
-
-            File.WriteAllText(filePath, forFile, Encoding.UTF8);
+            string encryptedContent = CryptoHelper.Encrypt(jsonString);
+            File.WriteAllText(filePath, encryptedContent, Encoding.UTF8);
         }
 
         private static List<QuestionsAndAnswers> LoadFromFileAsTxt(string filePath)
