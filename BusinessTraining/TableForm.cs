@@ -34,11 +34,6 @@ namespace BusinessTraining
             }
         }
 
-        private void ButtonBack_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void DataGridViewForQandA_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0)
@@ -98,7 +93,7 @@ namespace BusinessTraining
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.DefaultExt = "docx";
-                openFileDialog.Filter = "Все файлы|*.txt;*.json;*.docx|Текстовые файлы|*.txt|JSON файлы|*.json|Microsoft Word файлы|*.docx";
+                openFileDialog.Filter = "Все файлы|*.training;*.txt;*.json;*.docx|Зашифрованные файлы|*.training|Текстовые файлы|*.txt|JSON файлы|*.json|Microsoft Word файлы|*.docx";
                 openFileDialog.Multiselect = false;
                 if (openFileDialog.ShowDialog() != DialogResult.OK)
                     return;
@@ -127,8 +122,8 @@ namespace BusinessTraining
                 return;
             using (SaveFileDialog saveFileDialog = new SaveFileDialog())
             {
-                saveFileDialog.DefaultExt = "docx";
-                saveFileDialog.Filter = "Все файлы|*.txt;*.json;*.docx|Текстовые файлы|*.txt|JSON файлы|*.json|Microsoft Word файлы|*.docx";
+                saveFileDialog.DefaultExt = "training";
+                saveFileDialog.Filter = "Все файлы|*.training;*.txt;*.json;*.docx|Зашифрованные файлы|*.training|Текстовые файлы|*.txt|JSON файлы|*.json|Microsoft Word файлы|*.docx";
                 if (saveFileDialog.ShowDialog() != DialogResult.OK)
                     return;
                 FileHelper.SaveToFile(saveFileDialog.FileName, AppState.Questions);

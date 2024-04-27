@@ -34,7 +34,7 @@ namespace BusinessTraining
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.DefaultExt = "docx";
-                openFileDialog.Filter = "Все файлы|*.txt;*.json;*.docx|Текстовые файлы|*.txt|JSON файлы|*.json|Microsoft Word файлы|*.docx";
+                openFileDialog.Filter = "Зашифрованные файлы|*.training";
                 openFileDialog.Multiselect = false;
                 if (openFileDialog.ShowDialog() != DialogResult.OK)
                     return;
