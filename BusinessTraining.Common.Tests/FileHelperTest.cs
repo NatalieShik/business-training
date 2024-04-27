@@ -38,6 +38,17 @@ namespace BusinessTraining.Tests
         }
 
         [TestMethod]
+        public void LoadFromFile_And_SaveToFile_Training_Test()
+        {
+            List<QuestionsAndAnswers> questions = CreateTestData();
+
+            FileHelper.SaveToFile("example.training", questions);
+            List<QuestionsAndAnswers> result = FileHelper.LoadFromFile("example.training");
+
+            CheckResults(questions, result);
+        }
+
+        [TestMethod]
         public void LoadFromFile_And_SaveToFile_Txt_Test()
         {
             List<QuestionsAndAnswers> questions = CreateTestData();

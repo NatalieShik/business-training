@@ -1,9 +1,12 @@
 ﻿using Spire.Doc;
 using Spire.Doc.Documents;
 using System;
+using System.Buffers.Text;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Pipes;
+using System.Linq;
 using System.Text;
 
 namespace BusinessTraining
@@ -33,6 +36,9 @@ namespace BusinessTraining
                 case ".docx":
                     result = LoadFromFileAsDocx(filePath);
                     break;
+                case ".training":
+                    result = LoadFromFileAsTraining(filePath);
+                    break;
                 default: 
                     result = new List<QuestionsAndAnswers>(); 
                     break;
@@ -53,6 +59,9 @@ namespace BusinessTraining
                 case ".docx":
                     SaveToFileAsDocx(filePath, questions);
                     break;
+                case ".training":
+                    SaveToFileAsTraining(filePath, questions);
+                    break;
             }
         }
 
@@ -71,6 +80,27 @@ namespace BusinessTraining
         {
             string jsonString = SerializationHelper.Serialize(questions);
             File.WriteAllText(filePath, jsonString, Encoding.UTF8);
+        }
+
+        private static List<QuestionsAndAnswers> LoadFromFileAsTraining(string filePath)
+        {
+            string encodedJsonString = File.ReadAllText(filePath, Encoding.UTF8);
+            string jsonString = SerializationHelper.Base64Decode(encodedJsonString.Substring(5));
+            List<QuestionsAndAnswers> result = SerializationHelper.Deserialize<List<QuestionsAndAnswers>>(jsonString);
+            return result;
+        }
+
+        private static void SaveToFileAsTraining(string filePath, List<QuestionsAndAnswers> questions)
+        {
+            string jsonString = SerializationHelper.Serialize(questions);
+            string encodedJsonString = SerializationHelper.Base64Encode(jsonString);
+
+            Random random = new Random();
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            string randomString = new string(Enumerable.Repeat(chars, 5).Select(s => s[random.Next(s.Length)]).ToArray());
+            string forFile = randomString + encodedJsonString;
+
+            File.WriteAllText(filePath, forFile, Encoding.UTF8);
         }
 
         private static List<QuestionsAndAnswers> LoadFromFileAsTxt(string filePath)
