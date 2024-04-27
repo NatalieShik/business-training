@@ -1,4 +1,6 @@
-﻿namespace BusinessTraining
+﻿using System;
+
+namespace BusinessTraining
 {
     public static class SettingsHelper
     {
@@ -14,14 +16,17 @@
             Properties.Settings.Default.Save();
         }
 
-        public static string GetSettingCompanyBranch()
-        {
-            return Properties.Settings.Default.CompanyBranch;
-        }
-
         public static bool GetSettingIsManager()
         {
             return Properties.Settings.Default.IsManager;
+        }
+
+        public static bool ConfigurationIsFine()
+        {
+            if (String.IsNullOrEmpty(Properties.Settings.Default.CompanyBranch) || String.IsNullOrEmpty(Properties.Settings.Default.PasswordHash)
+                || String.IsNullOrEmpty(Properties.Settings.Default.BotToken) || String.IsNullOrEmpty(Properties.Settings.Default.ChatId))
+                return false;
+            return true;
         }
     }
 }

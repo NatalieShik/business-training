@@ -14,12 +14,12 @@ namespace BusinessTraining
 
         private void AuthorizationForm_Load(object sender, EventArgs e)
         {
+            //if (SettingsHelper.ConfigurationIsFine())
+            //{
+            //    MessageBox.Show("Отсутвуют настройки конфигурации.", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    Close();
+            //}
             labelCompanyBranch.Text = "Адрес!!"; // TODO: прописать филиал
-        //    if (String.IsNullOrEmpty(SettingsHelper.GetSettingCompanyBranch()))
-        //    {
-        //        MessageBox.Show("Отсутвуют настройки конфигурации.", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        Close();
-        //    }
         }
 
         private void buttonEnter_Click(object sender, EventArgs e)
