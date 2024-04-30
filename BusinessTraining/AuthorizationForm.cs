@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace BusinessTraining
 {
@@ -14,19 +13,19 @@ namespace BusinessTraining
 
         private void AuthorizationForm_Load(object sender, EventArgs e)
         {
-            //if (SettingsHelper.ConfigurationIsFine())
-            //{
-            //    MessageBox.Show("Отсутвуют настройки конфигурации.", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    Close();
-            //}
-            labelCompanyBranch.Text = "Адрес!!"; // TODO: прописать филиал
+            if (!SettingsHelper.ConfigurationIsNotFine())
+            {
+                MessageBox.Show("Отсутвуют настройки конфигурации.", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Close();
+            }
+            labelCompanyBranch.Text = SettingsHelper.GetSettingCompanyBranch();
         }
 
         private void buttonEnter_Click(object sender, EventArgs e)
         {
             string name = textBoxName.Text.Trim();
             string surname = textBoxSurname.Text.Trim();
-            if (String.IsNullOrEmpty(name) || String.IsNullOrEmpty(surname))
+            if (String.IsNullOrWhiteSpace(name) || String.IsNullOrWhiteSpace(surname))
             {
                 MessageBox.Show("Введите имя и фамилию.", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -34,14 +33,14 @@ namespace BusinessTraining
             AppState.UserName = $"{textBoxName.Text} {textBoxSurname.Text}";
             if (checkBoxIsUserManager.Checked) //если пользователь хочет сказать, что он админ
             {
-                if (String.IsNullOrEmpty(textBoxPassword.Text))
+                if (String.IsNullOrWhiteSpace(textBoxPassword.Text))
                 {
                     MessageBox.Show("Введите пароль.", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 SettingsHelper.SaveSettingIsManager(true);
                 // TODO: адрес файла или иная концепция
-                //using (StreamReader reader = new StreamReader("")) 
+                //using (StreamReader reader = new StreamReader(""))
                 //{
                 //    string line = reader.ReadLine(); // Читаем хеш-код из файла
                 //    if (line != null)
@@ -79,6 +78,7 @@ namespace BusinessTraining
                 main.FormClosed += Main_FormClosed;
                 main.Show();
             }
+            // TODO: отправка сообщений в ТГ
         }
 
         private void Table_FormClosed(object sender, FormClosedEventArgs e)

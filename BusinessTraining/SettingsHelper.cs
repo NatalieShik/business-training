@@ -21,7 +21,12 @@ namespace BusinessTraining
             return Properties.Settings.Default.IsManager;
         }
 
-        public static bool ConfigurationIsFine()
+        public static string GetSettingCompanyBranch()
+        {
+            return Properties.Settings.Default.CompanyBranch;
+        }
+
+        public static bool ConfigurationIsNotFine()
         {
             if (String.IsNullOrEmpty(Properties.Settings.Default.CompanyBranch) || String.IsNullOrEmpty(Properties.Settings.Default.PasswordHash)
                 || String.IsNullOrEmpty(Properties.Settings.Default.BotToken) || String.IsNullOrEmpty(Properties.Settings.Default.ChatId))

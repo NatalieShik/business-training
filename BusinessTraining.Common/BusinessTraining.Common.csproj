@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppState.cs" />
+    <Compile Include="ConfigHelper.cs" />
     <Compile Include="CryptoHelper.cs" />
     <Compile Include="ExamHelper.cs" />
     <Compile Include="FileHelper.cs" />
