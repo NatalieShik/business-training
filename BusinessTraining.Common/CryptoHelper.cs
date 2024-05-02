@@ -28,21 +28,20 @@ namespace BusinessTraining
 
         private static string DeletePrefix(string stringWithPrefix)
         {
-            return stringWithPrefix.Substring(prefixLength);
+            return stringWithPrefix.Substring(prefixLength + 1);
         }
 
-        public static string EncryptFirstVersion(string plainString)
+        public static string Encrypt(string plainString)
         {
             string encodedJsonString = Base64Encode(plainString);
             string randomString = GeneratePrefix();
-            return randomString + encodedJsonString + "1";
+            return "1" + randomString + encodedJsonString;
         }
 
-        public static string DecryptFirstVersion(string encryptedString)
+        public static string Decrypt(string encryptedString)
         {
             string encodedString = DeletePrefix(encryptedString);
-            string noVersionString = encodedString.Substring(0, encodedString.Length - 1);
-            return Base64Decode(noVersionString);
+            return Base64Decode(encodedString);
         }
     }
 }

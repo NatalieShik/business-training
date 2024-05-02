@@ -82,7 +82,7 @@ namespace BusinessTraining
         private static List<QuestionsAndAnswers> LoadFromFileAsTraining(string filePath)
         {
             string encodedJsonString = File.ReadAllText(filePath, Encoding.UTF8);
-            string jsonString = CryptoHelper.DecryptFirstVersion(encodedJsonString);
+            string jsonString = CryptoHelper.Decrypt(encodedJsonString);
             List<QuestionsAndAnswers> result = SerializationHelper.Deserialize<List<QuestionsAndAnswers>>(jsonString);
             return result;
         }
@@ -90,7 +90,7 @@ namespace BusinessTraining
         private static void SaveToFileAsTraining(string filePath, List<QuestionsAndAnswers> questions)
         {
             string jsonString = SerializationHelper.Serialize(questions);
-            string encryptedContent = CryptoHelper.EncryptFirstVersion(jsonString);
+            string encryptedContent = CryptoHelper.Encrypt(jsonString);
             File.WriteAllText(filePath, encryptedContent, Encoding.UTF8);
         }
 
