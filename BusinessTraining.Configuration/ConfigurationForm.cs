@@ -30,8 +30,8 @@ namespace BusinessTraining.Configuration
 
             string Password = BCrypt.Net.BCrypt.HashPassword(textBoxPassword.Text);
             string CompanyBranch = textBoxCompanyBranch.Text;
-            string BotToken = textBoxBotToken.Text;
-            string ChatId = textBoxChatId.Text;
+            string BotToken = CryptoHelper.Encrypt(textBoxBotToken.Text);
+            string ChatId = CryptoHelper.Encrypt(textBoxChatId.Text);
             string path;
 
             OpenFileDialog fileDialog = new OpenFileDialog();
