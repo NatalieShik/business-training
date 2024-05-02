@@ -38,5 +38,15 @@ namespace BusinessTraining
         {
             return Properties.Settings.Default.PasswordHash;
         }
+
+        public static string GetSettingChatId()
+        {
+            return CryptoHelper.Decrypt(Properties.Settings.Default.ChatId);
+        }
+
+        public static string GetSettingBotToken()
+        {
+            return CryptoHelper.Decrypt(Properties.Settings.Default.BotToken);
+        }
     }
 }

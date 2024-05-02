@@ -9,13 +9,11 @@ namespace BusinessTraining.Tests
         [TestMethod]
         public void UpdateSetting_Test()
         {
-            // TODO: и как проводить тестирование тут??
-            string settingName = "CompanyBranch";
             string settingValue = "ул. Оптиков, д. 52";
 
             SettingValueElement result = ConfigHelper.UpdateSetting(settingValue);
 
-            //Assert.AreEqual
+            Assert.AreEqual(result.ValueXml.InnerText,settingValue);
         }
 
     }

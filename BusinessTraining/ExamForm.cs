@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace BusinessTraining
 {
@@ -99,10 +100,21 @@ namespace BusinessTraining
             {
                 if (questions == 0) 
                     labelQuestionsLeftNum.Text = questions.ToString();
-                AppState.LastTestResult = $"Пользователь {AppState.UserName} прошел тестирование по \"{AppState.TrainingTitle}\", набрав {right} баллов " +
+                AppState.LastTestResult = $"Пользователь по имени {AppState.UserName} прошел тестирование по \"{AppState.TrainingTitle}\", набрав {right} баллов " +
                     $"из {AppState.Questions.Count} возможных, что составляет {Math.Round((double)right / LocaleTestAnswers.Count * 100, 2)}% от всех вопросов.";
                 ShowTestResults(this);
 
+                try
+                {
+                    TelegramHelper sendMessage = new TelegramHelper(SettingsHelper.GetSettingBotToken(), SettingsHelper.GetSettingChatId());
+                    sendMessage.SendMessage(AppState.LastTestResult);
+                }
+                catch(Exception ex) 
+                {
+                    MessageBox.Show("Произошла ошибка: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                
                 SettingsHelper.SaveSettingAtempt(false);
                 this.Close();
             }

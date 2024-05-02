@@ -62,7 +62,20 @@ namespace BusinessTraining
                 main.FormClosed += Main_FormClosed;
                 main.Show();
             }
-            // TODO: отправка сообщений в ТГ
+            // TODO: вошла/вошел + в систему???
+            string status = "обычного пользователя";
+            if (SettingsHelper.GetSettingIsManager())
+                status = "менеджера";
+            try 
+            { 
+                TelegramHelper sendMessage = new TelegramHelper(SettingsHelper.GetSettingBotToken(), SettingsHelper.GetSettingChatId());
+                sendMessage.SendMessage($"Был выполнен вход в систему сотрудником {AppState.UserName} из " +
+                    $"филиала по адресу {SettingsHelper.GetSettingCompanyBranch()}. Вход был произведен в статусе {status}.");
+            }
+            catch(Exception ex) 
+            {
+                MessageBox.Show("Произошла ошибка: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void Table_FormClosed(object sender, FormClosedEventArgs e)
