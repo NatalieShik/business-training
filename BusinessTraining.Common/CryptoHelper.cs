@@ -31,17 +31,18 @@ namespace BusinessTraining
             return stringWithPrefix.Substring(prefixLength);
         }
 
-        public static string Encrypt(string plainString)
+        public static string EncryptFirstVersion(string plainString)
         {
             string encodedJsonString = Base64Encode(plainString);
             string randomString = GeneratePrefix();
-            return randomString + encodedJsonString;
+            return randomString + encodedJsonString + "1";
         }
 
-        public static string Decrypt(string encryptedString)
+        public static string DecryptFirstVersion(string encryptedString)
         {
             string encodedString = DeletePrefix(encryptedString);
-            return Base64Decode(encodedString);
+            string noVersionString = encodedString.Substring(0, encodedString.Length - 1);
+            return Base64Decode(noVersionString);
         }
     }
 }

@@ -1,9 +1,6 @@
-﻿using System.Windows.Forms;
+﻿using System;
 using System.Configuration;
-using System;
-using System.Xml;
-using System.Text;
-using System.Security.Cryptography;
+using System.Windows.Forms;
 
 namespace BusinessTraining.Configuration
 {
@@ -19,11 +16,19 @@ namespace BusinessTraining.Configuration
             if(FieldsAreNotFine())
                 return;
 
-            string sSourceData = textBoxPassword.Text;
-            byte[] tmpSource = UTF8Encoding.UTF8.GetBytes(sSourceData);
-            byte[] tmpHash = new MD5CryptoServiceProvider().ComputeHash(tmpSource);
+            int passwordStatus = CheckPassword(textBoxPassword.Text);
+            if (passwordStatus == 1)
+            {
+                MessageBox.Show("Пароль должен состоять не меньше, чем из 6 символов.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            } 
+            else if (passwordStatus == 2)
+            {
+                MessageBox.Show("Пароль должен содержать прописные и заглавные буквы, а также цифры.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-            string Password = ByteArrayToString(tmpHash);
+            string Password = textBoxPassword.Text;
             string CompanyBranch = textBoxCompanyBranch.Text;
             string BotToken = textBoxBotToken.Text;
             string ChatId = textBoxChatId.Text;
@@ -67,15 +72,25 @@ namespace BusinessTraining.Configuration
             else { return false; }
         }
 
-        static string ByteArrayToString(byte[] arrInput)
+        private int CheckPassword(string password)
         {
-            int i;
-            StringBuilder sOutput = new StringBuilder(arrInput.Length);
-            for (i = 0; i < arrInput.Length - 1; i++)
+            if (password.Length < 6)
+                return 1;
+            bool hasUpperCase = false;
+            bool hasLowerCase = false;
+            bool hasDigit = false;
+            foreach (char c in password)
             {
-                sOutput.Append(arrInput[i].ToString("X2"));
+                if (char.IsUpper(c))
+                    hasUpperCase = true;
+                else if (char.IsLower(c))
+                    hasLowerCase = true;
+                else if (char.IsDigit(c))
+                    hasDigit = true;
             }
-            return sOutput.ToString();
+            if (!hasUpperCase || !hasLowerCase || !hasDigit)
+                return 2;
+            return 0;
         }
     }
 }
