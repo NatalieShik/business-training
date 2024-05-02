@@ -33,5 +33,10 @@ namespace BusinessTraining
                 return false;
             return true;
         }
+
+        public static string GetSettingPasswordHash()
+        {
+            return Properties.Settings.Default.PasswordHash;
+        }
     }
 }

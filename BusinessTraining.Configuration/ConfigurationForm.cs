@@ -28,7 +28,7 @@ namespace BusinessTraining.Configuration
                 return;
             }
 
-            string Password = textBoxPassword.Text;
+            string Password = BCrypt.Net.BCrypt.HashPassword(textBoxPassword.Text);
             string CompanyBranch = textBoxCompanyBranch.Text;
             string BotToken = textBoxBotToken.Text;
             string ChatId = textBoxChatId.Text;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Security.Policy;
 using System.Windows.Forms;
 
 namespace BusinessTraining
@@ -38,28 +39,12 @@ namespace BusinessTraining
                     MessageBox.Show("Введите пароль.", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                if(!BCrypt.Net.BCrypt.Verify(textBoxPassword.Text, SettingsHelper.GetSettingPasswordHash()))
+                {
+                    MessageBox.Show("Неверный пароль.", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 SettingsHelper.SaveSettingIsManager(true);
-                // TODO: адрес файла или иная концепция
-                //using (StreamReader reader = new StreamReader(""))
-                //{
-                //    string line = reader.ReadLine(); // Читаем хеш-код из файла
-                //    if (line != null)
-                //    {
-                //        int savedHashCode;
-                //        if (int.TryParse(line, out savedHashCode)) // Пытаемся преобразовать считанный хеш-код из строки в целое число
-                //        {
-                //            if (savedHashCode == textBoxPassword.Text.GetHashCode()) // Сравниваем считанный хеш-код с введенным
-                //            {
-                //                MessageBox.Show("Вы вошли как менеджер филиала.", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //            }
-                //            else
-                //            {
-                //                MessageBox.Show("Пароли не совпадают.", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //                return;
-                //            }
-                //        }
-                //    }
-                //}
             }
             if (SettingsHelper.GetSettingIsManager())
             {
