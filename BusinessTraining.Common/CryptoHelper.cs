@@ -8,6 +8,7 @@ namespace BusinessTraining
     {
         const int prefixLength = 5;
         const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        static string version = "$1$";
         static Random random = new Random();
         public static string Base64Encode(string plainText)
         {
@@ -28,14 +29,14 @@ namespace BusinessTraining
 
         private static string DeletePrefix(string stringWithPrefix)
         {
-            return stringWithPrefix.Substring(prefixLength + 1);
+            return stringWithPrefix.Substring(version.Length + prefixLength);
         }
 
         public static string Encrypt(string plainString)
         {
             string encodedJsonString = Base64Encode(plainString);
             string randomString = GeneratePrefix();
-            return "1" + randomString + encodedJsonString;
+            return version + randomString + encodedJsonString;
         }
 
         public static string Decrypt(string encryptedString)
