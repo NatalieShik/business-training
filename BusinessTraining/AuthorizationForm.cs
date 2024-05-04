@@ -22,7 +22,7 @@ namespace BusinessTraining
             labelCompanyBranch.Text = SettingsHelper.GetSettingCompanyBranch();
         }
 
-        private async void buttonEnter_Click(object sender, EventArgs e)
+        private async void ButtonEnter_Click(object sender, EventArgs e)
         {
             string name = textBoxName.Text;
             string surname = textBoxSurname.Text;

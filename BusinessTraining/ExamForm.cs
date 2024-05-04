@@ -86,8 +86,10 @@ namespace BusinessTraining
             if (RightQuestion == null)
                 return;
 
-            QuestionsAndAnswers temp = new QuestionsAndAnswers();
-            temp.Answer = comboBoxAnswer.Text;
+            QuestionsAndAnswers temp = new QuestionsAndAnswers
+            {
+                Answer = comboBoxAnswer.Text
+            };
             LocaleTestAnswers.Add(temp);
             if (temp.Answer == RightQuestion.Answer)
                 right++;

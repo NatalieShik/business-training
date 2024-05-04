@@ -2,9 +2,9 @@
 {
     internal static class ConfigSettingsHelper
     {
-        public static void SaveSettingFirstLaunchAsFalse()
+        public static void SaveSettingFirstLaunch(bool value)
         {
-            Properties.Settings.Default.FirstLaunch = false;
+            Properties.Settings.Default.FirstLaunch = value;
             Properties.Settings.Default.Save();
         }
 

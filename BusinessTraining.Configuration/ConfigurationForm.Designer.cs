@@ -116,7 +116,7 @@
             this.buttonBuildConfig.TabIndex = 8;
             this.buttonBuildConfig.Text = "Сохранить настройки";
             this.buttonBuildConfig.UseVisualStyleBackColor = true;
-            this.buttonBuildConfig.Click += new System.EventHandler(this.buttonBuildConfig_Click);
+            this.buttonBuildConfig.Click += new System.EventHandler(this.ButtonBuildConfig_Click);
             // 
             // textBoxVerifyPassword
             // 
@@ -142,7 +142,7 @@
             this.buttonChoose.TabIndex = 11;
             this.buttonChoose.Text = "Выбрать конфигурацию";
             this.buttonChoose.UseVisualStyleBackColor = true;
-            this.buttonChoose.Click += new System.EventHandler(this.buttonChoose_Click);
+            this.buttonChoose.Click += new System.EventHandler(this.ButtonChoose_Click);
             // 
             // labelConfiguration
             // 

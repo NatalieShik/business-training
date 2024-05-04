@@ -10,7 +10,7 @@ namespace BusinessTraining
             InitializeComponent();
         }
 
-        private void buttonVerifyPassword_Click(object sender, EventArgs e)
+        private void ButtonVerifyPassword_Click(object sender, EventArgs e)
         {
             if (String.IsNullOrWhiteSpace(textBoxPassword.Text))
                 return;

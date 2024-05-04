@@ -8,7 +8,7 @@ namespace BusinessTraining
     {
         const int prefixLength = 5;
         const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-        static string version = "$1$";
+        const string version = "$1$";
         static Random random = new Random();
         public static string Base64Encode(string plainText)
         {

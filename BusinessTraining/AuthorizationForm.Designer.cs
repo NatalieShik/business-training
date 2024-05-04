@@ -59,7 +59,7 @@
             this.buttonEnter.TabIndex = 2;
             this.buttonEnter.Text = "Войти";
             this.buttonEnter.UseVisualStyleBackColor = true;
-            this.buttonEnter.Click += new System.EventHandler(this.buttonEnter_Click);
+            this.buttonEnter.Click += new System.EventHandler(this.ButtonEnter_Click);
             // 
             // checkBoxIsUserManager
             // 

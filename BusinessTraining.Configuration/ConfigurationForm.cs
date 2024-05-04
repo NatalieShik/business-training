@@ -19,17 +19,26 @@ namespace BusinessTraining.Configuration
             {
                 labelConfiguration.Text = ConfigSettingsHelper.GetSettingConfigFilePath() + ".config";
                 config = ConfigurationManager.OpenExeConfiguration(ConfigSettingsHelper.GetSettingConfigFilePath());
+                if (config.HasFile == false)
+                {
+                    ConfigSettingsHelper.SaveSettingFirstLaunch(true);
+                    ConfigurationForm_Load(sender, e);
+                    return;
+                }   
                 FillFields();
             }
             else { buttonBuildConfig.Enabled = false; }
         }
 
-        private void buttonChoose_Click(object sender, EventArgs e)
+        private void ButtonChoose_Click(object sender, EventArgs e)
         {
-            OpenFileDialog fileDialog = new OpenFileDialog();
-            fileDialog.Multiselect = false;
-            fileDialog.Title = "Выберите программу, конфигурацию которой хотите изменить";
-            fileDialog.Filter = "Программа (*.exe)|*.exe";
+            OpenFileDialog fileDialog = new OpenFileDialog
+            {
+                Multiselect = false,
+                Title = "Выберите программу, конфигурацию которой хотите изменить",
+                Filter = "Программа (*.exe)|*.exe"
+            };
+
             if (DialogResult.OK != fileDialog.ShowDialog())
                 return;
 
@@ -53,10 +62,10 @@ namespace BusinessTraining.Configuration
             }
 
             FillFields();
-            ConfigSettingsHelper.SaveSettingFirstLaunchAsFalse();
+            ConfigSettingsHelper.SaveSettingFirstLaunch(false);
         }
 
-        private void buttonBuildConfig_Click(object sender, EventArgs e)
+        private void ButtonBuildConfig_Click(object sender, EventArgs e)
         {
             if (FieldsAreNotFine())
                 return;
@@ -82,8 +91,7 @@ namespace BusinessTraining.Configuration
             string Password = BCrypt.Net.BCrypt.HashPassword(textBoxPassword.Text);
             string CompanyBranch = textBoxCompanyBranch.Text;
             string BotToken = CryptoHelper.Encrypt(textBoxBotToken.Text);
-            string ChatId = CryptoHelper.Encrypt(textBoxChatId.Text);
-            string path; 
+            string ChatId = CryptoHelper.Encrypt(textBoxChatId.Text); 
 
             config.SetSettingValue("CompanyBranch", CompanyBranch);
             config.SetSettingValue("PasswordHash", Password);

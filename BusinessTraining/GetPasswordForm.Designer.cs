@@ -42,7 +42,7 @@
             this.buttonVerifyPassword.TabIndex = 0;
             this.buttonVerifyPassword.Text = "ПОДТВЕРДИТЬ ";
             this.buttonVerifyPassword.UseVisualStyleBackColor = true;
-            this.buttonVerifyPassword.Click += new System.EventHandler(this.buttonVerifyPassword_Click);
+            this.buttonVerifyPassword.Click += new System.EventHandler(this.ButtonVerifyPassword_Click);
             // 
             // labelForInfo
             // 

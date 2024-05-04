@@ -1,5 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Configuration;
 
 namespace BusinessTraining.Tests
 {
