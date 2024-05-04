@@ -6,6 +6,7 @@ namespace BusinessTraining
 {
     public partial class AuthorizationForm : Form
     {
+        private const string QuestionsFile = "QuestionsFile.json";
         public AuthorizationForm()
         {
             InitializeComponent();
@@ -47,7 +48,7 @@ namespace BusinessTraining
             }
             if (SettingsHelper.GetSettingIsManager())
             {
-                var filePathforQuestions = Path.Combine(Application.LocalUserAppDataPath, Properties.Settings.Default.QuestionsFile);
+                var filePathforQuestions = Path.Combine(Application.LocalUserAppDataPath, QuestionsFile);
                 AppState.Questions = FileHelper.LoadFromFileOrCreateNew(filePathforQuestions);
 
                 TableForm table = new TableForm();
@@ -80,7 +81,7 @@ namespace BusinessTraining
 
         private void Table_FormClosed(object sender, FormClosedEventArgs e)
         {
-            var filePath = Path.Combine(Application.LocalUserAppDataPath, Properties.Settings.Default.QuestionsFile);
+            var filePath = Path.Combine(Application.LocalUserAppDataPath, QuestionsFile);
             FileHelper.SaveToFile(filePath, AppState.Questions);
             SettingsHelper.SaveSettingIsManager(false);
             SettingsHelper.SaveSettingNoNetwork(false);
