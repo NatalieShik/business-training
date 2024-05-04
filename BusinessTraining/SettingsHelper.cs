@@ -48,5 +48,16 @@ namespace BusinessTraining
         {
             return CryptoHelper.Decrypt(Properties.Settings.Default.BotToken);
         }
+
+        public static bool GetSettingNoNetwork()
+        {
+            return Properties.Settings.Default.NoNetwork;
+        }
+
+        public static void SaveSettingNoNetwork(bool noNetwork)
+        {
+            Properties.Settings.Default.NoNetwork = noNetwork;
+            Properties.Settings.Default.Save();
+        }
     }
 }

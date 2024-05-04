@@ -5,7 +5,13 @@ namespace BusinessTraining
 {
     public static class ConfigHelper
     {
-        public static SettingValueElement UpdateSetting(string settingValue) 
+        public static void SetSettingValue(this Configuration config, string settingName, string settingValue)
+        {
+            ((ClientSettingsSection)config.SectionGroups["applicationSettings"].Sections[0])
+                .Settings.Get(settingName).Value = CreateSettingValueElement(settingValue);
+        }
+
+        private static SettingValueElement CreateSettingValueElement(string settingValue) 
         {
             SettingValueElement setting = new SettingValueElement();
             XmlDocument doc = new XmlDocument();

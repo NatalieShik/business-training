@@ -91,5 +91,17 @@ namespace BusinessTraining.Properties {
                 return ((string)(this["ChatId"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool NoNetwork {
+            get {
+                return ((bool)(this["NoNetwork"]));
+            }
+            set {
+                this["NoNetwork"] = value;
+            }
+        }
     }
 }

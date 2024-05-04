@@ -1,4 +1,5 @@
-﻿using Telegram.Bot;
+﻿using System.Threading.Tasks;
+using Telegram.Bot;
 
 namespace BusinessTraining
 {
@@ -13,9 +14,9 @@ namespace BusinessTraining
             ChatId = chatId;
         }
 
-        public void SendMessage(string message)
+        public async Task SendMessageAsync(string message)
         {
-            Bot.SendTextMessageAsync(ChatId, message);
+            await Bot.SendTextMessageAsync(ChatId, message);
         }
     }
 }

@@ -21,7 +21,7 @@ namespace BusinessTraining
             labelCompanyBranch.Text = SettingsHelper.GetSettingCompanyBranch();
         }
 
-        private void buttonEnter_Click(object sender, EventArgs e)
+        private async void buttonEnter_Click(object sender, EventArgs e)
         {
             string name = textBoxName.Text.Trim();
             string surname = textBoxSurname.Text.Trim();
@@ -62,19 +62,19 @@ namespace BusinessTraining
                 main.FormClosed += Main_FormClosed;
                 main.Show();
             }
-            // TODO: вошла/вошел + в систему???
+
             string status = "обычного пользователя";
             if (SettingsHelper.GetSettingIsManager())
                 status = "менеджера";
             try 
             { 
                 TelegramHelper sendMessage = new TelegramHelper(SettingsHelper.GetSettingBotToken(), SettingsHelper.GetSettingChatId());
-                sendMessage.SendMessage($"Был выполнен вход в систему сотрудником {AppState.UserName} из " +
+                await sendMessage.SendMessageAsync($"Был выполнен вход в систему сотрудником {AppState.UserName} из " +
                     $"филиала по адресу {SettingsHelper.GetSettingCompanyBranch()}. Вход был произведен в статусе {status}.");
             }
-            catch(Exception ex) 
+            catch
             {
-                MessageBox.Show("Произошла ошибка: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SettingsHelper.SaveSettingNoNetwork(true);
             }
         }
 
@@ -83,12 +83,14 @@ namespace BusinessTraining
             var filePath = Path.Combine(Application.LocalUserAppDataPath, Properties.Settings.Default.QuestionsFile);
             FileHelper.SaveToFile(filePath, AppState.Questions);
             SettingsHelper.SaveSettingIsManager(false);
+            SettingsHelper.SaveSettingNoNetwork(false);
             Close();
         }
 
         private void Main_FormClosed(object sender, FormClosedEventArgs e)
         {
             SettingsHelper.SaveSettingAtempt(true);
+            SettingsHelper.SaveSettingNoNetwork(false);
             Close();
         }
     }

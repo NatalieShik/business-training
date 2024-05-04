@@ -6,6 +6,7 @@ namespace BusinessTraining.Configuration
 {
     public partial class ConfigurationForm : Form
     {
+        const int MinPasswordLength = 6;
         public ConfigurationForm()
         {
             InitializeComponent();
@@ -16,15 +17,15 @@ namespace BusinessTraining.Configuration
             if(FieldsAreNotFine())
                 return;
 
-            int passwordStatus = CheckPassword(textBoxPassword.Text);
-            if (passwordStatus == 1)
+            CheckStatus passwordStatus = CheckPassword(textBoxPassword.Text);
+            if (passwordStatus == CheckStatus.WrongLength)
             {
-                MessageBox.Show("Пароль должен состоять не меньше, чем из 6 символов.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, "Пароль должен состоять не меньше, чем из 6 символов.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             } 
-            else if (passwordStatus == 2)
+            else if (passwordStatus == CheckStatus.SymbolsProblem)
             {
-                MessageBox.Show("Пароль должен содержать прописные и заглавные буквы, а также цифры.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, "Пароль должен содержать прописные и заглавные буквы, а также цифры.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -44,14 +45,10 @@ namespace BusinessTraining.Configuration
             if (config.HasFile == false)
                 return;
 
-            ((ClientSettingsSection)config.SectionGroups["applicationSettings"].Sections[0])
-                .Settings.Get("CompanyBranch").Value = ConfigHelper.UpdateSetting(CompanyBranch);
-            ((ClientSettingsSection)config.SectionGroups["applicationSettings"].Sections[0])
-                .Settings.Get("PasswordHash").Value = ConfigHelper.UpdateSetting(Password);
-            ((ClientSettingsSection)config.SectionGroups["applicationSettings"].Sections[0])
-                .Settings.Get("BotToken").Value = ConfigHelper.UpdateSetting(BotToken);
-            ((ClientSettingsSection)config.SectionGroups["applicationSettings"].Sections[0])
-                .Settings.Get("ChatId").Value = ConfigHelper.UpdateSetting(ChatId);
+            config.SetSettingValue("CompanyBranch", CompanyBranch);
+            config.SetSettingValue("PasswordHash", Password);
+            config.SetSettingValue("BotToken", BotToken);
+            config.SetSettingValue("ChatId", ChatId);
 
             // Сохраняем изменения в конфигурационном файле
             config.Save(ConfigurationSaveMode.Modified);
@@ -72,10 +69,10 @@ namespace BusinessTraining.Configuration
             else { return false; }
         }
 
-        private int CheckPassword(string password)
+        private CheckStatus CheckPassword(string password)
         {
-            if (password.Length < 6)
-                return 1;
+            if (password.Length < MinPasswordLength)
+                return CheckStatus.WrongLength;
             bool hasUpperCase = false;
             bool hasLowerCase = false;
             bool hasDigit = false;
@@ -89,8 +86,8 @@ namespace BusinessTraining.Configuration
                     hasDigit = true;
             }
             if (!hasUpperCase || !hasLowerCase || !hasDigit)
-                return 2;
-            return 0;
+                return CheckStatus.SymbolsProblem;
+            return CheckStatus.Success;
         }
     }
 }

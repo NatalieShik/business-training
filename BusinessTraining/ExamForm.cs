@@ -81,7 +81,7 @@ namespace BusinessTraining
             this.Close();
         }
 
-        private void ButtonNext_Click(object sender, EventArgs e)
+        private async void ButtonNext_Click(object sender, EventArgs e)
         {
             QuestionsAndAnswers RightQuestion = AppState.Questions.FirstOrDefault(q => q.Question == textBoxForQuestions.Text);
             if (RightQuestion == null)
@@ -107,10 +107,14 @@ namespace BusinessTraining
                 try
                 {
                     TelegramHelper sendMessage = new TelegramHelper(SettingsHelper.GetSettingBotToken(), SettingsHelper.GetSettingChatId());
-                    sendMessage.SendMessage(AppState.LastTestResult);
+                    await sendMessage.SendMessageAsync(AppState.LastTestResult);
                 }
                 catch(Exception ex) 
                 {
+                    if (!SettingsHelper.GetSettingNoNetwork())
+                        SettingsHelper.SaveSettingNoNetwork(true);
+
+                    // TODO: не давать закрыться без пароля?
                     MessageBox.Show("Произошла ошибка: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
