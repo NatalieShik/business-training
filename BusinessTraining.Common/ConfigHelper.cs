@@ -22,5 +22,11 @@ namespace BusinessTraining
             setting.ValueXml = doc.DocumentElement;
             return setting;
         }
+
+        public static string GetSettingValue(this Configuration config, string settingName)
+        {
+            return ((ClientSettingsSection)config.SectionGroups["applicationSettings"].Sections[0])
+                .Settings.Get(settingName).Value.ValueXml.InnerText;
+        }
     }
 }

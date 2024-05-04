@@ -6,15 +6,59 @@ namespace BusinessTraining.Configuration
 {
     public partial class ConfigurationForm : Form
     {
-        const int MinPasswordLength = 6;
+        private const int MinPasswordLength = 6;
+        private System.Configuration.Configuration config;
         public ConfigurationForm()
         {
             InitializeComponent();
         }
 
+        private void ConfigurationForm_Load(object sender, EventArgs e)
+        {
+            if (ConfigSettingsHelper.GetSettingFirstLaunch() == false)
+            {
+                labelConfiguration.Text = ConfigSettingsHelper.GetSettingConfigFilePath() + ".config";
+                config = ConfigurationManager.OpenExeConfiguration(ConfigSettingsHelper.GetSettingConfigFilePath());
+                FillFields();
+            }
+            else { buttonBuildConfig.Enabled = false; }
+        }
+
+        private void buttonChoose_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            fileDialog.Multiselect = false;
+            fileDialog.Title = "Выберите программу, конфигурацию которой хотите изменить";
+            fileDialog.Filter = "Программа (*.exe)|*.exe";
+            if (DialogResult.OK != fileDialog.ShowDialog())
+                return;
+
+            if (fileDialog.FileName.EndsWith("BusinessTraining.exe"))
+            {
+                ConfigSettingsHelper.SaveSettingConfigFilePath(fileDialog.FileName);
+                labelConfiguration.Text = fileDialog.FileName + ".config";
+                buttonBuildConfig.Enabled = true;
+            }
+            else
+            {
+                MessageBox.Show(this, "Выберите файл BusinessTraining.exe", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            config = ConfigurationManager.OpenExeConfiguration(ConfigSettingsHelper.GetSettingConfigFilePath());
+            if (config.HasFile == false)
+            {
+                MessageBox.Show(this, "У приложения отсутвует конфигурация.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            FillFields();
+            ConfigSettingsHelper.SaveSettingFirstLaunchAsFalse();
+        }
+
         private void buttonBuildConfig_Click(object sender, EventArgs e)
         {
-            if(FieldsAreNotFine())
+            if (FieldsAreNotFine())
                 return;
 
             CheckStatus passwordStatus = CheckPassword(textBoxPassword.Text);
@@ -22,10 +66,16 @@ namespace BusinessTraining.Configuration
             {
                 MessageBox.Show(this, "Пароль должен состоять не меньше, чем из 6 символов.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
-            } 
+            }
             else if (passwordStatus == CheckStatus.SymbolsProblem)
             {
                 MessageBox.Show(this, "Пароль должен содержать прописные и заглавные буквы, а также цифры.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (textBoxPassword.Text != textBoxVerifyPassword.Text)
+            {
+                MessageBox.Show(this, "Пароли должны совпадать.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -33,17 +83,7 @@ namespace BusinessTraining.Configuration
             string CompanyBranch = textBoxCompanyBranch.Text;
             string BotToken = CryptoHelper.Encrypt(textBoxBotToken.Text);
             string ChatId = CryptoHelper.Encrypt(textBoxChatId.Text);
-            string path;
-
-            OpenFileDialog fileDialog = new OpenFileDialog();
-            fileDialog.Filter = "Программа (*.exe)|*.exe";
-            if (DialogResult.OK == fileDialog.ShowDialog())
-                path = fileDialog.FileName;
-            else return;
-
-            var config = ConfigurationManager.OpenExeConfiguration(path);
-            if (config.HasFile == false)
-                return;
+            string path; 
 
             config.SetSettingValue("CompanyBranch", CompanyBranch);
             config.SetSettingValue("PasswordHash", Password);
@@ -55,7 +95,7 @@ namespace BusinessTraining.Configuration
 
             // Перезагружаем конфигурацию приложения
             ConfigurationManager.RefreshSection("applicationSettings");
-            MessageBox.Show("Конфигурация приложения была успешно создана.", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(this, "Конфигурация приложения была успешно создана.", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private bool FieldsAreNotFine()
@@ -88,6 +128,13 @@ namespace BusinessTraining.Configuration
             if (!hasUpperCase || !hasLowerCase || !hasDigit)
                 return CheckStatus.SymbolsProblem;
             return CheckStatus.Success;
+        }
+
+        private void FillFields()
+        {
+            textBoxCompanyBranch.Text = config.GetSettingValue("CompanyBranch");
+            textBoxBotToken.Text = CryptoHelper.Decrypt(config.GetSettingValue("BotToken"));
+            textBoxChatId.Text = CryptoHelper.Decrypt(config.GetSettingValue("ChatId"));
         }
     }
 }
