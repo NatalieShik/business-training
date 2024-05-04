@@ -1,4 +1,4 @@
-﻿namespace BusinessTraining.Configuration
+﻿namespace BusinessTraining
 {
     public enum CheckStatus
     {

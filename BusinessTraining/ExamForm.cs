@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace BusinessTraining
 {
@@ -109,15 +108,10 @@ namespace BusinessTraining
                     TelegramHelper sendMessage = new TelegramHelper(SettingsHelper.GetSettingBotToken(), SettingsHelper.GetSettingChatId());
                     await sendMessage.SendMessageAsync(AppState.LastTestResult);
                 }
-                catch(Exception ex) 
+                catch
                 {
-                    if (!SettingsHelper.GetSettingNoNetwork())
-                        SettingsHelper.SaveSettingNoNetwork(true);
-
-                    // TODO: не давать закрыться без пароля?
-                    MessageBox.Show("Произошла ошибка: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    SettingsHelper.SaveSettingNoNetwork(true);
                 }
-
                 
                 SettingsHelper.SaveSettingAtempt(false);
                 this.Close();

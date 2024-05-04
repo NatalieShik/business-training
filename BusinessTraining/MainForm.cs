@@ -6,7 +6,8 @@ namespace BusinessTraining
 {
     public partial class MainForm : Form
     {
-        
+        private bool passwordEntered = false;
+
         public MainForm()
         {
             InitializeComponent();
@@ -76,6 +77,19 @@ namespace BusinessTraining
                 ask.ShowDialog();
             } 
             this.Show();
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!passwordEntered && SettingsHelper.GetSettingNoNetwork())
+            {
+                e.Cancel = true;
+                GetPasswordForm passwordForm = new GetPasswordForm();
+                if (passwordForm.ShowDialog() == DialogResult.OK)
+                {
+                    passwordEntered = true;
+                }
+            }
         }
     }
 }
