@@ -23,8 +23,8 @@ namespace BusinessTraining
 
         private async void buttonEnter_Click(object sender, EventArgs e)
         {
-            string name = textBoxName.Text.Trim();
-            string surname = textBoxSurname.Text.Trim();
+            string name = textBoxName.Text;
+            string surname = textBoxSurname.Text;
             if (String.IsNullOrWhiteSpace(name) || String.IsNullOrWhiteSpace(surname))
             {
                 MessageBox.Show("Введите имя и фамилию.", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
