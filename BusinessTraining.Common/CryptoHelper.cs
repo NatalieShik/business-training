@@ -41,8 +41,13 @@ namespace BusinessTraining
 
         public static string Decrypt(string encryptedString)
         {
-            string encodedString = DeletePrefix(encryptedString);
-            return Base64Decode(encodedString);
+            if (String.IsNullOrWhiteSpace(encryptedString))
+                return encryptedString;
+            else
+            {
+                string encodedString = DeletePrefix(encryptedString);
+                return Base64Decode(encodedString);
+            }
         }
     }
 }

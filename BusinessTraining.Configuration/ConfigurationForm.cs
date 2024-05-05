@@ -8,6 +8,7 @@ namespace BusinessTraining.Configuration
     {
         private const int MinPasswordLength = 6;
         private System.Configuration.Configuration config;
+        private const string PseudoPassword = "•••••••";
         public ConfigurationForm()
         {
             InitializeComponent();
@@ -88,15 +89,18 @@ namespace BusinessTraining.Configuration
                 return;
             }
 
-            string Password = BCrypt.Net.BCrypt.HashPassword(textBoxPassword.Text);
             string CompanyBranch = textBoxCompanyBranch.Text;
             string BotToken = CryptoHelper.Encrypt(textBoxBotToken.Text);
-            string ChatId = CryptoHelper.Encrypt(textBoxChatId.Text); 
-
+            string ChatId = CryptoHelper.Encrypt(textBoxChatId.Text);
             config.SetSettingValue("CompanyBranch", CompanyBranch);
-            config.SetSettingValue("PasswordHash", Password);
             config.SetSettingValue("BotToken", BotToken);
             config.SetSettingValue("ChatId", ChatId);
+
+            if(textBoxPassword.Text != PseudoPassword)
+            {
+                string Password = BCrypt.Net.BCrypt.HashPassword(textBoxPassword.Text);
+                config.SetSettingValue("PasswordHash", Password);
+            }
 
             // Сохраняем изменения в конфигурационном файле
             config.Save(ConfigurationSaveMode.Modified);
@@ -119,8 +123,12 @@ namespace BusinessTraining.Configuration
 
         private CheckStatus CheckPassword(string password)
         {
+            if (password == PseudoPassword)
+                return CheckStatus.Success;
+
             if (password.Length < MinPasswordLength)
                 return CheckStatus.WrongLength;
+
             bool hasUpperCase = false;
             bool hasLowerCase = false;
             bool hasDigit = false;
@@ -133,6 +141,7 @@ namespace BusinessTraining.Configuration
                 else if (char.IsDigit(c))
                     hasDigit = true;
             }
+
             if (!hasUpperCase || !hasLowerCase || !hasDigit)
                 return CheckStatus.SymbolsProblem;
             return CheckStatus.Success;
@@ -143,6 +152,16 @@ namespace BusinessTraining.Configuration
             textBoxCompanyBranch.Text = config.GetSettingValue("CompanyBranch");
             textBoxBotToken.Text = CryptoHelper.Decrypt(config.GetSettingValue("BotToken"));
             textBoxChatId.Text = CryptoHelper.Decrypt(config.GetSettingValue("ChatId"));
+            if (String.IsNullOrWhiteSpace(textBoxCompanyBranch.Text) || String.IsNullOrWhiteSpace(textBoxBotToken.Text)|| String.IsNullOrWhiteSpace(textBoxChatId.Text))
+            {
+                textBoxPassword.Text = String.Empty;
+                textBoxVerifyPassword.Text = String.Empty;
+            }
+            else
+            {
+                textBoxPassword.Text = PseudoPassword;
+                textBoxVerifyPassword.Text = PseudoPassword;
+            }
         }
     }
 }
