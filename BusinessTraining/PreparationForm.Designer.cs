@@ -39,6 +39,7 @@
             this.buttonRight = new System.Windows.Forms.Button();
             this.buttonWrong = new System.Windows.Forms.Button();
             this.buttonShowOrHideAnswer = new System.Windows.Forms.Button();
+            this.textBoxTrainingTitle = new System.Windows.Forms.TextBox();
             this.panelUp.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -95,6 +96,7 @@
             // panelUp
             // 
             this.panelUp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(98)))), ((int)(((byte)(157)))));
+            this.panelUp.Controls.Add(this.textBoxTrainingTitle);
             this.panelUp.Controls.Add(this.buttonBack);
             this.panelUp.Location = new System.Drawing.Point(0, 0);
             this.panelUp.Name = "panelUp";
@@ -168,6 +170,19 @@
             this.buttonShowOrHideAnswer.UseVisualStyleBackColor = false;
             this.buttonShowOrHideAnswer.Click += new System.EventHandler(this.ButtonShowOrHideAnswer_Click);
             // 
+            // textBoxTrainingTitle
+            // 
+            this.textBoxTrainingTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(98)))), ((int)(((byte)(157)))));
+            this.textBoxTrainingTitle.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxTrainingTitle.Font = new System.Drawing.Font("Candara", 11F, System.Drawing.FontStyle.Bold);
+            this.textBoxTrainingTitle.ForeColor = System.Drawing.Color.White;
+            this.textBoxTrainingTitle.Location = new System.Drawing.Point(575, 11);
+            this.textBoxTrainingTitle.Multiline = true;
+            this.textBoxTrainingTitle.Name = "textBoxTrainingTitle";
+            this.textBoxTrainingTitle.Size = new System.Drawing.Size(547, 22);
+            this.textBoxTrainingTitle.TabIndex = 1;
+            this.textBoxTrainingTitle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // PreparationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -191,6 +206,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Подготовка к работе";
             this.panelUp.ResumeLayout(false);
+            this.panelUp.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -207,6 +223,7 @@
         private System.Windows.Forms.Button buttonRight;
         private System.Windows.Forms.Button buttonWrong;
         private System.Windows.Forms.Button buttonShowOrHideAnswer;
+        private System.Windows.Forms.TextBox textBoxTrainingTitle;
     }
 }
 

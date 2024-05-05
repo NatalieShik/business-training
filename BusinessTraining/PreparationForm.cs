@@ -19,6 +19,7 @@ namespace BusinessTraining
             InitializeComponent();
             LocalePreparationQuestions = new List<QuestionsAndAnswers>(AppState.Questions.Where(x => x.Direction == direction && sections.Any(y => x.Section.Contains(y))));
             currentQuestion = NewQuestion();
+            textBoxTrainingTitle.Text = $"Вы проходите курс: {AppState.TrainingTitle}";
         }
 
         private void ButtonWrong_Click(object sender, EventArgs e)

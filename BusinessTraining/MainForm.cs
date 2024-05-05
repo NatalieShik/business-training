@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace BusinessTraining
 {
@@ -13,6 +14,7 @@ namespace BusinessTraining
             InitializeComponent();
             buttonOpenPrepearing.Enabled = false;
             buttonOpenTest.Enabled = false;
+            textBoxWelcome.Text += $", {AppState.UserName}";
         }
 
         void CheckIfNoQuestions()
@@ -89,6 +91,19 @@ namespace BusinessTraining
                 {
                     passwordEntered = true;
                 }
+            }
+        }
+
+        private void textBoxWelcome_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true; // Блокировать ввод с клавиатуры
+        }
+
+        private void textBoxWelcome_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete || e.KeyCode == Keys.Back)
+            {
+                e.SuppressKeyPress = true; // Предотвращение удаления текста
             }
         }
     }

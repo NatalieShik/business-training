@@ -30,6 +30,7 @@ namespace BusinessTraining
 
             questions = LocaleTestQuestions.Count;
             NewQuestion();
+            textBoxInfo.Text = $"{AppState.UserName}, {AppState.TrainingTitle}";
         }
 
         private QuestionsAndAnswers NewQuestion()

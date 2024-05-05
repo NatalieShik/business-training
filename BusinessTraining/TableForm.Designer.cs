@@ -249,7 +249,7 @@
             this.buttonExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonExport.Font = new System.Drawing.Font("Candara", 10F, System.Drawing.FontStyle.Bold);
             this.buttonExport.ForeColor = System.Drawing.Color.White;
-            this.buttonExport.Location = new System.Drawing.Point(97, 0);
+            this.buttonExport.Location = new System.Drawing.Point(85, 0);
             this.buttonExport.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonExport.Name = "buttonExport";
             this.buttonExport.Size = new System.Drawing.Size(101, 44);
@@ -265,7 +265,7 @@
             this.buttonImport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonImport.Font = new System.Drawing.Font("Candara", 10F, System.Drawing.FontStyle.Bold);
             this.buttonImport.ForeColor = System.Drawing.Color.White;
-            this.buttonImport.Location = new System.Drawing.Point(3, 0);
+            this.buttonImport.Location = new System.Drawing.Point(1, 0);
             this.buttonImport.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonImport.Name = "buttonImport";
             this.buttonImport.Size = new System.Drawing.Size(101, 44);
@@ -377,6 +377,7 @@
             this.Controls.Add(this.textBoxDirection);
             this.Controls.Add(this.textBoxAnswer);
             this.Controls.Add(this.textBoxQuestion);
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MinimumSize = new System.Drawing.Size(799, 851);

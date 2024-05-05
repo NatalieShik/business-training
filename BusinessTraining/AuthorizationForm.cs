@@ -19,7 +19,8 @@ namespace BusinessTraining
                 MessageBox.Show("Отсутвуют настройки конфигурации.", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Close();
             }
-            labelCompanyBranch.Text = SettingsHelper.GetSettingCompanyBranch();
+            textBoxCompanyBranch.Text = SettingsHelper.GetSettingCompanyBranch();
+            textBoxPassword.UseSystemPasswordChar = true;
         }
 
         private async void ButtonEnter_Click(object sender, EventArgs e)
@@ -93,6 +94,33 @@ namespace BusinessTraining
             SettingsHelper.SaveSettingAtempt(true);
             SettingsHelper.SaveSettingNoNetwork(false);
             Close();
+        }
+
+        private void pictureBoxOpenedEye_Click(object sender, EventArgs e)
+        {
+            textBoxPassword.UseSystemPasswordChar = true;
+            pictureBoxOpenedEye.Visible = false;
+            pictureBoxClosedEye.Visible = true;
+        }
+
+        private void pictureBoxClosedEye_Click(object sender, EventArgs e)
+        {
+            textBoxPassword.UseSystemPasswordChar = false;
+            pictureBoxOpenedEye.Visible = true;
+            pictureBoxClosedEye.Visible = false;
+        }
+
+        private void textBoxCompanyBranch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete || e.KeyCode == Keys.Back)
+            {
+                e.SuppressKeyPress = true; // Предотвращение удаления текста
+            }
+        }
+
+        private void textBoxCompanyBranch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true; // Блокировать ввод с клавиатуры
         }
     }
 }

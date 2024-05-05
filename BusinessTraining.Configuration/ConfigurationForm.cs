@@ -8,17 +8,21 @@ namespace BusinessTraining.Configuration
     {
         private const int MinPasswordLength = 6;
         private System.Configuration.Configuration config;
-        private const string PseudoPassword = "•••••••";
+        private const string PseudoPassword = "●●●●●●●";
+
         public ConfigurationForm()
         {
             InitializeComponent();
+            textBoxPassword.UseSystemPasswordChar = true;
+            textBoxVerifyPassword.UseSystemPasswordChar = true;
         }
 
         private void ConfigurationForm_Load(object sender, EventArgs e)
         {
             if (ConfigSettingsHelper.GetSettingFirstLaunch() == false)
             {
-                labelConfiguration.Text = ConfigSettingsHelper.GetSettingConfigFilePath() + ".config";
+                labelConfiguration.Text = "Конфигурация выбрана";
+                AddHelpOnLabelConfiguration(true);
                 config = ConfigurationManager.OpenExeConfiguration(ConfigSettingsHelper.GetSettingConfigFilePath());
                 if (config.HasFile == false)
                 {
@@ -28,7 +32,7 @@ namespace BusinessTraining.Configuration
                 }   
                 FillFields();
             }
-            else { buttonBuildConfig.Enabled = false; }
+            else { buttonBuildConfig.Enabled = false; labelConfiguration.Text = "Конфигурация не выбрана"; AddHelpOnLabelConfiguration(false); }
         }
 
         private void ButtonChoose_Click(object sender, EventArgs e)
@@ -46,7 +50,7 @@ namespace BusinessTraining.Configuration
             if (fileDialog.FileName.EndsWith("BusinessTraining.exe"))
             {
                 ConfigSettingsHelper.SaveSettingConfigFilePath(fileDialog.FileName);
-                labelConfiguration.Text = fileDialog.FileName + ".config";
+                labelConfiguration.Text = "Конфигурация выбрана";
                 buttonBuildConfig.Enabled = true;
             }
             else
@@ -63,6 +67,7 @@ namespace BusinessTraining.Configuration
             }
 
             FillFields();
+            AddHelpOnLabelConfiguration(true);
             ConfigSettingsHelper.SaveSettingFirstLaunch(false);
         }
 
@@ -161,7 +166,38 @@ namespace BusinessTraining.Configuration
             {
                 textBoxPassword.Text = PseudoPassword;
                 textBoxVerifyPassword.Text = PseudoPassword;
+                pictureBoxClosedEye.Visible = false;
+                pictureBoxOpenedEye.Visible = false;
             }
+        }
+
+        private void AddHelpOnLabelConfiguration(bool configChoosen)
+        {
+            ToolTip toolTip = new ToolTip();
+            if (configChoosen)
+                toolTip.SetToolTip(labelConfiguration, ConfigSettingsHelper.GetSettingConfigFilePath() + ".config");
+            else
+                toolTip.SetToolTip(labelConfiguration, "Выберите конфигурацию");
+        }
+
+        private void pictureBoxClosedEye_Click(object sender, EventArgs e)
+        {
+            textBoxPassword.UseSystemPasswordChar = false;
+            pictureBoxOpenedEye.Visible = true;
+            pictureBoxClosedEye.Visible = false;
+        }
+
+        private void pictureBoxOpenedEye_Click(object sender, EventArgs e)
+        {
+            textBoxPassword.UseSystemPasswordChar = true;
+            pictureBoxOpenedEye.Visible = false;
+            pictureBoxClosedEye.Visible = true;
+        }
+
+        private void textBoxPassword_TextChanged(object sender, EventArgs e)
+        {
+            pictureBoxClosedEye.Visible = true;
+            pictureBoxOpenedEye.Visible = true;
         }
     }
 }

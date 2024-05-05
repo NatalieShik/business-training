@@ -38,6 +38,7 @@
             this.buttonBack = new System.Windows.Forms.Button();
             this.panelDown = new System.Windows.Forms.Panel();
             this.buttonNext = new System.Windows.Forms.Button();
+            this.textBoxInfo = new System.Windows.Forms.TextBox();
             this.panelUp.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,7 +90,7 @@
             this.labelQuestionsLeft.Name = "labelQuestionsLeft";
             this.labelQuestionsLeft.Size = new System.Drawing.Size(159, 21);
             this.labelQuestionsLeft.TabIndex = 22;
-            this.labelQuestionsLeft.Text = "Осталовь вопросов:";
+            this.labelQuestionsLeft.Text = "Осталось вопросов:";
             // 
             // labelQuestionsLeftNum
             // 
@@ -104,6 +105,7 @@
             // panelUp
             // 
             this.panelUp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(98)))), ((int)(((byte)(157)))));
+            this.panelUp.Controls.Add(this.textBoxInfo);
             this.panelUp.Controls.Add(this.buttonBack);
             this.panelUp.Location = new System.Drawing.Point(0, 0);
             this.panelUp.Name = "panelUp";
@@ -147,7 +149,20 @@
             this.buttonNext.UseVisualStyleBackColor = false;
             this.buttonNext.Click += new System.EventHandler(this.ButtonNext_Click);
             // 
-            // TestForm
+            // textBoxInfo
+            // 
+            this.textBoxInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(98)))), ((int)(((byte)(157)))));
+            this.textBoxInfo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxInfo.Font = new System.Drawing.Font("Candara", 11F, System.Drawing.FontStyle.Bold);
+            this.textBoxInfo.ForeColor = System.Drawing.Color.White;
+            this.textBoxInfo.Location = new System.Drawing.Point(211, 11);
+            this.textBoxInfo.Multiline = true;
+            this.textBoxInfo.Name = "textBoxInfo";
+            this.textBoxInfo.Size = new System.Drawing.Size(547, 22);
+            this.textBoxInfo.TabIndex = 2;
+            this.textBoxInfo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // ExamForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -163,11 +178,12 @@
             this.Controls.Add(this.textBoxForQuestions);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "TestForm";
+            this.Name = "ExamForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Тестирование";
             this.Load += new System.EventHandler(this.TestForm_Load);
             this.panelUp.ResumeLayout(false);
+            this.panelUp.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -184,5 +200,6 @@
         private System.Windows.Forms.Button buttonBack;
         private System.Windows.Forms.Panel panelDown;
         private System.Windows.Forms.Button buttonNext;
+        private System.Windows.Forms.TextBox textBoxInfo;
     }
 }

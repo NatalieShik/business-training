@@ -154,6 +154,8 @@
     <None Include="Resources\picture_smaller_but_no_yellow_no_blue.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\open.png" />
+    <None Include="Resources\close.png" />
     <Content Include="sletat.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
