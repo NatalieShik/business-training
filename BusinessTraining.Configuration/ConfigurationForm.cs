@@ -17,7 +17,7 @@ namespace BusinessTraining.Configuration
             textBoxVerifyPassword.UseSystemPasswordChar = true;
         }
 
-        private void ConfigurationForm_Load(object sender, EventArgs e)
+        private void ConfigurationForm_Load(object sender, EventArgs e) // TODO: if no exe
         {
             if (ConfigSettingsHelper.GetSettingFirstLaunch() == false)
             {

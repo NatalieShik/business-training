@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{00C22C08-AB47-45D4-B7E0-8F120046E151}</ProjectGuid>
+    <ProjectGuid>{80BB6821-31B9-496B-B284-7A3D6DBF1C24}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BusinessTraining.Tests</RootNamespace>
-    <AssemblyName>BusinessTraining.Common.Tests</AssemblyName>
+    <RootNamespace>BusinessTraining.FilesManager.Tests</RootNamespace>
+    <AssemblyName>BusinessTraining.FilesManager.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -46,13 +46,10 @@
       <HintPath>..\packages\MSTest.TestFramework.2.2.10\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConfigHelperTest.cs" />
-    <Compile Include="ExamHelperTest.cs" />
+    <Compile Include="FileHelperTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -63,6 +60,10 @@
     <ProjectReference Include="..\BusinessTraining.Common\BusinessTraining.Common.csproj">
       <Project>{1b467435-a65e-468e-a6ad-30a3b6564269}</Project>
       <Name>BusinessTraining.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BusinessTraining.FilesManager\BusinessTraining.FilesManager.csproj">
+      <Project>{da5697f5-31be-424a-9442-b9bc5354248f}</Project>
+      <Name>BusinessTraining.FilesManager</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

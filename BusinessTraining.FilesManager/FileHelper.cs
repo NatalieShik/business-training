@@ -6,7 +6,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 
-namespace BusinessTraining
+namespace BusinessTraining.FilesManager
 {
     public static class FileHelper
     {
@@ -21,7 +21,7 @@ namespace BusinessTraining
 
         public static List<QuestionsAndAnswers> LoadFromFile(string filePath)
         {
-            List <QuestionsAndAnswers> result;
+            List<QuestionsAndAnswers> result;
             switch (Path.GetExtension(filePath).ToLower())
             {
                 case ".json":
@@ -36,8 +36,8 @@ namespace BusinessTraining
                 case ".training":
                     result = LoadFromFileAsTraining(filePath);
                     break;
-                default: 
-                    result = new List<QuestionsAndAnswers>(); 
+                default:
+                    result = new List<QuestionsAndAnswers>();
                     break;
             }
             return result;
@@ -93,11 +93,9 @@ namespace BusinessTraining
             string encryptedContent = CryptoHelper.Encrypt(jsonString);
             File.WriteAllText(filePath, encryptedContent, Encoding.UTF8);
         }
-
         private static List<QuestionsAndAnswers> LoadFromFileAsTxt(string filePath)
         {
             List<QuestionsAndAnswers> result = new List<QuestionsAndAnswers>();
-
             using (StreamReader sr = new StreamReader(filePath, Encoding.UTF8))
             {
                 string line, question = "", answer = "", direction = "", section;
@@ -120,7 +118,7 @@ namespace BusinessTraining
                         QuestionsAndAnswers QandA = new QuestionsAndAnswers(question, answer, wrongAnswers, direction, section);
                         result.Add(QandA);
                         wrongAnswers = new List<string>();
-                    }       
+                    }
                 }
             }
             if (result.Count == 0)
@@ -137,7 +135,7 @@ namespace BusinessTraining
                     writer.WriteLine("Вопрос: " + question.Question);
                     writer.WriteLine("Ответ: " + question.Answer);
 
-                    foreach(var wrongAnswer in question.WrongAnswers)
+                    foreach (var wrongAnswer in question.WrongAnswers)
                         writer.WriteLine("Неправильный ответ: " + wrongAnswer);
 
                     writer.WriteLine("Направление: " + question.Direction);

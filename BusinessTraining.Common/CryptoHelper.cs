@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BusinessTraining
 {
-    public static class CryptoHelper
+    public static class CryptoHelper // TODO: add Bcrypt
     {
         const int prefixLength = 5;
         const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";

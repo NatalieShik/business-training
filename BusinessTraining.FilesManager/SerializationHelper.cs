@@ -3,7 +3,7 @@ using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Unicode;
 
-namespace BusinessTraining
+namespace BusinessTraining.FilesManager
 {
     public static class SerializationHelper
     {
