@@ -1,6 +1,7 @@
 ﻿using BusinessTraining.ConfigurationsManager;
 using System;
 using System.Configuration;
+using System.IO;
 using System.Windows.Forms;
 
 namespace BusinessTraining.Configuration
@@ -18,11 +19,19 @@ namespace BusinessTraining.Configuration
             textBoxVerifyPassword.UseSystemPasswordChar = true;
         }
 
-        private void ConfigurationForm_Load(object sender, EventArgs e) // TODO: if no exe
+        private void ConfigurationForm_Load(object sender, EventArgs e)
         {
             if (ConfigSettingsHelper.GetSettingFirstLaunch() == false)
             {
                 labelConfiguration.Text = "Конфигурация выбрана";
+                if (!File.Exists(ConfigSettingsHelper.GetSettingConfigFilePath()))
+                {
+                    ConfigSettingsHelper.SaveSettingConfigFilePath(String.Empty);
+                    ConfigSettingsHelper.SaveSettingFirstLaunch(true);
+                    ConfigurationForm_Load(sender, e);
+                    return;
+                }
+
                 AddHelpOnLabelConfiguration(true);
                 config = ConfigurationManager.OpenExeConfiguration(ConfigSettingsHelper.GetSettingConfigFilePath());
                 if (config.HasFile == false)
@@ -30,10 +39,15 @@ namespace BusinessTraining.Configuration
                     ConfigSettingsHelper.SaveSettingFirstLaunch(true);
                     ConfigurationForm_Load(sender, e);
                     return;
-                }   
+                }
                 FillFields();
             }
-            else { buttonBuildConfig.Enabled = false; labelConfiguration.Text = "Конфигурация не выбрана"; AddHelpOnLabelConfiguration(false); }
+            else
+            {
+                AddHelpOnLabelConfiguration(false);
+                buttonBuildConfig.Enabled = false;
+                labelConfiguration.Text = "Конфигурация не выбрана";
+            }
         }
 
         private void ButtonChoose_Click(object sender, EventArgs e)
