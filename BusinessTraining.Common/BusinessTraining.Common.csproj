@@ -79,7 +79,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppState.cs" />
     <Compile Include="CheckStatus.cs" />
     <Compile Include="ConfigHelper.cs" />
     <Compile Include="CryptoHelper.cs" />
