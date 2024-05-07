@@ -74,7 +74,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CheckStatus.cs" />
-    <Compile Include="ConfigHelper.cs" />
     <Compile Include="CryptoHelper.cs" />
     <Compile Include="ExamHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

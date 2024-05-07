@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Configuration;
 
-namespace BusinessTraining.Tests
+namespace BusinessTraining.ConfigurationsManager.Tests
 {
     [TestClass]
     public class ConfigHelperTest

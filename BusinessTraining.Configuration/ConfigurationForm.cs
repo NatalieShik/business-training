@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessTraining.ConfigurationsManager;
+using System;
 using System.Configuration;
 using System.Windows.Forms;
 

@@ -1,7 +1,7 @@
 ﻿using System.Configuration;
 using System.Xml;
 
-namespace BusinessTraining
+namespace BusinessTraining.ConfigurationManager
 {
     public static class ConfigHelper
     {
@@ -11,7 +11,7 @@ namespace BusinessTraining
                 .Settings.Get(settingName).Value = CreateSettingValueElement(settingValue);
         }
 
-        private static SettingValueElement CreateSettingValueElement(string settingValue) 
+        private static SettingValueElement CreateSettingValueElement(string settingValue)
         {
             SettingValueElement setting = new SettingValueElement();
             XmlDocument doc = new XmlDocument();
