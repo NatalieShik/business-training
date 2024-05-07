@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace BusinessTraining
 {
@@ -94,12 +93,12 @@ namespace BusinessTraining
             }
         }
 
-        private void textBoxWelcome_KeyPress(object sender, KeyPressEventArgs e)
+        private void TextBoxWelcome_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true; // Блокировать ввод с клавиатуры
         }
 
-        private void textBoxWelcome_KeyDown(object sender, KeyEventArgs e)
+        private void TextBoxWelcome_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete || e.KeyCode == Keys.Back)
             {

@@ -25,14 +25,14 @@ namespace BusinessTraining
             this.DialogResult = DialogResult.OK;
         }
 
-        private void pictureBoxOpenedEye_Click(object sender, EventArgs e)
+        private void PictureBoxOpenedEye_Click(object sender, EventArgs e)
         {
             textBoxPassword.UseSystemPasswordChar = true;
             pictureBoxOpenedEye.Visible = false;
             pictureBoxClosedEye.Visible = true;
         }
 
-        private void pictureBoxClosedEye_Click(object sender, EventArgs e)
+        private void PictureBoxClosedEye_Click(object sender, EventArgs e)
         {
             textBoxPassword.UseSystemPasswordChar = false;
             pictureBoxOpenedEye.Visible = true;

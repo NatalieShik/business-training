@@ -189,8 +189,8 @@
             this.textBoxWelcome.TabIndex = 14;
             this.textBoxWelcome.Text = "Добро пожаловать";
             this.textBoxWelcome.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxWelcome.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxWelcome_KeyDown);
-            this.textBoxWelcome.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxWelcome_KeyPress);
+            this.textBoxWelcome.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxWelcome_KeyDown);
+            this.textBoxWelcome.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxWelcome_KeyPress);
             // 
             // labelCallManager
             // 

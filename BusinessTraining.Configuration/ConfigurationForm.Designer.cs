@@ -71,7 +71,7 @@
             this.textBoxPassword.Size = new System.Drawing.Size(240, 29);
             this.textBoxPassword.TabIndex = 1;
             this.textBoxPassword.TabStop = false;
-            this.textBoxPassword.TextChanged += new System.EventHandler(this.textBoxPassword_TextChanged);
+            this.textBoxPassword.TextChanged += new System.EventHandler(this.TextBoxPassword_TextChanged);
             // 
             // textBoxCompanyBranch
             // 
@@ -216,7 +216,7 @@
             this.pictureBoxClosedEye.Size = new System.Drawing.Size(31, 23);
             this.pictureBoxClosedEye.TabIndex = 27;
             this.pictureBoxClosedEye.TabStop = false;
-            this.pictureBoxClosedEye.Click += new System.EventHandler(this.pictureBoxClosedEye_Click);
+            this.pictureBoxClosedEye.Click += new System.EventHandler(this.PictureBoxClosedEye_Click);
             // 
             // pictureBoxOpenedEye
             // 
@@ -226,7 +226,7 @@
             this.pictureBoxOpenedEye.Size = new System.Drawing.Size(31, 23);
             this.pictureBoxOpenedEye.TabIndex = 26;
             this.pictureBoxOpenedEye.TabStop = false;
-            this.pictureBoxOpenedEye.Click += new System.EventHandler(this.pictureBoxOpenedEye_Click);
+            this.pictureBoxOpenedEye.Click += new System.EventHandler(this.PictureBoxOpenedEye_Click);
             // 
             // pictureBox
             // 
