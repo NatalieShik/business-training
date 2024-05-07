@@ -150,6 +150,10 @@
       <Project>{1b467435-a65e-468e-a6ad-30a3b6564269}</Project>
       <Name>BusinessTraining.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BusinessTraining.Notifications\BusinessTraining.Notifications.csproj">
+      <Project>{ef6f51c8-eac0-431f-b95e-62e88720db19}</Project>
+      <Name>BusinessTraining.Notifications</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\picture_smaller_but_no_yellow_no_blue.png" />

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Telegram.Bot;
 
-namespace BusinessTraining
+namespace BusinessTraining.Notifications
 {
     public class TelegramHelper
     {
