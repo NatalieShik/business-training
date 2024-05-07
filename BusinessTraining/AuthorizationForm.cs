@@ -42,7 +42,7 @@ namespace BusinessTraining
                     MessageBox.Show("Введите пароль.", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                if(!BCrypt.Net.BCrypt.Verify(textBoxPassword.Text, SettingsHelper.GetSettingPasswordHash()))
+                if(!CryptoHelper.VerifyPassword(textBoxPassword.Text, SettingsHelper.GetSettingPasswordHash()))
                 {
                     MessageBox.Show("Неверный пароль.", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;

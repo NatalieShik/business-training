@@ -104,7 +104,7 @@ namespace BusinessTraining.Configuration
 
             if(textBoxPassword.Text != PseudoPassword)
             {
-                string Password = BCrypt.Net.BCrypt.HashPassword(textBoxPassword.Text);
+                string Password = CryptoHelper.GetPasswordHash(textBoxPassword.Text);
                 config.SetSettingValue("PasswordHash", Password);
             }
 

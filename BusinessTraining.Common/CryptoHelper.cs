@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BusinessTraining
 {
-    public static class CryptoHelper // TODO: add Bcrypt
+    public static class CryptoHelper 
     {
         const int prefixLength = 5;
         const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -48,6 +48,16 @@ namespace BusinessTraining
                 string encodedString = DeletePrefix(encryptedString);
                 return Base64Decode(encodedString);
             }
+        }
+
+        public static string GetPasswordHash(string password)
+        {
+            return BCrypt.Net.BCrypt.HashPassword(password);
+        }
+
+        public static bool VerifyPassword(string password, string hashedPassword)
+        {
+            return BCrypt.Net.BCrypt.Verify(password, hashedPassword);
         }
     }
 }

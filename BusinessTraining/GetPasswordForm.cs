@@ -16,7 +16,7 @@ namespace BusinessTraining
             if (String.IsNullOrWhiteSpace(textBoxPassword.Text))
                 return;
 
-            if (!BCrypt.Net.BCrypt.Verify(textBoxPassword.Text, SettingsHelper.GetSettingPasswordHash()))
+            if (!CryptoHelper.VerifyPassword(textBoxPassword.Text, SettingsHelper.GetSettingPasswordHash()))
             {
                 MessageBox.Show("Неверный пароль.", "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
