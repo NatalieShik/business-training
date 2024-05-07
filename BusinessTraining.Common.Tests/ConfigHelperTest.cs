@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Configuration;
 
 namespace BusinessTraining.Tests
 {
@@ -6,14 +7,17 @@ namespace BusinessTraining.Tests
     public class ConfigHelperTest
     {
         [TestMethod]
-        public void UpdateSetting_Test()
+        public void SettingValue_Test()
         {
-            //string settingValue = "ул. Оптиков, д. 52";
+            Configuration config = ConfigurationManager.OpenExeConfiguration(@"C:\Users\shikn\Documents\BusinessTraining\BusinessTraining.exe");
+            Assert.IsNotNull(config, "Не получилось прочесть конфигурацию.");
+            string settingName = "ChatId";
+            string settingValue = "TestValue";
 
-            //SettingValueElement result = ConfigHelper.UpdateSetting(settingValue);
+            ConfigHelper.SetSettingValue(config, settingName, settingValue);
+            string newValue = ConfigHelper.GetSettingValue(config, settingName);
 
-            //Assert.AreEqual(result.ValueXml.InnerText,settingValue);
+            Assert.AreEqual(settingValue, newValue);
         }
-
     }
 }
