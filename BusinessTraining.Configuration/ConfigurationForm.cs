@@ -8,7 +8,6 @@ namespace BusinessTraining.Configuration
 {
     public partial class ConfigurationForm : Form
     {
-        private const int MinPasswordLength = 6;
         private System.Configuration.Configuration config;
         private const string PseudoPassword = "●●●●●●●";
 
@@ -91,7 +90,7 @@ namespace BusinessTraining.Configuration
             if (FieldsAreNotFine())
                 return;
 
-            CheckStatus passwordStatus = CheckPassword(textBoxPassword.Text);
+            CheckStatus passwordStatus = ValidationHelper.CheckPassword(textBoxPassword.Text, PseudoPassword);
             if (passwordStatus == CheckStatus.WrongLength)
             {
                 MessageBox.Show(this, "Пароль должен состоять не меньше, чем из 6 символов.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -141,32 +140,6 @@ namespace BusinessTraining.Configuration
             else { return false; }
         }
 
-        private CheckStatus CheckPassword(string password)
-        {
-            if (password == PseudoPassword)
-                return CheckStatus.Success;
-
-            if (password.Length < MinPasswordLength)
-                return CheckStatus.WrongLength;
-
-            bool hasUpperCase = false;
-            bool hasLowerCase = false;
-            bool hasDigit = false;
-            foreach (char c in password)
-            {
-                if (char.IsUpper(c))
-                    hasUpperCase = true;
-                else if (char.IsLower(c))
-                    hasLowerCase = true;
-                else if (char.IsDigit(c))
-                    hasDigit = true;
-            }
-
-            if (!hasUpperCase || !hasLowerCase || !hasDigit)
-                return CheckStatus.SymbolsProblem;
-            return CheckStatus.Success;
-        }
-
         private void FillFields()
         {
             textBoxCompanyBranch.Text = config.GetSettingValue("CompanyBranch");
@@ -213,6 +186,12 @@ namespace BusinessTraining.Configuration
         {
             pictureBoxClosedEye.Visible = true;
             pictureBoxOpenedEye.Visible = true;
+            //if(textBoxPassword.Text != PseudoPassword)
+            //{
+            //    textBoxPassword.Text = string.Empty;
+            //    textBoxVerifyPassword.Text = string.Empty;
+            //}
+
         }
     }
 }

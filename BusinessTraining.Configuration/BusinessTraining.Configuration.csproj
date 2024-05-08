@@ -50,7 +50,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CheckStatus.cs" />
     <Compile Include="SettingsHelper.cs" />
     <Compile Include="ConfigurationForm.cs">
       <SubType>Form</SubType>
