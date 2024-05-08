@@ -6,7 +6,7 @@
         public static CheckStatus CheckPassword(string password, string pseudoPassword)
         {
             if (password == pseudoPassword)
-                return CheckStatus.Success;
+                return CheckStatus.None;
 
             if (password.Length < MinPasswordLength)
                 return CheckStatus.WrongLength;

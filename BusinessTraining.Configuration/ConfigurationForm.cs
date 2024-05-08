@@ -10,6 +10,7 @@ namespace BusinessTraining.Configuration
     {
         private System.Configuration.Configuration config;
         private const string PseudoPassword = "●●●●●●●";
+        private bool IsResetted = false;
 
         public ConfigurationForm()
         {
@@ -186,12 +187,12 @@ namespace BusinessTraining.Configuration
         {
             pictureBoxClosedEye.Visible = true;
             pictureBoxOpenedEye.Visible = true;
-            //if(textBoxPassword.Text != PseudoPassword)
-            //{
-            //    textBoxPassword.Text = string.Empty;
-            //    textBoxVerifyPassword.Text = string.Empty;
-            //}
-
+            if (textBoxPassword.Text != PseudoPassword && !IsResetted)
+            {
+                textBoxPassword.Text = string.Empty;
+                textBoxVerifyPassword.Text = string.Empty;
+                IsResetted = true;
+            }
         }
     }
 }

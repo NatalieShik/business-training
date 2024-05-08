@@ -2,6 +2,7 @@
 {
     public enum CheckStatus
     {
+        None,
         Success,
         WrongLength,
         SymbolsProblem
