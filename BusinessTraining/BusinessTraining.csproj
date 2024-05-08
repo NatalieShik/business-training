@@ -142,7 +142,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessTraining.Application\BusinessTraining.Application.csproj">
-      <Project>{1429d62f-4d36-4088-8861-7e60c6ddfe9a}</Project>
+      <Project>{5c5f477f-1562-4a6b-81bf-33fb60e600c0}</Project>
       <Name>BusinessTraining.Application</Name>
     </ProjectReference>
     <ProjectReference Include="..\BusinessTraining.Common\BusinessTraining.Common.csproj">

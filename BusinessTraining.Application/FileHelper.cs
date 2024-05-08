@@ -6,7 +6,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 
-namespace BusinessTraining.Application
+namespace BusinessTraining
 {
     public static class FileHelper
     {
