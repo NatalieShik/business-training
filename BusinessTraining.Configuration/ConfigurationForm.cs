@@ -1,4 +1,4 @@
-﻿using BusinessTraining.ConfigurationsManager;
+﻿using BusinessTraining.Configuration.Logic;
 using System;
 using System.Configuration;
 using System.IO;
@@ -21,22 +21,22 @@ namespace BusinessTraining.Configuration
 
         private void ConfigurationForm_Load(object sender, EventArgs e)
         {
-            if (ConfigSettingsHelper.GetSettingFirstLaunch() == false)
+            if (SettingsHelper.GetSettingFirstLaunch() == false)
             {
                 labelConfiguration.Text = "Конфигурация выбрана";
-                if (!File.Exists(ConfigSettingsHelper.GetSettingConfigFilePath()))
+                if (!File.Exists(SettingsHelper.GetSettingConfigFilePath()))
                 {
-                    ConfigSettingsHelper.SaveSettingConfigFilePath(String.Empty);
-                    ConfigSettingsHelper.SaveSettingFirstLaunch(true);
+                    SettingsHelper.SaveSettingConfigFilePath(String.Empty);
+                    SettingsHelper.SaveSettingFirstLaunch(true);
                     ConfigurationForm_Load(sender, e);
                     return;
                 }
 
                 AddHelpOnLabelConfiguration(true);
-                config = ConfigurationManager.OpenExeConfiguration(ConfigSettingsHelper.GetSettingConfigFilePath());
+                config = ConfigurationManager.OpenExeConfiguration(SettingsHelper.GetSettingConfigFilePath());
                 if (config.HasFile == false)
                 {
-                    ConfigSettingsHelper.SaveSettingFirstLaunch(true);
+                    SettingsHelper.SaveSettingFirstLaunch(true);
                     ConfigurationForm_Load(sender, e);
                     return;
                 }
@@ -64,7 +64,7 @@ namespace BusinessTraining.Configuration
 
             if (fileDialog.FileName.EndsWith("BusinessTraining.exe"))
             {
-                ConfigSettingsHelper.SaveSettingConfigFilePath(fileDialog.FileName);
+                SettingsHelper.SaveSettingConfigFilePath(fileDialog.FileName);
                 labelConfiguration.Text = "Конфигурация выбрана";
                 buttonBuildConfig.Enabled = true;
             }
@@ -74,7 +74,7 @@ namespace BusinessTraining.Configuration
                 return;
             }
 
-            config = ConfigurationManager.OpenExeConfiguration(ConfigSettingsHelper.GetSettingConfigFilePath());
+            config = ConfigurationManager.OpenExeConfiguration(SettingsHelper.GetSettingConfigFilePath());
             if (config.HasFile == false)
             {
                 MessageBox.Show(this, "У приложения отсутвует конфигурация.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -83,7 +83,7 @@ namespace BusinessTraining.Configuration
 
             FillFields();
             AddHelpOnLabelConfiguration(true);
-            ConfigSettingsHelper.SaveSettingFirstLaunch(false);
+            SettingsHelper.SaveSettingFirstLaunch(false);
         }
 
         private void ButtonBuildConfig_Click(object sender, EventArgs e)
@@ -190,7 +190,7 @@ namespace BusinessTraining.Configuration
         {
             ToolTip toolTip = new ToolTip();
             if (configChoosen)
-                toolTip.SetToolTip(labelConfiguration, ConfigSettingsHelper.GetSettingConfigFilePath() + ".config");
+                toolTip.SetToolTip(labelConfiguration, SettingsHelper.GetSettingConfigFilePath() + ".config");
             else
                 toolTip.SetToolTip(labelConfiguration, "Выберите конфигурацию");
         }

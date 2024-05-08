@@ -51,7 +51,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppState.cs" />
     <Compile Include="AuthorizationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,13 +141,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BusinessTraining.Application\BusinessTraining.Application.csproj">
+      <Project>{1429d62f-4d36-4088-8861-7e60c6ddfe9a}</Project>
+      <Name>BusinessTraining.Application</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BusinessTraining.Common\BusinessTraining.Common.csproj">
       <Project>{1b467435-a65e-468e-a6ad-30a3b6564269}</Project>
       <Name>BusinessTraining.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BusinessTraining.FilesManager\BusinessTraining.FilesManager.csproj">
-      <Project>{da5697f5-31be-424a-9442-b9bc5354248f}</Project>
-      <Name>BusinessTraining.FilesManager</Name>
     </ProjectReference>
     <ProjectReference Include="..\BusinessTraining.Notifications\BusinessTraining.Notifications.csproj">
       <Project>{ef6f51c8-eac0-431f-b95e-62e88720db19}</Project>

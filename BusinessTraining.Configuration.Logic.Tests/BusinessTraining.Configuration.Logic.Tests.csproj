@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{80BB6821-31B9-496B-B284-7A3D6DBF1C24}</ProjectGuid>
+    <ProjectGuid>{06531E04-A29A-4177-A92E-525525ACEA99}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BusinessTraining.FilesManager.Tests</RootNamespace>
-    <AssemblyName>BusinessTraining.FilesManager.Tests</AssemblyName>
+    <RootNamespace>BusinessTraining.Configuration.Logic.Tests</RootNamespace>
+    <AssemblyName>BusinessTraining.Configuration.Logic.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -46,24 +46,20 @@
       <HintPath>..\packages\MSTest.TestFramework.2.2.10\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FileHelperTest.cs" />
+    <Compile Include="ConfigHelperTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BusinessTraining.Common\BusinessTraining.Common.csproj">
-      <Project>{1b467435-a65e-468e-a6ad-30a3b6564269}</Project>
-      <Name>BusinessTraining.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BusinessTraining.FilesManager\BusinessTraining.FilesManager.csproj">
-      <Project>{da5697f5-31be-424a-9442-b9bc5354248f}</Project>
-      <Name>BusinessTraining.FilesManager</Name>
+    <ProjectReference Include="..\BusinessTraining.Configuration.Logic\BusinessTraining.Configuration.Logic.csproj">
+      <Project>{8a3af91e-8922-4431-8aae-bb9aef9676d8}</Project>
+      <Name>BusinessTraining.Configuration.Logic</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

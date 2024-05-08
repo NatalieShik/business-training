@@ -51,7 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CheckStatus.cs" />
-    <Compile Include="ConfigSettingsHelper.cs" />
+    <Compile Include="SettingsHelper.cs" />
     <Compile Include="ConfigurationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,9 +92,9 @@
       <Project>{1b467435-a65e-468e-a6ad-30a3b6564269}</Project>
       <Name>BusinessTraining.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BusinessTraining.ConfigurationsManager\BusinessTraining.ConfigurationsManager.csproj">
-      <Project>{604a9f28-4ab1-46b8-9311-ab7afc91ac6e}</Project>
-      <Name>BusinessTraining.ConfigurationsManager</Name>
+    <ProjectReference Include="..\BusinessTraining.Configuration.Logic\BusinessTraining.Configuration.Logic.csproj">
+      <Project>{8a3af91e-8922-4431-8aae-bb9aef9676d8}</Project>
+      <Name>BusinessTraining.Configuration.Logic</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

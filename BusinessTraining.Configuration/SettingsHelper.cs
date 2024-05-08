@@ -1,6 +1,6 @@
 ﻿namespace BusinessTraining.Configuration
 {
-    internal static class ConfigSettingsHelper
+    internal static class SettingsHelper
     {
         public static void SaveSettingFirstLaunch(bool value)
         {

@@ -1,4 +1,4 @@
-﻿using BusinessTraining.FilesManager;
+﻿using BusinessTraining.Application;
 using BusinessTraining.Notifications;
 using System;
 using System.IO;
@@ -51,7 +51,7 @@ namespace BusinessTraining
             }
             if (SettingsHelper.GetSettingIsManager())
             {
-                var filePathforQuestions = Path.Combine(Application.LocalUserAppDataPath, QuestionsFile);
+                var filePathforQuestions = Path.Combine(System.Windows.Forms.Application.LocalUserAppDataPath, QuestionsFile);
                 AppState.Questions = FileHelper.LoadFromFileOrCreateNew(filePathforQuestions);
 
                 TableForm table = new TableForm();
@@ -84,7 +84,7 @@ namespace BusinessTraining
 
         private void Table_FormClosed(object sender, FormClosedEventArgs e)
         {
-            var filePath = Path.Combine(Application.LocalUserAppDataPath, QuestionsFile);
+            var filePath = Path.Combine(System.Windows.Forms.Application.LocalUserAppDataPath, QuestionsFile);
             FileHelper.SaveToFile(filePath, AppState.Questions);
             SettingsHelper.SaveSettingIsManager(false);
             SettingsHelper.SaveSettingNoNetwork(false);

@@ -1,11 +1,11 @@
 ﻿using System.Configuration;
 using System.Xml;
 
-namespace BusinessTraining.ConfigurationsManager
+namespace BusinessTraining.Configuration.Logic
 {
     public static class ConfigHelper
     {
-        public static void SetSettingValue(this Configuration config, string settingName, string settingValue)
+        public static void SetSettingValue(this System.Configuration.Configuration config, string settingName, string settingValue)
         {
             ((ClientSettingsSection)config.SectionGroups["applicationSettings"].Sections[0])
                 .Settings.Get(settingName).Value = CreateSettingValueElement(settingValue);
@@ -23,7 +23,7 @@ namespace BusinessTraining.ConfigurationsManager
             return setting;
         }
 
-        public static string GetSettingValue(this Configuration config, string settingName)
+        public static string GetSettingValue(this System.Configuration.Configuration config, string settingName)
         {
             return ((ClientSettingsSection)config.SectionGroups["applicationSettings"].Sections[0])
                 .Settings.Get(settingName).Value.ValueXml.InnerText;
