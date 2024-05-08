@@ -2,7 +2,7 @@
 
 namespace BusinessTraining
 {
-    public class QuestionsAndAnswers
+    public class QuestionAndAnswers
     {
         public string Question { get; set; }
 
@@ -14,7 +14,7 @@ namespace BusinessTraining
 
         public string Section { get; set; }
 
-        public QuestionsAndAnswers(string question, string answer, List<string> wrongAnswers, string direction, string section)
+        public QuestionAndAnswers(string question, string answer, List<string> wrongAnswers, string direction, string section)
         {
             Question = question;
             Answer = answer;
@@ -23,6 +23,6 @@ namespace BusinessTraining
             Section = section;
         }
 
-        public QuestionsAndAnswers() { }
+        public QuestionAndAnswers() { }
     }
 }

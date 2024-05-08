@@ -8,14 +8,14 @@ namespace BusinessTraining
 {
     public partial class ExamForm : Form
     {
-        private List<QuestionsAndAnswers> LocaleTestQuestions = new List<QuestionsAndAnswers>(AppState.Questions);
+        private List<QuestionAndAnswers> LocaleTestQuestions = new List<QuestionAndAnswers>(AppState.Questions);
         private int index; //индекс текущего вопроса
         private int[] previousIndexes; //использованные индексы
         private int i; //индекс для массива
         private Random random = new Random();
         private int questions;  //количество вопросов
 
-        private List<QuestionsAndAnswers> LocaleTestAnswers = new List<QuestionsAndAnswers>();
+        private List<QuestionAndAnswers> LocaleTestAnswers = new List<QuestionAndAnswers>();
         private short right;
 
         public ExamForm()
@@ -34,11 +34,11 @@ namespace BusinessTraining
             textBoxInfo.Text = $"{AppState.UserName}, {AppState.TrainingTitle}";
         }
 
-        private QuestionsAndAnswers NewQuestion()
+        private QuestionAndAnswers NewQuestion()
         {
             labelQuestionsLeftNum.Text = questions.ToString();
             
-            QuestionsAndAnswers temp = RandomQuestion();
+            QuestionAndAnswers temp = RandomQuestion();
             if (temp == null)
                 return null;
 
@@ -48,7 +48,7 @@ namespace BusinessTraining
             return temp;
         }
 
-        private QuestionsAndAnswers RandomQuestion()
+        private QuestionAndAnswers RandomQuestion()
         {
             if (LocaleTestQuestions.Count == 1)
                 return LocaleTestQuestions[0];
@@ -62,7 +62,7 @@ namespace BusinessTraining
             return LocaleTestQuestions[index];
         }
 
-        private void RandomAnswers(QuestionsAndAnswers question)
+        private void RandomAnswers(QuestionAndAnswers question)
         {
             List<string> answers = ExamHelper.SelectRandomAnswers(question);
             PopulateComboBoxAnswers(answers);
@@ -84,11 +84,11 @@ namespace BusinessTraining
 
         private async void ButtonNext_Click(object sender, EventArgs e)
         {
-            QuestionsAndAnswers RightQuestion = AppState.Questions.FirstOrDefault(q => q.Question == textBoxForQuestions.Text);
+            QuestionAndAnswers RightQuestion = AppState.Questions.FirstOrDefault(q => q.Question == textBoxForQuestions.Text);
             if (RightQuestion == null)
                 return;
 
-            QuestionsAndAnswers temp = new QuestionsAndAnswers
+            QuestionAndAnswers temp = new QuestionAndAnswers
             {
                 Answer = comboBoxAnswer.Text
             };

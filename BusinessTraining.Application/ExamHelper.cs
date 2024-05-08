@@ -6,7 +6,7 @@ namespace BusinessTraining
 {
     public static class ExamHelper
     {
-        public static List<string> SelectRandomAnswers(QuestionsAndAnswers question)
+        public static List<string> SelectRandomAnswers(QuestionAndAnswers question)
         {
             var answers = new List<string>
             {

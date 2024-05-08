@@ -61,7 +61,7 @@ namespace BusinessTraining
                 return;
             }
 
-            QuestionsAndAnswers questionAndAnswer = new QuestionsAndAnswers(question, answer, wrongAnswers, direction, section);
+            QuestionAndAnswers questionAndAnswer = new QuestionAndAnswers(question, answer, wrongAnswers, direction, section);
             AppState.Questions.Add(questionAndAnswer);
             UpdateData();
             rowIndex = -1;

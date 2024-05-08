@@ -7,8 +7,8 @@ namespace BusinessTraining
 {
     public partial class PreparationForm : Form
     {
-        private List<QuestionsAndAnswers> LocalePreparationQuestions;
-        private QuestionsAndAnswers currentQuestion;
+        private List<QuestionAndAnswers> LocalePreparationQuestions;
+        private QuestionAndAnswers currentQuestion;
         private Random random = new Random();
         private int index;
         private int previousIndex = -1;
@@ -17,7 +17,7 @@ namespace BusinessTraining
         public PreparationForm(string direction, List<string> sections)
         {
             InitializeComponent();
-            LocalePreparationQuestions = new List<QuestionsAndAnswers>(AppState.Questions.Where(x => x.Direction == direction && sections.Any(y => x.Section.Contains(y))));
+            LocalePreparationQuestions = new List<QuestionAndAnswers>(AppState.Questions.Where(x => x.Direction == direction && sections.Any(y => x.Section.Contains(y))));
             currentQuestion = NewQuestion();
             textBoxTrainingTitle.Text = $"Вы проходите курс: {AppState.TrainingTitle}";
         }
@@ -49,7 +49,7 @@ namespace BusinessTraining
             }
         }
 
-        private QuestionsAndAnswers RandomQuestion()
+        private QuestionAndAnswers RandomQuestion()
         {
             labelCounter.Text = LocalePreparationQuestions.Count.ToString();
             if (LocalePreparationQuestions.Count == 0)
@@ -70,11 +70,11 @@ namespace BusinessTraining
             return LocalePreparationQuestions[index];
         }
 
-        private QuestionsAndAnswers NewQuestion()
+        private QuestionAndAnswers NewQuestion()
         {
             this.Height = 340;
             answerShown = false;
-            QuestionsAndAnswers temp = RandomQuestion();
+            QuestionAndAnswers temp = RandomQuestion();
             if (temp == null)
                 return null;
             textBoxForQuestions.Text = temp.Question;

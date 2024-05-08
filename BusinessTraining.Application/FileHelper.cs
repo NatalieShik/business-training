@@ -10,18 +10,18 @@ namespace BusinessTraining
 {
     public static class FileHelper
     {
-        public static List<QuestionsAndAnswers> LoadFromFileOrCreateNew(string filePath)
+        public static List<QuestionAndAnswers> LoadFromFileOrCreateNew(string filePath)
         {
             if (!File.Exists(filePath))
             {
-                SaveToFile(filePath, new List<QuestionsAndAnswers>());
+                SaveToFile(filePath, new List<QuestionAndAnswers>());
             }
             return LoadFromFile(filePath);
         }
 
-        public static List<QuestionsAndAnswers> LoadFromFile(string filePath)
+        public static List<QuestionAndAnswers> LoadFromFile(string filePath)
         {
-            List<QuestionsAndAnswers> result;
+            List<QuestionAndAnswers> result;
             switch (Path.GetExtension(filePath).ToLower())
             {
                 case ".json":
@@ -37,13 +37,13 @@ namespace BusinessTraining
                     result = LoadFromFileAsTraining(filePath);
                     break;
                 default:
-                    result = new List<QuestionsAndAnswers>();
+                    result = new List<QuestionAndAnswers>();
                     break;
             }
             return result;
         }
 
-        public static void SaveToFile(string filePath, List<QuestionsAndAnswers> questions)
+        public static void SaveToFile(string filePath, List<QuestionAndAnswers> questions)
         {
             switch (Path.GetExtension(filePath).ToLower())
             {
@@ -62,40 +62,40 @@ namespace BusinessTraining
             }
         }
 
-        private static List<QuestionsAndAnswers> LoadFromFileAsJson(string filePath)
+        private static List<QuestionAndAnswers> LoadFromFileAsJson(string filePath)
         {
-            List<QuestionsAndAnswers> result = new List<QuestionsAndAnswers>();
+            List<QuestionAndAnswers> result = new List<QuestionAndAnswers>();
             using (FileStream fileStream = new FileStream(filePath, FileMode.Open))
             {
                 if (fileStream.Length > 0)
-                    result = SerializationHelper.Deserialize<List<QuestionsAndAnswers>>(fileStream);
+                    result = SerializationHelper.Deserialize<List<QuestionAndAnswers>>(fileStream);
             }
             return result;
         }
 
-        private static void SaveToFileAsJson(string filePath, List<QuestionsAndAnswers> questions)
+        private static void SaveToFileAsJson(string filePath, List<QuestionAndAnswers> questions)
         {
             string jsonString = SerializationHelper.Serialize(questions);
             File.WriteAllText(filePath, jsonString, Encoding.UTF8);
         }
 
-        private static List<QuestionsAndAnswers> LoadFromFileAsTraining(string filePath)
+        private static List<QuestionAndAnswers> LoadFromFileAsTraining(string filePath)
         {
             string encodedJsonString = File.ReadAllText(filePath, Encoding.UTF8);
             string jsonString = CryptoHelper.Decrypt(encodedJsonString);
-            List<QuestionsAndAnswers> result = SerializationHelper.Deserialize<List<QuestionsAndAnswers>>(jsonString);
+            List<QuestionAndAnswers> result = SerializationHelper.Deserialize<List<QuestionAndAnswers>>(jsonString);
             return result;
         }
 
-        private static void SaveToFileAsTraining(string filePath, List<QuestionsAndAnswers> questions)
+        private static void SaveToFileAsTraining(string filePath, List<QuestionAndAnswers> questions)
         {
             string jsonString = SerializationHelper.Serialize(questions);
             string encryptedContent = CryptoHelper.Encrypt(jsonString);
             File.WriteAllText(filePath, encryptedContent, Encoding.UTF8);
         }
-        private static List<QuestionsAndAnswers> LoadFromFileAsTxt(string filePath)
+        private static List<QuestionAndAnswers> LoadFromFileAsTxt(string filePath)
         {
-            List<QuestionsAndAnswers> result = new List<QuestionsAndAnswers>();
+            List<QuestionAndAnswers> result = new List<QuestionAndAnswers>();
             using (StreamReader sr = new StreamReader(filePath, Encoding.UTF8))
             {
                 string line, question = "", answer = "", direction = "", section;
@@ -115,7 +115,7 @@ namespace BusinessTraining
                     else if (line.StartsWith("Раздел: "))
                     {
                         section = line.Replace("Раздел: ", String.Empty).Trim();
-                        QuestionsAndAnswers QandA = new QuestionsAndAnswers(question, answer, wrongAnswers, direction, section);
+                        QuestionAndAnswers QandA = new QuestionAndAnswers(question, answer, wrongAnswers, direction, section);
                         result.Add(QandA);
                         wrongAnswers = new List<string>();
                     }
@@ -126,7 +126,7 @@ namespace BusinessTraining
             return result;
         }
 
-        private static void SaveToFileAsTxt(string filePath, List<QuestionsAndAnswers> questions)
+        private static void SaveToFileAsTxt(string filePath, List<QuestionAndAnswers> questions)
         {
             using (StreamWriter writer = new StreamWriter(filePath, false, Encoding.UTF8))
             {
@@ -145,7 +145,7 @@ namespace BusinessTraining
             }
         }
 
-        private static List<QuestionsAndAnswers> LoadFromFileAsDocx(string filePath)
+        private static List<QuestionAndAnswers> LoadFromFileAsDocx(string filePath)
         {
             string tempFileName = Path.GetTempFileName();
             Debug.WriteLine(tempFileName);
@@ -158,7 +158,7 @@ namespace BusinessTraining
             return result;
         }
 
-        private static void SaveToFileAsDocx(string filePath, List<QuestionsAndAnswers> questions)
+        private static void SaveToFileAsDocx(string filePath, List<QuestionAndAnswers> questions)
         {
             string lineBreak = "\v";
             Document doc = new Document();

@@ -7,7 +7,7 @@ namespace BusinessTraining.Application.Tests
     [TestClass]
     public class ExamHelperTest
     {
-        private QuestionsAndAnswers CreateTestData()
+        private QuestionAndAnswers CreateTestData()
         {
             List<string> wrongAnswers = new List<string>
         {
@@ -15,14 +15,14 @@ namespace BusinessTraining.Application.Tests
             "answer",
             "wrong answer"
         };
-            QuestionsAndAnswers question = new QuestionsAndAnswers("Вопрос?", "правильный ответ", wrongAnswers, "1", "2");
+            QuestionAndAnswers question = new QuestionAndAnswers("Вопрос?", "правильный ответ", wrongAnswers, "1", "2");
             return question;
         }
 
         [TestMethod]
         public void SelectRandomAnswers_Test()
         {
-            QuestionsAndAnswers question = CreateTestData();
+            QuestionAndAnswers question = CreateTestData();
 
             var answers = ExamHelper.SelectRandomAnswers(question);
 

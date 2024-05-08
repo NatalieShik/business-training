@@ -6,22 +6,22 @@ namespace BusinessTraining.Application.Tests
     [TestClass]
     public class FileHelperTest
     {
-        private List<QuestionsAndAnswers> CreateTestData()
+        private List<QuestionAndAnswers> CreateTestData()
         {
-            List<QuestionsAndAnswers> questions = new List<QuestionsAndAnswers>();
+            List<QuestionAndAnswers> questions = new List<QuestionAndAnswers>();
             List<string> wrongAnswers = new List<string>
             {
                 "привет",
                 "привет-привет"
             };
-            QuestionsAndAnswers question = new QuestionsAndAnswers("Привет?", "привет!", wrongAnswers, "1", "2");
+            QuestionAndAnswers question = new QuestionAndAnswers("Привет?", "привет!", wrongAnswers, "1", "2");
             questions.Add(question);
             List<string> wrongAnswersEng = new List<string>
             {
                 "hello",
                 "hello-hello"
             };
-            question = new QuestionsAndAnswers("Hello?", "hello!", wrongAnswersEng, "3", "4");
+            question = new QuestionAndAnswers("Hello?", "hello!", wrongAnswersEng, "3", "4");
             questions.Add(question);
             return questions;
         }
@@ -29,10 +29,10 @@ namespace BusinessTraining.Application.Tests
         [TestMethod]
         public void LoadFromFile_And_SaveToFile_Json_Test()
         {
-            List<QuestionsAndAnswers> questions = CreateTestData();
+            List<QuestionAndAnswers> questions = CreateTestData();
 
             FileHelper.SaveToFile("example.json", questions);
-            List<QuestionsAndAnswers> result = FileHelper.LoadFromFile("example.json");
+            List<QuestionAndAnswers> result = FileHelper.LoadFromFile("example.json");
 
             CheckResults(questions, result);
         }
@@ -40,10 +40,10 @@ namespace BusinessTraining.Application.Tests
         [TestMethod]
         public void LoadFromFile_And_SaveToFile_Training_Test()
         {
-            List<QuestionsAndAnswers> questions = CreateTestData();
+            List<QuestionAndAnswers> questions = CreateTestData();
 
             FileHelper.SaveToFile("example.training", questions);
-            List<QuestionsAndAnswers> result = FileHelper.LoadFromFile("example.training");
+            List<QuestionAndAnswers> result = FileHelper.LoadFromFile("example.training");
 
             CheckResults(questions, result);
         }
@@ -51,10 +51,10 @@ namespace BusinessTraining.Application.Tests
         [TestMethod]
         public void LoadFromFile_And_SaveToFile_Txt_Test()
         {
-            List<QuestionsAndAnswers> questions = CreateTestData();
+            List<QuestionAndAnswers> questions = CreateTestData();
 
             FileHelper.SaveToFile("example.txt", questions);
-            List<QuestionsAndAnswers> result = FileHelper.LoadFromFile("example.txt");
+            List<QuestionAndAnswers> result = FileHelper.LoadFromFile("example.txt");
 
             CheckResults(questions, result);
         }
@@ -62,15 +62,15 @@ namespace BusinessTraining.Application.Tests
         [TestMethod]
         public void LoadFromFile_And_SaveToFile_Docx_Test()
         {
-            List<QuestionsAndAnswers> questions = CreateTestData();
+            List<QuestionAndAnswers> questions = CreateTestData();
 
             FileHelper.SaveToFile("example.docx", questions);
-            List<QuestionsAndAnswers> result = FileHelper.LoadFromFile("example.docx");
+            List<QuestionAndAnswers> result = FileHelper.LoadFromFile("example.docx");
 
             CheckResults(questions, result);
         }
 
-        private void CheckResults(List<QuestionsAndAnswers> expected, List<QuestionsAndAnswers> result)
+        private void CheckResults(List<QuestionAndAnswers> expected, List<QuestionAndAnswers> result)
         {
             Assert.AreEqual(expected.Count, result.Count);
             Assert.AreEqual(expected[0].Question, result[0].Question);
