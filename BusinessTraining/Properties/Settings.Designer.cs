@@ -23,30 +23,6 @@ namespace BusinessTraining.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool Attempt {
-            get {
-                return ((bool)(this["Attempt"]));
-            }
-            set {
-                this["Attempt"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool IsManager {
-            get {
-                return ((bool)(this["IsManager"]));
-            }
-            set {
-                this["IsManager"] = value;
-            }
-        }
-        
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
@@ -80,18 +56,6 @@ namespace BusinessTraining.Properties {
         public string ChatId {
             get {
                 return ((string)(this["ChatId"]));
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool NoNetwork {
-            get {
-                return ((bool)(this["NoNetwork"]));
-            }
-            set {
-                this["NoNetwork"] = value;
             }
         }
     }

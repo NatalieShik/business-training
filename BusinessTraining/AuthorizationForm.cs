@@ -46,9 +46,9 @@ namespace BusinessTraining
                     MessageBox.Show("Неверный пароль.", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                SettingsHelper.SaveSettingIsManager(true);
+                AppState.IsManager = true;
             }
-            if (SettingsHelper.GetSettingIsManager())
+            if (AppState.IsManager)
             {
                 var filePathforQuestions = Path.Combine(Application.LocalUserAppDataPath, QuestionsFile);
                 AppState.Questions = FileHelper.LoadFromFileOrCreateNew(filePathforQuestions);
@@ -67,7 +67,7 @@ namespace BusinessTraining
             }
 
             string status = "обычного пользователя";
-            if (SettingsHelper.GetSettingIsManager())
+            if (AppState.IsManager)
                 status = "менеджера";
             try 
             { 
@@ -77,7 +77,7 @@ namespace BusinessTraining
             }
             catch
             {
-                SettingsHelper.SaveSettingNoNetwork(true);
+                AppState.SendMessageProblems = true;
             }
         }
 
@@ -85,15 +85,11 @@ namespace BusinessTraining
         {
             var filePath = Path.Combine(Application.LocalUserAppDataPath, QuestionsFile);
             FileHelper.SaveToFile(filePath, AppState.Questions);
-            SettingsHelper.SaveSettingIsManager(false);
-            SettingsHelper.SaveSettingNoNetwork(false);
             Close();
         }
 
         private void Main_FormClosed(object sender, FormClosedEventArgs e)
         {
-            SettingsHelper.SaveSettingAtempt(true);
-            SettingsHelper.SaveSettingNoNetwork(false);
             Close();
         }
 

@@ -114,10 +114,10 @@ namespace BusinessTraining
                 }
                 catch
                 {
-                    SettingsHelper.SaveSettingNoNetwork(true);
+                    AppState.SendMessageProblems = true;
                 }
                 
-                SettingsHelper.SaveSettingAtempt(false);
+                AppState.Attempt = false;
                 this.Close();
             }
         }

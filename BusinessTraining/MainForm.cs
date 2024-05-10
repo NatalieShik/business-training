@@ -56,7 +56,7 @@ namespace BusinessTraining
 
         private void ButtonOpenTest_Click(object sender, EventArgs e)
         {
-            if (!Properties.Settings.Default.Attempt)
+            if (!AppState.Attempt)
             {
                 ExamForm.ShowTestResults(this);
                 return;
@@ -82,7 +82,7 @@ namespace BusinessTraining
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (!passwordEntered && SettingsHelper.GetSettingNoNetwork())
+            if (!passwordEntered && AppState.SendMessageProblems)
             {
                 e.Cancel = true;
                 GetPasswordForm passwordForm = new GetPasswordForm();
