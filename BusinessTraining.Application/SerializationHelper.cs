@@ -20,20 +20,12 @@ namespace BusinessTraining
 
         public static TValue Deserialize<TValue>(Stream utf8Json)
         {
-            var options = new JsonSerializerOptions
-            {
-                DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
-            };
-            return JsonSerializer.Deserialize<TValue>(utf8Json, options);
+            return JsonSerializer.Deserialize<TValue>(utf8Json);
         }
 
         public static TValue Deserialize<TValue>(string json)
         {
-            var options = new JsonSerializerOptions
-            {
-                DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
-            };
-            return JsonSerializer.Deserialize<TValue>(json, options);
+            return JsonSerializer.Deserialize<TValue>(json);
         }
     }
 }

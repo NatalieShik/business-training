@@ -10,11 +10,11 @@ namespace BusinessTraining.Application.Tests
         private QuestionAndAnswers CreateTestData()
         {
             List<string> wrongAnswers = new List<string>
-        {
-            "ответ",
-            "answer",
-            "wrong answer"
-        };
+            {
+                "ответ",
+                "answer",
+                "wrong answer"
+            };
             QuestionAndAnswers question = new QuestionAndAnswers("Вопрос?", "правильный ответ", wrongAnswers, "1", "2");
             return question;
         }
